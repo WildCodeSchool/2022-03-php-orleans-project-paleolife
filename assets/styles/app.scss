@@ -1,2 +1,24 @@
-//start coding by removing this file and adding yours ;)
-@import "wcs";
+@import url('https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=News+Cycle&display=swap'); 
+
+$primary: #000000;
+$secondary: #00EA7A;
+$secondary_dark: #005B2F;
+$light: #ffffff;
+
+$title_font: 'Gothic A1', sans-serif;
+$title_font2: 'News Cycle', sans-serif;
+$text_font: 'Work Sans', sans-serif;
+
+
+
+@import "~bootstrap/scss/bootstrap";
+
+h1, h2, h3, h4 {
+    font-family: $title_font;
+}
+
+body {
+    font-family: $text_font;
+}
