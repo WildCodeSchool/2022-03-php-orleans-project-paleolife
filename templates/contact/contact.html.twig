@@ -1,0 +1,47 @@
+{% {% extends "base.html.twig" %}}
+{% block body %}
+<div class="container-fluid mb-4 d-flex justify-content-center align-items-center header p-0">
+	<h1 class="text-light text-center">Contactez-nous</h1>
+</div>
+<div class="container">
+	<form method="POST">
+		{% if errors is not empty %}
+			<div class="alert alert-danger">
+				{% for error in errors %}
+					<p>{{ error }}</p>
+				{% endfor %}
+			</div>
+		{% endif %}
+		{% if messageSent %}
+			<p class="alert alert-success">Le message a bien été envoyé.</p>
+		{% endif %}
+		<div class="row">
+			<div class="col-lg-6 col-md-12 mt-2 ">
+				<label for="lastname" class="form-label mt-2 text-dark">Nom</label>
+				<input type="text" name="lastname" id="lastname" class="form-control border-0 p-2" placeholder="Dupont" required>
+			</div>
+			<div class="col-lg-6 col-md-12 mt-2">
+				<label for="firstname" class="form-label mt-2 text-dark">Prénom</label>
+				<input type="text" name="firstname" id="firstname" class="form-control border-0 p-2" placeholder="Jacque" required>
+			</div>
+			<div class="col-lg-6 col-md-12 mt-2">
+				<label for="phone" class="form-label mt-2 text-dark">Téléphone (optionel)</label>
+				<input type="tel" name="phone" id="phone" class="form-control border-0 p-2" placeholder="0610506080" required>
+			</div>
+			<div class="col-lg-6 col-md-12 mt-2">
+				<label for="email" class="form-label mt-2 text-dark">Mail</label>
+				<input type="email" name="email" id="email" class="form-control border-0 p-2" placeholder="adresse.mail@hotmail.fr" required>
+			</div>
+			<div class="d-flex flex-column align-items-center">
+				<div class="d-flex justify-content-start w-100">
+				<label for="message" class="form-label mt-2 text-dark">Message</label>
+				</div>
+				<textarea name="message" id="message" rows="8" cols="500" class="border-0 w-100 p-2" placeholder="Votre message..."></textarea>
+			</div>
+			<div class="d-flex justify-content-center mt-4">
+				<button type="submit" id='submit' class="btn btn-primary bg-secondary border-0 p-3">Envoyer</button>
+			</div>
+		</div>
+	</form>
+</div>
+{% endblock %}
