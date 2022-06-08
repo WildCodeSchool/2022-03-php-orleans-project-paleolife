@@ -3,17 +3,17 @@
 {% block title %}{{ parent() }} || Service{% endblock %}
 
 {% block body %}
-<main>
+<main class='container'>
     <h1 class='m-5 d-flex justify-content-center'>Mes services</h1>
 
-    <table class="table container">
+    <table class="table">
         <thead>
             <tr>
                 <th>Titre</th>
             </tr>
         </thead>
         <tbody>
-        <a class='d-flex justify-content-end container' href="{{ path('app_service_new') }}">Create new</a>
+        <a class='btn btn-primary d-inline-flex justify-content-end' href="{{ path('app_service_new') }}">Ajouter un service</a>
         {% for service in services %}
             <tr>
                 <td>{{ service.title }}</td>
@@ -24,7 +24,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5">Aucun service trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
