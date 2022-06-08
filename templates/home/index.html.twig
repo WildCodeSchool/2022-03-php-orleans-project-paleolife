@@ -1,9 +1,33 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} {{ parent() }} || Home{% endblock %}
+{% block stylesheets %}
+	{{ encore_entry_link_tags('home') }}
+{% endblock %}
+
+{% block title %}
+	{{ parent() }}
+	|| Home
+{% endblock %}
 
 {% block body %}
-        <h1>
-            PaleoLife
-        </h1>
+	<h1 class="text-center mb-3">Présentation</h1>
+	<div class="container-fluid bg-light">
+
+		<div class="row">
+			<div class="col-md-4 d-flex justify-content-center my-5">
+				<img src="{{ asset('build/images/presentation.f8fb95bf.jpg') }}" class="rounded-img" alt=""/>
+			</div>
+			<div class="col-md-8 row align-items-center ">
+				<div>
+					<p class="mb-5">
+						It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+					</p>
+					<p class="mt-5">
+						Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage.
+					</p>
+				</div>
+			</div>
+		</div>
+
+	</div>
 {% endblock %}
