@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} || Service{% endblock %}
+
+{% block body %}
+<main>
+    <h1 class='m-5 d-flex justify-content-center'>Mes services</h1>
+
+    <table class="table container">
+        <thead>
+            <tr>
+                <th>Titre</th>
+            </tr>
+        </thead>
+        <tbody>
+        <a class='d-flex justify-content-end container' href="{{ path('app_service_new') }}">Create new</a>
+        {% for service in services %}
+            <tr>
+                <td>{{ service.title }}</td>
+                <td>
+                    <a href="{{ path('app_service_show', {'id': service.id}) }}">show</a>
+                    <a href="{{ path('app_service_edit', {'id': service.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</main>    
+{% endblock %}
