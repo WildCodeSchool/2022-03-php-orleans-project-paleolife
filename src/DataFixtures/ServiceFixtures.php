@@ -19,7 +19,7 @@ class ServiceFixtures extends Fixture
         Quisque eget sem id lectus consectetur egestas. Fusce a efficitur justo. Aenean congue id justo vitae tempus. 
         Curabitur id augue nisi.
         Fusce sit amet leo ut nibh congue convallis eu consectetur dolor. Fusce vestibulum semper porta. ');
-        $service->setPhoto('assets/images/');
+        $service->setPhoto('');
         $manager->persist($service);
 
         $manager->flush();
