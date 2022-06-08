@@ -5,7 +5,9 @@
 {% block body %}
 <main class='container'>
     <h1 class='m-5 d-flex justify-content-center'>Mes services</h1>
-
+    <div>
+    <a class='btn btn-primary d-inline-flex justify-content-end' href="{{ path('app_service_new') }}">Ajouter un service</a>
+    </div>
     <table class="table">
         <thead>
             <tr>
@@ -13,13 +15,12 @@
             </tr>
         </thead>
         <tbody>
-        <a class='btn btn-primary d-inline-flex justify-content-end' href="{{ path('app_service_new') }}">Ajouter un service</a>
+        
         {% for service in services %}
             <tr>
                 <td>{{ service.title }}</td>
                 <td>
-                    <a href="{{ path('app_service_show', {'id': service.id}) }}">show</a>
-                    <a href="{{ path('app_service_edit', {'id': service.id}) }}">edit</a>
+                    <a href="{{ path('app_service_edit', {'id': service.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
