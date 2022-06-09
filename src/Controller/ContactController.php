@@ -22,7 +22,7 @@ class ContactController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $email = (new Email())
                 ->from($contact->getEmail())
-                ->to('ne pas mettre l email de l admin en dur')
+                ->to($this->getParameter('mailer_admin'))
                 ->subject('Un utilisateur vous contact')
                 ->html($this->renderView('email/email_user_to_admin.html.twig', [
                     'contact' => $contact
