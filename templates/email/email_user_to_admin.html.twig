@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+Bonjour Monsieur Merland.
+{{ contact.firstname }} {{ contact.lastname }} vous a contacté avec le message suivant :
+{{ contact.message }}
+Ses coordonées sont :
+{{ contact.email }}
+{{ contact.telephone }}
+{% endblock %}
