@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ContactRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ContactRepository::class)]
 class Contact
@@ -11,21 +12,46 @@ class Contact
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+    #[Assert\NotBlank]
     private int $id;
 
     #[ORM\Column(type: 'string', length: 100)]
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        max: 100,
+        maxMessage: 'La catégorie saisie {{ value }} est trop longue,
+        elle ne devrait pas dépasser {{ limit }} caractères',
+    )]
     private string $lastname;
 
     #[ORM\Column(type: 'string', length: 100)]
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        max: 100,
+        maxMessage: 'La catégorie saisie {{ value }} est trop longue,
+        elle ne devrait pas dépasser {{ limit }} caractères',
+    )]
     private string $firstname;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        max: 255,
+        maxMessage: 'La catégorie saisie {{ value }} est trop longue,
+        elle ne devrait pas dépasser {{ limit }} caractères',
+    )]
     private string $email;
 
     #[ORM\Column(type: 'string', length: 50, nullable: true)]
+    #[Assert\Length(
+        max: 50,
+        maxMessage: 'La catégorie saisie {{ value }} est trop longue,
+        elle ne devrait pas dépasser {{ limit }} caractères',
+    )]
     private string $telephone;
 
     #[ORM\Column(type: 'text')]
+    #[Assert\NotBlank]
     private string $message;
 
     public function getId(): ?int
