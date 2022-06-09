@@ -8,13 +8,11 @@
 			{% block title %}PaleoLife
 			{% endblock %}
 		</title>
-
+			{{ encore_entry_link_tags('app') }}	
 		{% block stylesheets %}
-			{{ encore_entry_link_tags('app') }}
 		{% endblock %}
-
-		{% block javascripts %}
 			{{ encore_entry_script_tags('app') }}
+		{% block javascripts %}
 		{% endblock %}
 	</head>
 	<body>

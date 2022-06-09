@@ -1,9 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} {{ parent() }} || Home{% endblock %}
-
+{% block title %}
+	{{ parent() }}
+	|| Accueil
+{% endblock %}
+{% block stylesheets %}
+	{{ encore_entry_link_tags('home') }}
+{% endblock %}
 {% block body %}
-        <h1>
-            PaleoLife
-        </h1>
+	<div class="d-lg-flex justify-content-center align-items-center mt-3 homePhoto d-none d-lg-block">
+		<div class="homePhoto1"><img src="{{ asset('build/images/home.png') }}" alt="Photo du coach entrain de courrir">
+		</div>
+		<div class="homePhoto2"><img src="{{ asset('build/images/home2.jpg') }}" alt="Photo du coach entrain de courrir zoomer"></div>
+	</div>
+	<div class="bg-dark div-dark d-none d-lg-block"></div>
+	<div class="bg-light div-light d-none d-lg-block"></div>
 {% endblock %}
