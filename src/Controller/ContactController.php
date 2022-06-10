@@ -23,7 +23,7 @@ class ContactController extends AbstractController
             $email = (new Email())
                 ->from($contact->getEmail())
                 ->to($this->getParameter('mailer_admin'))
-                ->subject('Un utilisateur vous contact')
+                ->subject('Un utilisateur vous contacte')
                 ->html($this->renderView('email/email_user_to_admin.html.twig', [
                     'contact' => $contact
                 ]));
