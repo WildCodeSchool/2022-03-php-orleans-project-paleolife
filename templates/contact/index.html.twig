@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact coach
+{% endblock %}
+
+{% block body %}
+	{{ form_start(form) }}
+	<div class="container bg-light mt-auto">
+		<div class="row">
+			<div class="align-items-center col-lg-6 col-md-12 mt-2">
+				{{ form_row (form.firstname, {'attr':{'class':'form-control'}})}}
+			</div>
+			<div class="align-items-center col-lg-6 col-md-12 mt-2">
+				{{ form_row (form.lastname, {'attr':{'class':'form-control'}})}}
+			</div>
+			<div class="align-items-center col-lg-6 col-md-12 mt-2">
+				{{ form_row (form.telephone, {'attr':{'class':'form-control'}})}}
+			</div>
+			<div class="align-items-center col-lg-6 col-md-12 mt-2">
+				{{ form_row (form.email, {'attr':{'class':'form-control'}})}}
+			</div>
+			<div class="align-items-center col-lg-12 mt-2">
+				{{ form_row (form.message, {'attr':{'class':'form-control'}})}}
+			</div>
+		</div>
+		<div class="d-flex justify-content-center mt-2">
+			<button class="btn border bg-primary rounded">{{ button_label|default('envoyer') }}</button>
+		</div>
+	</div>
+
+	{{ form_end(form) }}
+{% endblock %}

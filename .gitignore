@@ -1,6 +1,7 @@
 .idea/
 .vscode/
 .DS_Store
+.history
 db-data
 ###> symfony/framework-bundle ###
 /.env.local
