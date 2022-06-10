@@ -1,18 +1,16 @@
+$header-size: 16rem;
+
 .div-dark {
-    height:16rem;
+    height: $header-size;
     z-index: -1;
-    position: relative;
 }
 
 .div-light {
-    height:16rem;
+    height: $header-size;
     z-index: -1;
-    position:relative;
 }
 
-.homePhoto {
-    height: 470px;
-    position:absolute;
-    right: 29.5%;
-}
-
+ .homePhoto2 {
+     transform: scale(2);
+     translate: 1rem $header-size/1.5;
+ }

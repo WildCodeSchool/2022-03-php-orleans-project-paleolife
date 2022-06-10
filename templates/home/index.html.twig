@@ -8,11 +8,13 @@
 	{{ encore_entry_link_tags('home') }}
 {% endblock %}
 {% block body %}
-	<div class="d-lg-flex justify-content-center align-items-center mt-3 homePhoto d-none d-lg-block">
-		<div class="homePhoto1"><img src="{{ asset('build/images/home.png') }}" alt="Photo du coach entrain de courrir">
+	<div class="row mt-3 justify-content-center position-absolute w-100">
+		<div class="d-lg-flex col-6 justify-content-center align-items-center d-none">
+			<div><img src="{{ asset('build/images/home.png') }}" alt="Photo du coach entrain de courir">
+			</div>
+			<div class="zoom-img overflow-hidden"><img src="{{ asset('build/images/home.png') }}" class="homePhoto2" alt="Photo du coach entrain de courir zoomée"></div>
 		</div>
-		<div class="homePhoto2"><img src="{{ asset('build/images/home2.jpg') }}" alt="Photo du coach entrain de courrir zoomer"></div>
 	</div>
-	<div class="bg-dark div-dark d-none d-lg-block"></div>
-	<div class="bg-light div-light d-none d-lg-block"></div>
+	<div class="bg-dark div-dark d-none d-lg-block position-relative"></div>
+	<div class="bg-light div-light d-none d-lg-block position-relative"></div>
 {% endblock %}
