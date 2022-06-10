@@ -11,7 +11,6 @@ class Service
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[Assert\NotBlank]
     #[ORM\Column(type: 'integer')]
     private int $id;
 
