@@ -14,3 +14,9 @@ $header-size: 16rem;
      transform: scale(2);
      translate: 1rem $header-size/1.5;
  }
+
+ .rounded-img {
+    width: 250px;  
+    height: 250px; 
+    clip-path:ellipse(50% 50%);
+ }

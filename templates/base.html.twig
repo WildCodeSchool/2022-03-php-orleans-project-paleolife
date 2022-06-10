@@ -8,17 +8,21 @@
 			{% block title %}PaleoLife
 			{% endblock %}
 		</title>
-			{{ encore_entry_link_tags('app') }}	
-		{% block stylesheets %}
-		{% endblock %}
-			{{ encore_entry_script_tags('app') }}
-		{% block javascripts %}
-		{% endblock %}
+		{{ encore_entry_link_tags('app') }}
+		{% block stylesheets %}{% endblock %}
+		{{ encore_entry_script_tags('app') }}
+		{% block javascripts %}{% endblock %}
 	</head>
 	<body>
+      <header>
+      {% block navbar %}
+      {% include 'component/_navbar.html.twig' %}
+      {% endblock %}
+      </header>
 		{% block body %}{% endblock %}
 		{% block footer %}
 			{% include 'component/_footer.html.twig'%}
 		{% endblock %}
 	</body>
 </html>
+

@@ -1,20 +1,42 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+	{{ encore_entry_link_tags('home') }}
+{% endblock %}
 {% block title %}
 	{{ parent() }}
 	|| Accueil
 {% endblock %}
-{% block stylesheets %}
-	{{ encore_entry_link_tags('home') }}
-{% endblock %}
 {% block body %}
-	<div class="row mt-3 justify-content-center position-absolute w-100">
-		<div class="d-lg-flex col-6 justify-content-center align-items-center d-none">
-			<div><img src="{{ asset('build/images/home.png') }}" alt="Photo du coach entrain de courir">
+	<section>
+		<div class="row mt-3 justify-content-center position-absolute w-100">
+			<div class="d-lg-flex col-6 justify-content-center align-items-center d-none">
+				<div><img src="{{ asset('build/images/home.png') }}" alt="Photo du coach entrain de courir">
+				</div>
+				<div class="zoom-img overflow-hidden"><img src="{{ asset('build/images/home.png') }}" class="homePhoto2" alt="Photo du coach entrain de courir zoomée"></div>
 			</div>
-			<div class="zoom-img overflow-hidden"><img src="{{ asset('build/images/home.png') }}" class="homePhoto2" alt="Photo du coach entrain de courir zoomée"></div>
 		</div>
-	</div>
-	<div class="bg-dark div-dark d-none d-lg-block position-relative"></div>
-	<div class="bg-light div-light d-none d-lg-block position-relative"></div>
+		<div class="bg-dark div-dark d-none d-lg-block position-relative"></div>
+		<div class="bg-light div-light d-none d-lg-block position-relative"></div>
+	</section>
+	<section>
+		<h1 class="text-center mb-3">Présentation</h1>
+		<div class="container-fluid bg-light">
+			<div class="row">
+				<div class="col-md-4 d-flex justify-content-center my-5">
+					<img src="{{ asset('build/images/presentation.jpg') }}" class="rounded-img" alt=""/>
+				</div>
+				<div class="col-md-8 row align-items-center ">
+					<div>
+						<p class="mb-5">
+							It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+						</p>
+						<p class="mt-5">
+							Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 {% endblock %}
