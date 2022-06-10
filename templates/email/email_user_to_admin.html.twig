@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>Bonjour Monsieur Mirland.</h1>
+<h3>{{ contact.firstname }} {{ contact.lastname }} vous a contacté avec le message suivant :</h3>
+<p>{{ contact.message }}</p>
+<h3>Ses coordonnées sont :</h3>
+<p>{{ contact.email }}</p>
+<p>{{ contact.telephone }}</p>
+{% endblock %}
