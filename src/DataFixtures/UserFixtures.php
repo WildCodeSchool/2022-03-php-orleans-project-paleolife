@@ -21,6 +21,7 @@ class UserFixtures extends Fixture
         $client = new User();
         $client->setEmail('client@monsite.com');
         $client->setRoles(['ROLE_CLENT']);
+        $client->setName('Kiki');
         $hashedPassword = $this->passwordHasher->hashPassword(
             $client,
             'contributorpassword'
@@ -31,6 +32,7 @@ class UserFixtures extends Fixture
         $admin = new User();
         $admin->setEmail('admin@monsite.com');
         $admin->setRoles(['ROLE_ADMIN']);
+        $admin->setName('Seb');
         $hashedPassword = $this->passwordHasher->hashPassword(
             $admin,
             'adminpassword'
