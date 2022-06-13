@@ -3,12 +3,15 @@
 $primary: #00EA7A;
 $dark: #000704;
 $light: #f2f7f4;
+$navbar-dark-hover-color: rgb(0, 234, 122);
+$navbar-dark-color:rgb(247, 244, 244);
 
 $title_font: 'Gothic A1', sans-serif;
 $text_font: 'Work Sans', sans-serif;
 
 
 @import "~bootstrap/scss/bootstrap";
+@import "navbar.scss";
 
 h1, h2, h3, h4 {
     font-family: $title_font;
