@@ -4,8 +4,10 @@ namespace App\DataFixtures;
 
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Inflector\Rules\Word;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Faker\Factory;
 
 class UserFixtures extends Fixture
 {
@@ -20,11 +22,11 @@ class UserFixtures extends Fixture
     {
         $client = new User();
         $client->setEmail('client@monsite.com');
-        $client->setRoles(['ROLE_CLENT']);
-        $client->setName('Kiki');
+        $client->setRoles(['ROLE_CLIENT']);
+        $client->setName('Fabrice');
         $hashedPassword = $this->passwordHasher->hashPassword(
             $client,
-            'contributorpassword'
+            'azerty'
         );
         $client->setPassword($hashedPassword);
         $manager->persist($client);
@@ -35,11 +37,28 @@ class UserFixtures extends Fixture
         $admin->setName('Seb');
         $hashedPassword = $this->passwordHasher->hashPassword(
             $admin,
-            'adminpassword'
+            'admin'
         );
         $admin->setPassword($hashedPassword);
         $manager->persist($admin);
         $this->addReference($admin->getEmail(), $admin);
+
+        $faker = Factory::create();
+        for ($i = 0; $i < 10; $i++) {
+            $aleaClient = new User();
+            $aleaClient->setEmail($faker->email());
+            $aleaClient->setRoles(['ROLE_CLIENT']);
+            $aleaClient->setName($faker->name());
+            $hashedPassword = $this->passwordHasher->hashPassword(
+                $aleaClient,
+                $faker->sentence(
+                    1,
+                    true
+                )
+            );
+            $aleaClient->setPassword($hashedPassword);
+            $manager->persist($aleaClient);
+        }
         $manager->flush();
     }
 }
