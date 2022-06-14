@@ -1,4 +1,4 @@
-$header-size: 16rem;
+@import 'variable.scss';
 
 .div-dark {
     height: $header-size;
@@ -15,8 +15,17 @@ $header-size: 16rem;
      translate: 1rem $header-size/1.5;
  }
 
- .rounded-img {
-    width: 250px;  
-    height: 250px; 
-    clip-path:ellipse(50% 50%);
+ .presentation {
+    height:23rem;
+ }
+
+ .photoPresentation {
+    width: 17rem;
+    height: 17rem;
+    border-radius: 50%;
+ }
+
+ .presentationImg {
+    transform: scale(2.5);
+     translate: 1rem 25rem;
  }
