@@ -12,7 +12,7 @@ class ObjectiveFixtures extends Fixture
     {
         $objective = new Objective();
         $objective->setGlobalName('Perte de poids');
-        $objective->setMonthName('Remise a niveau');
+        $objective->setMonthName('Remise à niveau');
         $manager->persist($objective);
 
         $manager->flush();
