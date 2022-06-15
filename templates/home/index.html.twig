@@ -19,24 +19,21 @@
 		<div class="bg-dark div-dark d-none d-lg-block position-relative"></div>
 		<div class="bg-light div-light d-none d-lg-block position-relative"></div>
 	</section>
-	<section>
-		<h1 class="text-center mb-3">Présentation</h1>
-		<div class="container-fluid bg-light">
-			<div class="row">
-				<div class="col-md-4 d-flex justify-content-center my-5">
-					<img src="{{ asset('build/images/presentation.jpg') }}" class="rounded-img" alt=""/>
+	<section class="pb-5">
+		<h1 class="text-center bg-light py-3">Présentation</h1>
+		<div class="container-fluid bg-dark d-flex justify-content-center align-items-center presentation">
+			<div class="row d-flex justify-content-center align-items-center">
+				<div class="col-lg-6 d-flex justify-content-center align-items-center overflow-hidden photoPresentation me-lg-5 my-4">
+					<img src="{{ asset('build/images/home.png') }}" class="presentationImg" alt="Photo du coach"/>
 				</div>
-				<div class="col-md-8 row align-items-center ">
-					<div>
-						<p class="mb-5">
-							It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-						</p>
-						<p class="mt-5">
-							Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage.
-						</p>
-					</div>
-				</div>
+				<div class="col-lg-6 align-items-center my-lg-4 px-4">
+					<p class="text-light fs-4">It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+				</br>
+				<p class="text-light fs-4">
+					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi iusto odit adipisci quia praesentium nemo autem maiores pariatur magnam, assumenda aspernatur, ullam saepe labore ipsum nulla aperiam voluptates vitae blanditiis.
+				</p>
 			</div>
 		</div>
-	</section>
+	</div>
+</section>
 {% endblock %}
