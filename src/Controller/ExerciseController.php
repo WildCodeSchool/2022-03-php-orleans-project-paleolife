@@ -21,7 +21,7 @@ class ExerciseController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_exercice_new', methods: ['GET', 'POST'])]
+    #[Route('/new', name: 'app_exercise_new', methods: ['GET', 'POST'])]
     public function new(Request $request, ExerciseRepository $exerciseRepository): Response
     {
         $exercise = new Exercise();
