@@ -16,7 +16,7 @@ class ExerciseController extends AbstractController
     #[Route('/', name: 'app_exercice_index', methods: ['GET'])]
     public function index(ExerciseRepository $exerciseRepository): Response
     {
-        return $this->render('exercice/index.html.twig', [
+        return $this->render('exercise/index.html.twig', [
             'exercises' => $exerciseRepository->findAll(),
         ]);
     }
