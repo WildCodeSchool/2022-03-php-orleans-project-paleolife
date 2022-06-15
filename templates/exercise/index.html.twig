@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Exercice index{% endblock %}
+
+{% block body %}
+<main class="container">
+    <h1 class="mt-4 text-center">Liste des exercices</h1>
+    <a href="{{ path('app_exercise_new') }}">Ajouter exercice</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Durée</th>
+                <th>Répetition</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for exercise in exercises %}
+            <tr>
+                <td>{{ exercise.name }}</td>
+                <td>{{ exercise.duration }}</td>
+                <td>{{ exercise.repetition }}</td>
+                <td>
+                    <a href="{{ path('app_exercise_edit', {'id': exercise.id}) }}">Éditier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Pas d'exercice trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</main>
+{% endblock %}
