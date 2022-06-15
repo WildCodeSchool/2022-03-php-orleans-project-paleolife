@@ -9,8 +9,8 @@
 	<main class="container">
 		<h1 class="m-5 text-center">Ajouter un exercice</h1>
 		<section class="mt-4">
+        <a class="d-flex justify-content-end" href="{{ path('app_exercise_index') }}"><i class="bi bi-arrow-return-left m-3">Retour à la liste</i></a>
 			{{ include('exercise/_form.html.twig') }}
 		</section>
-		<a href="{{ path('app_exercise_index') }}">Retour à la liste</a>
 	</main>
 {% endblock %}
