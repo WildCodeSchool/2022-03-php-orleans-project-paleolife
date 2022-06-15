@@ -6,10 +6,9 @@
 {% block body %}
 	<main class="container mb-5">
 		<h1 class="d-flex justify-content-center my-5">Séance</h1>
-		<button class="btn btn-button bg-success mb-3">
-			<a href="{{ path('app_session_new') }}" class="text-light text-decoration-none fs-5">
-				<i class="bi bi-file-plus me-1 fs-5"></i>Ajouter</a>
-		</button>
+		<a href="{{ path('app_session_new') }}" class="btn btn-button bg-primary mb-3 text-dark fs-5">
+			<i class="bi bi-plus-circle me-2"></i>Ajouter
+		</a>
 		<table class="table">
 			<thead class="fs-4">
 				<tr>

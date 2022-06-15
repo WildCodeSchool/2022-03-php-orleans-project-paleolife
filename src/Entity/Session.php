@@ -20,6 +20,7 @@ class Session
     private string $name;
 
     #[Assert\Positive]
+    #[Assert\NotBlank]
     #[ORM\Column(type: 'integer')]
     private int $number;
 

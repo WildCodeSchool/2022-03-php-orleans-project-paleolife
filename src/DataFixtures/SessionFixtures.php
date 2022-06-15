@@ -8,14 +8,14 @@ use Doctrine\Persistence\ObjectManager;
 
 class SessionFixtures extends Fixture
 {
-    public const SESSION = [
+    public const SESSIONS = [
         ['name' => 'Séances bas du corps', 'number' => 1],
         ['name' => 'Séances haut du corps', 'number' => 2],
     ];
 
     public function load(ObjectManager $manager): void
     {
-        foreach (self::SESSION as $sessionName) {
+        foreach (self::SESSIONS as $sessionName) {
             $session = new Session();
             $session->setName($sessionName['name']);
             $session->setNumber($sessionName['number']);
