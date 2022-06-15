@@ -36,4 +36,23 @@
 		</div>
 	</div>
 </section>
+<section class=''>
+	{% for service in services %}
+		<div class="card w-100 d-flex container">
+			<div class="row g-0">
+				<div class="col-md-4">
+					<img src={{ asset('/build/images/placeholderservice.33708828.jpg') }} class="img-fluid rounded-start m-2" alt="jogging">
+				</div>
+				<div class="col-md-8 m-auto">
+					<div class="card-body">
+						<h5 class="card-title">{{ service.title }}</h5>
+						<p class="card-text">{{ service.description }}
+						</p>
+						<a href="#" class="btn btn-primary m-2">Me contacter</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+	</section>
 {% endblock %}
