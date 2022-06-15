@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/exercice')]
 class ExerciseController extends AbstractController
 {
-    #[Route('/', name: 'app_exercice_index', methods: ['GET'])]
+    #[Route('/', name: 'app_exercise_index', methods: ['GET'])]
     public function index(ExerciseRepository $exerciseRepository): Response
     {
         return $this->render('exercise/index.html.twig', [
