@@ -18,7 +18,7 @@
         {% for exercise in exercises %}
             <tr>
                 <td>{{ exercise.name }}</td>
-                <td>{{ exercise.duration }}</td>
+                <td>{{ exercise.duration | format_number({fraction_digit: 2}) }}</td>
                 <td>{{ exercise.repetition }}</td>
                 <td>
                     <a href="{{ path('app_exercise_edit', {'id': exercise.id}) }}">Éditier</a>
