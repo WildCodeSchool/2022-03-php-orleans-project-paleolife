@@ -15,13 +15,13 @@ class ExerciseType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Nom exercice'
+                'label' => 'Nom de l\'exercice'
             ])
             ->add('duration', NumberType::class, [
                 'label' => 'Durée'
             ])
             ->add('repetition', TextType::class, [
-                'label' => 'Répetition'
+                'label' => 'Répétition'
             ])
         ;
     }
