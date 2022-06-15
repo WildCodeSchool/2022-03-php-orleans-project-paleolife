@@ -19,7 +19,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\NotBlank()]
     #[Assert\Email()]
     #[Assert\Length(
-        max: 255
+        max: 180
     )]
     #[Assert\Unique()]
     #[ORM\Column(type: 'string', length: 180, unique: true)]
