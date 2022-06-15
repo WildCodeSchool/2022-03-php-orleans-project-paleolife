@@ -15,7 +15,7 @@ class SessionFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        foreach(self::SESSION as $sessionName) {
+        foreach (self::SESSION as $sessionName) {
             $session = new Session();
             $session->setName($sessionName['name']);
             $session->setNumber($sessionName['number']);
