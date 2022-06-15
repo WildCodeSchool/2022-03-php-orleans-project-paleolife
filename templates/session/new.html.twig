@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin ajouter séance
+{% endblock %}
+
+{% block body %}
+	<main class="container">
+		<h1 class="d-flex justify-content-center my-5">Ajouter une nouvelle séance</h1>
+		<button class="btn btn-button bg-success text-light fs-5 mb-3">
+			<i class="bi bi-file-plus me-1 fs-5"></i>
+			{{ button_label|default('Ajouter') }}</button>
+		{{ include('session/_form.html.twig') }}
+		<div class="d-flex justify-content-end">
+			<button class="btn btn-button bg-danger mt-2 mb-5">
+				<a href="{{ path('app_session_index') }}" class="text-decoration-none text-light fs-5">
+					<i class="bi bi-arrow-left-short me-1"></i>Retour</a>
+			</button>
+		</div>
+	</main>
+{% endblock %}
