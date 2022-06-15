@@ -15,13 +15,13 @@
             </tr>
         </thead>
         <tbody>
-        {% for exercice in exercices %}
+        {% for exercise in exercises %}
             <tr>
-                <td>{{ exercice.name }}</td>
-                <td>{{ exercice.duration }}</td>
-                <td>{{ exercice.repetition }}</td>
+                <td>{{ exercise.name }}</td>
+                <td>{{ exercise.duration }}</td>
+                <td>{{ exercise.repetition }}</td>
                 <td>
-                    <a href="{{ path('app_exercice_edit', {'id': exercice.id}) }}">Éditier</a>
+                    <a href="{{ path('app_exercise_edit', {'id': exercise.id}) }}">Éditier</a>
                 </td>
             </tr>
         {% else %}
@@ -31,7 +31,5 @@
         {% endfor %}
         </tbody>
     </table>
-
- 
 </main>
 {% endblock %}

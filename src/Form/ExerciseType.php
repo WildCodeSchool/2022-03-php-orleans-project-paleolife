@@ -2,12 +2,12 @@
 
 namespace App\Form;
 
-use App\Entity\Exercice;
+use App\Entity\Exercise;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ExerciceType extends AbstractType
+class ExerciseType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -21,7 +21,7 @@ class ExerciceType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Exercice::class,
+            'data_class' => Exercise::class,
         ]);
     }
 }

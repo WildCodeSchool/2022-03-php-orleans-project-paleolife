@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\ExerciceRepository;
+use App\Repository\ExerciseRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ExerciceRepository::class)]
-class Exercice
+#[ORM\Entity(repositoryClass: ExerciseRepository::class)]
+class Exercise
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
