@@ -15,7 +15,7 @@ class Session
     private int $id;
 
     #[Assert\NotBlank]
-    #[Assert\Length(max: 255,)]
+    #[Assert\Length(max: 255)]
     #[ORM\Column(type: 'string', length: 255)]
     private string $name;
 
