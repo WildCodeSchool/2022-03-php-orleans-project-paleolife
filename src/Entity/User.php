@@ -17,6 +17,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private int $id;
 
     #[Assert\NotBlank()]
+    #[Assert\Email()]
+    #[Assert\Length(
+        max: 255
+    )]
+    #[Assert\Unique()]
     #[ORM\Column(type: 'string', length: 180, unique: true)]
     private string $email;
 
@@ -25,9 +30,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'string')]
     #[Assert\NotBlank()]
+    #[Assert\Length(
+        max: 255
+    )]
     private string $password;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\NotBlank()]
+    #[Assert\Length(
+        max: 255
+    )]
     private string $name;
 
     public function getId(): ?int
