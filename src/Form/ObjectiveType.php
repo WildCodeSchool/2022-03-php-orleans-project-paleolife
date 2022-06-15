@@ -2,25 +2,25 @@
 
 namespace App\Form;
 
-use App\Entity\Objectif;
+use App\Entity\Objective;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ObjectifType extends AbstractType
+class ObjectiveType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('globalName')
-            ->add('weekName')
+            ->add('monthName')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Objectif::class,
+            'data_class' => Objective::class,
         ]);
     }
 }

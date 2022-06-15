@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\ObjectifRepository;
+use App\Repository\ObjectiveRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ObjectifRepository::class)]
-class Objectif
+#[ORM\Entity(repositoryClass: ObjectiveRepository::class)]
+class Objective
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -17,7 +17,7 @@ class Objectif
     private string $globalName;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private string $weekName;
+    private string $monthName;
 
     public function getId(): ?int
     {
@@ -36,14 +36,14 @@ class Objectif
         return $this;
     }
 
-    public function getWeekName(): ?string
+    public function getMonthName(): ?string
     {
-        return $this->weekName;
+        return $this->monthName;
     }
 
-    public function setWeekName(string $weekName): self
+    public function setMonthName(string $monthName): self
     {
-        $this->weekName = $weekName;
+        $this->monthName = $monthName;
 
         return $this;
     }

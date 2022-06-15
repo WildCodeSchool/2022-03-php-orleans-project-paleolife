@@ -2,33 +2,33 @@
 
 {% block title %}
 	{{ parent() }}
-	|| Objectif
+	|| Objective
 {% endblock %}
 
 {% block body %}
 	<main class='container'>
 
-		<h1 class="text-center m-5">Objectif</h1>
+		<h1 class="text-center m-5">Objective</h1>
 		<div class="d-flex">
-			<a class='btn btn-primary my-4' href="{{ path('app_objectif_new') }}">
+			<a class='btn btn-primary my-4' href="{{ path('app_objective_new') }}">
             <i class= "bi bi-plus-square me-2 align-items-center" ></i>
-            Ajouter un objectif</a>
+            Ajouter un objective</a>
 		</div>
 
 		<table class="table my-3">
 			<thead>
 				<tr>
-					<th>Objectif global</th>
-					<th>Objectif de mois</th>
+					<th>Objective global</th>
+					<th>Objective de mois</th>
 				</tr>
 			</thead>
 			<tbody>
-				{% for objectif in objectifs %}
+				{% for objective in objectives %}
 					<tr>
-						<td>{{ objectif.globalName }}</td>
-						<td>{{ objectif.weekName }}</td>
+						<td>{{ objective.globalName }}</td>
+						<td>{{ objective.monthName }}</td>
 						<td class="d-flex justify-content-end">
-							<a class="btn btn-primary d-flex justify-content-center" href="{{ path('app_objectif_edit', {'id': objectif.id}) }}">
+							<a class="btn btn-primary d-flex justify-content-center" href="{{ path('app_objective_edit', {'id': objective.id}) }}">
                             <i class= "bi bi-pen me-2" ></i>
                             modifier
                             </a>
