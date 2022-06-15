@@ -83,7 +83,7 @@ class RegistrationController extends AbstractController
         }
 
         // @TODO Change the redirect on success and handle or remove the flash message in your templates
-        $this->addFlash('success', 'L\'adresse email est confirmé.');
+        $this->addFlash('success', 'L\'adresse email est confirmée.');
 
         return $this->redirectToRoute('app_register');
     }
