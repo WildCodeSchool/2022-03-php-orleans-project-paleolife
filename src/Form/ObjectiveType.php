@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Objective;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -12,8 +13,12 @@ class ObjectiveType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('globalName')
-            ->add('monthName')
+            ->add('globalName', TextType::class, [
+            'label' => 'Objectif global'
+            ])
+            ->add('monthName', TextType::class, [
+            'label' => 'Objectif du mois'
+            ])
         ;
     }
 
