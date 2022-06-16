@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
 {% block title %}Contact coach
 {% endblock %}
@@ -6,7 +6,7 @@
 {% block body %}
 	<h1 class="d-flex justify-content-center mt-5 mb-4">Contacter le coach sportif</h1>
 	{{ form_start(form) }}
-	<div class="container bg-light mt-auto">
+	<div class="container shadow border border-2 border-dark bg-secondary rounded-5 mt-auto">
 		<div class="row">
 			<div class="align-items-center col-lg-6 col-md-12 mt-2 fs-5">
 				{{ form_row (form.firstname, {'attr':{'class':'form-control'}})}}

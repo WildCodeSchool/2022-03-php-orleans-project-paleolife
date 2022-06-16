@@ -1,11 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends 'layoutAdmin.html.twig' %}
 
 {% block title %}{{ parent() }} || Liste exercices{% endblock %}
 
 {% block body %}
 <main class="container">
     <h1 class="mt-4 text-center">Liste des exercices</h1>
-    <a class="btn btn-primary m-3" href="{{ path('app_exercise_new') }}"><i class="bi bi-plus-circle me-2"></i>Ajouter exercice</a>
+   <div>
+    <a class="btn btn-primary d-inline-flex justify-content-end" href="{{ path('app_exercise_new') }}"><i class="bi bi-plus-circle me-2"></i>Ajouter un exercice</a>
+    </div>
     <table class="table">
         <thead>
             <tr>
