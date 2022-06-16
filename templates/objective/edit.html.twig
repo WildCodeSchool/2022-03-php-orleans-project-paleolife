@@ -1,13 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Objective{% endblock %}
+{% block title %}
+	{{ parent() }}
+	|| Modifier objectif
+{% endblock %}
 
 {% block body %}
-    <h1>Edit Objective</h1>
+	<main class='container'>
+		<h1 class = "text-center m-5" >Modifier un objectif</h1>
 
-    {{ include('objective/_form.html.twig', {'button_label': 'Update'}) }}
+		{{ include('objective/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-    <a href="{{ path('app_objective_index') }}">back to list</a>
-
-    {{ include('objective/_delete_form.html.twig') }}
+		{{ include('objective/_delete_form.html.twig') }}
+	</main>
 {% endblock %}
