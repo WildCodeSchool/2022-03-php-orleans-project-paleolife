@@ -16,11 +16,12 @@
 	<body>
       <header>
       {% block navbar %}
+      {% include 'component/_admin_navbar.html.twig' %}
       {% endblock %}
       </header>
 		{% block body %}{% endblock %}
 		{% block footer %}
-			{% include 'component/_footer.html.twig'%}
 		{% endblock %}
 	</body>
 </html>
+

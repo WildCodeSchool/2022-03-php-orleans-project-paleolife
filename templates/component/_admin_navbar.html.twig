@@ -1,0 +1,21 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark p-2">
+
+	<div class="container-fluid flex-md justify-content-center align-items-center">
+		<div class="w-25">
+			<img src="{{ asset('build/images/Logofeuille.png') }}" class="w-25" alt="Logo">
+		</div>
+		<button class="navbar-toggler ms-auto me-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			<div class="navbar-nav w-100 d-flex justify-content-end">
+				<a class="nav-item nav-link text-light pe-lg-5 fs-4 align-self-center" href="{{ path('app_service_index') }}">Mes services</a>
+				<a class="nav-item nav-link text-light pe-lg-5 fs-4 align-self-center" href="#">Client</a>
+				<a class="nav-item nav-link text-light pe-lg-5 fs-4 align-self-center" href="{{ path('app_home') }}">Site vitrine</a>
+			</div>
+			<div class="ms-auto p-2">
+				<a class="btn btn-outline-primary nav-item nav-link text-light fw-bolder fs-4 align-self-center" href="/logout">Déconnexion</a>
+			</div>
+		</div>
+	</div>
+</nav>

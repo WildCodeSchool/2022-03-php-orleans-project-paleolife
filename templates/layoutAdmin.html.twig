@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	{{parent()}}
+	| Admin
+{% endblock %}
+
+{% block stylesheets %}
+	{{ encore_entry_link_tags('admin') }}
+{% endblock %}
+
+{% block navbar %}
+	{% include "templates/component/_admin_navbar.html.twig" %}
+{% endblock %}
