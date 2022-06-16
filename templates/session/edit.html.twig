@@ -1,10 +1,11 @@
 {% extends 'layoutAdmin.html.twig' %}
 
-{% block title %}Edit Session{% endblock %}
+{% block title %}Edit Session
+{% endblock %}
 
 {% block body %}
-    <h1>Edit Session</h1>
-
-    {{ include('session/_form.html.twig', {'button_label': 'Modifier'}) }}
-
-{% endblock %}
+	<main class="container">
+		<h1 class="d-flex justify-content-center my-5">Modifier les séances</h1>
+		{{ include('session/_form.html.twig', {'button_label': 'Modifier'}) }}
+    </main>
+	{% endblock %}
