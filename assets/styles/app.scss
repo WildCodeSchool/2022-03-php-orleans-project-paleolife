@@ -1,16 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@200;300;400;500&family=Work+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap');
-
-$primary: #00EA7A;
-$dark: #000704;
-$light: #f2f7f4;
-$navbar-dark-hover-color: rgb(0, 234, 122);
-$navbar-dark-color:rgb(247, 244, 244);
-
-$title_font: 'Gothic A1', sans-serif;
-$text_font: 'Work Sans', sans-serif;
-
-
-@import "~bootstrap/scss/bootstrap";
+@import 'variable.scss';
 @import "navbar.scss";
 
 h1, h2, h3, h4 {
@@ -20,4 +8,21 @@ h1, h2, h3, h4 {
 body {
     font-family: $text_font;
     background-color: $light;
+    min-height: 100vh;
+}
+
+.main-container {
+    flex: 1;
+}
+
+.mdp {
+    color: $mdp-primary-color;
+}
+
+.mdp:hover{
+    color: $light;
+}
+
+.rounded-5 {
+    border-radius: 1rem;
 }

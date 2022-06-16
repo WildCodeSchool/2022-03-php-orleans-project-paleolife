@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} || Liste exercices{% endblock %}
+
+{% block body %}
+<main class="container">
+    <h1 class="mt-4 text-center">Liste des exercices</h1>
+    <a class="btn btn-primary m-3" href="{{ path('app_exercise_new') }}"><i class="bi bi-plus-circle me-2"></i>Ajouter exercice</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Durée</th>
+                <th>Répetition</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for exercise in exercises %}
+            <tr>
+                <td>{{ exercise.name }}</td>
+                <td>{{ exercise.duration | format_number({fraction_digit: 2}) }}</td>
+                <td>{{ exercise.repetition }}</td>
+                <td class="d-flex justify-content-end">
+                    <a class="btn btn-warning mx-3" href="{{ path('app_exercise_edit', {'id': exercise.id}) }}"><i class="bi bi-pen-fill me-2"></i>Modifier</a>
+                    {{ include('exercise/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Pas d'exercice trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</main>
+{% endblock %}
