@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/session')]
+#[Route('/seance')]
 class SessionController extends AbstractController
 {
     #[Route('/', name: 'app_session_index', methods: ['GET'])]
@@ -21,7 +21,7 @@ class SessionController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_session_new', methods: ['GET', 'POST'])]
+    #[Route('/ajouter', name: 'app_session_new', methods: ['GET', 'POST'])]
     public function new(Request $request, SessionRepository $sessionRepository): Response
     {
         $session = new Session();
