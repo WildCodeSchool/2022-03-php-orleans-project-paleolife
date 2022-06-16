@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ExerciseRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ExerciseRepository::class)]
 class Exercise
@@ -14,12 +15,17 @@ class Exercise
     private int $id;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\NotBlank]
+    #[Assert\Length(max: 255)]
     private string $name;
 
     #[ORM\Column(type: 'float')]
+    #[Assert\NotBlank]
     private float $duration;
 
     #[ORM\Column(type: 'string')]
+    #[Assert\NotBlank]
+
     private string $repetition;
 
     public function getId(): ?int
