@@ -10,11 +10,27 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+<<<<<<< HEAD
+			<div class="navbar-nav">
+				<div class="navbar-nav justify-content-between align-items-center">
+					<a class="nav-item nav-link text-light px-md-4 fs-5" href="/">Accueil</a>
+					<a class="nav-item nav-link text-light px-md-4 fs-5" href="#">Contact</a>
+					{% if app.user %}
+						<a class="nav-link" href="{{ path('app_logout') }}">
+							Se déconnecter</a>
+					{% else %}
+						<a class="nav-link" href="{{ path('login') }}">
+							Se connecter</a>
+					{% endif %}
+					<a class="nav-item nav-link text-light px-md-4 fs-5" href="#">Inscription</a>
+				</div>
+=======
 			<div class="navbar-nav justify-content-between align-items-center my-3">
 				<a class="nav-item nav-link px-md-4 fs-4 me-3" href="/">Accueil</a>
 				<a class="nav-item nav-link px-md-4 fs-4 me-3" href="#">Contact</a>
 				<a class="nav-item nav-link px-md-4 fs-4 me-3" href="#">Connexion</a>
 				<a class="nav-item nav-link px-md-4 fs-4" href="#">Inscription</a>
+>>>>>>> 18825a7842c0445160c5e45ef6f9625fc52d8a6b
 			</div>
 		</div>
 	</nav>
