@@ -14,3 +14,15 @@ body {
 .main-container {
     flex: 1;
 }
+
+.mdp {
+    color: $mdp-primary-color;
+}
+
+.mdp:hover{
+    color: $light;
+}
+
+.rounded-5 {
+    border-radius: 1rem;
+}
