@@ -11,7 +11,7 @@
 		<h1 class="text-center m-5">Objectif</h1>
 		<div class="d-flex">
 			<a class='btn btn-primary my-4' href="{{ path('app_objective_new') }}">
-            <i class= "bi bi-plus-square me-2 align-items-center" ></i>
+            <i class= "bi bi-plus-circle me-2 align-items-center" ></i>
             Ajouter un objectif</a>
 		</div>
 
@@ -28,9 +28,9 @@
 						<td>{{ objective.globalName }}</td>
 						<td>{{ objective.monthName }}</td>
 						<td class="d-flex justify-content-end">
-							<a class="btn btn-primary mx-2" href="{{ path('app_objective_edit', {'id': objective.id}) }}">
-                            <i class= "bi bi-pen me-2" ></i>
-                            modifier
+							<a class="btn btn-warning mx-2" href="{{ path('app_objective_edit', {'id': objective.id}) }}">
+                            <i class= "bi bi-pen-fill me-2" ></i>
+                            Modifier
                             </a>
 							{{ include('objective/_delete_form.html.twig') }}
 						</td>
