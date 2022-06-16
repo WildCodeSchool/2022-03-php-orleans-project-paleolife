@@ -28,10 +28,11 @@
 						<td>{{ objective.globalName }}</td>
 						<td>{{ objective.monthName }}</td>
 						<td class="d-flex justify-content-end">
-							<a class="btn btn-primary" href="{{ path('app_objective_edit', {'id': objective.id}) }}">
+							<a class="btn btn-primary mx-2" href="{{ path('app_objective_edit', {'id': objective.id}) }}">
                             <i class= "bi bi-pen me-2" ></i>
                             modifier
                             </a>
+							{{ include('objective/_delete_form.html.twig') }}
 						</td>
 					</tr>
 				{% else %}

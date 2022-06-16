@@ -8,4 +8,21 @@ h1, h2, h3, h4 {
 body {
     font-family: $text_font;
     background-color: $light;
+    min-height: 100vh;
+}
+
+.main-container {
+    flex: 1;
+}
+
+.mdp {
+    color: $mdp-primary-color;
+}
+
+.mdp:hover{
+    color: $light;
+}
+
+.rounded-5 {
+    border-radius: 1rem;
 }
