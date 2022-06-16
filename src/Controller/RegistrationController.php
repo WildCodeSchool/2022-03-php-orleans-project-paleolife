@@ -68,7 +68,7 @@ class RegistrationController extends AbstractController
         ]);
     }
 
-    #[Route('/vérification/email', name: 'app_verify_email')]
+    #[Route('/verification/email', name: 'app_verify_email')]
     public function verifyUserEmail(Request $request, TranslatorInterface $translator): Response
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
