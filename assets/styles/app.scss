@@ -8,4 +8,9 @@ h1, h2, h3, h4 {
 body {
     font-family: $text_font;
     background-color: $light;
+    min-height: 100vh;
+}
+
+.main-container {
+    flex: 1;
 }
