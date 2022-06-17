@@ -48,7 +48,7 @@ class SessionController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_session_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/modifier', name: 'app_session_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Session $session, SessionRepository $sessionRepository): Response
     {
         $form = $this->createForm(SessionType::class, $session);
