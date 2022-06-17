@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/objective')]
+#[Route('/objectif')]
 class ObjectiveController extends AbstractController
 {
     #[Route('/', name: 'app_objective_index', methods: ['GET'])]
@@ -21,7 +21,7 @@ class ObjectiveController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_objective_new', methods: ['GET', 'POST'])]
+    #[Route('/ajouter', name: 'app_objective_new', methods: ['GET', 'POST'])]
     public function new(Request $request, ObjectiveRepository $objectiveRepository): Response
     {
         $objective = new Objective();
@@ -48,7 +48,7 @@ class ObjectiveController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_objective_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/modifier', name: 'app_objective_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Objective $objective, ObjectiveRepository $objectiveRepository): Response
     {
         $form = $this->createForm(ObjectiveType::class, $objective);
