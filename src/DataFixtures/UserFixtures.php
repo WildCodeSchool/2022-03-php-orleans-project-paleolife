@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\User;
+use DateTime as GlobalDateTime;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Inflector\Rules\Word;
 use Doctrine\Persistence\ObjectManager;
@@ -24,6 +25,9 @@ class UserFixtures extends Fixture
         $admin->setEmail('admin@monsite.com');
         $admin->setRoles(['ROLE_ADMIN']);
         $admin->setName('Seb');
+        $admin->setDate(
+            GlobalDateTime::createFromFormat('!Y-m-d', '2022-7-4')
+        );
         $hashedPassword = $this->passwordHasher->hashPassword(
             $admin,
             'admin'
@@ -35,6 +39,9 @@ class UserFixtures extends Fixture
         $client->setEmail('client@monsite.com');
         $client->setRoles(['ROLE_CLIENT']);
         $client->setName('Fabrice');
+        $client->setDate(
+            GlobalDateTime::createFromFormat('!Y-m-d', '2022-10-4')
+        );
         $hashedPassword = $this->passwordHasher->hashPassword(
             $client,
             'azerty'
@@ -49,6 +56,7 @@ class UserFixtures extends Fixture
             $aleaClient->setEmail($faker->email());
             $aleaClient->setRoles(['ROLE_CLIENT']);
             $aleaClient->setName($faker->name());
+            $aleaClient->setDate($faker->dateTime());
             $hashedPassword = $this->passwordHasher->hashPassword(
                 $aleaClient,
                 $faker->sentence(

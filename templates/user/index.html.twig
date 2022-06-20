@@ -3,29 +3,25 @@
 {% block title %}User index{% endblock %}
 
 {% block body %}
-    <h1>User index</h1>
-
+<main class="container mb-5">
+    <h1 class="my-5 text-center">Liste des Clients</h1>
     <table class="table">
-        <thead>
+        <thead class="fs-4">
             <tr>
-                <th>Id</th>
+                <th>Nom</th>
                 <th>Email</th>
-                <th>Roles</th>
-                <th>Password</th>
-                <th>Name</th>
-                <th>IsVerified</th>
+                <th>Fin du programme</th>
+                <th>Status du compte</th>
                 <th>actions</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="fs-5">
         {% for user in users %}
             <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-                <td>{{ user.password }}</td>
                 <td>{{ user.name }}</td>
-                <td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.date|date('d-m-Y') }}</td>
+                <td>{{ user.isVerified ? 'Activé' : 'Désactivé' }}</td>
                 <td>
                     <a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
                     <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
@@ -33,11 +29,12 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="7">no records found</td>
+                <td colspan="5">Pas de clients</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+    </main>
 
     <a href="{{ path('app_user_new') }}">Create new</a>
 {% endblock %}
