@@ -16,6 +16,22 @@
             </tr>
         </thead>
         <tbody class="fs-5">
+        {% for client in clients %}
+            <tr>
+                <td>{{ client.name }}</td>
+                <td>{{ client.email }}</td>
+                <td>{{ client.date|date('d-m-Y') }}</td>
+                <td>{{ client.isVerified ? 'Activé' : 'Désactivé' }}</td>
+                <td>
+                    <a href="{{ path('app_user_show', {'id': client.id}) }}">show</a>
+                    <a href="{{ path('app_user_edit', {'id': client.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Pas de clients</td>
+            </tr>
+        {% endfor %}
         {% for user in users %}
             <tr>
                 <td>{{ user.name }}</td>
@@ -29,7 +45,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">Pas de clients</td>
+                <td colspan="5">Pas de clients en attentes</td>
             </tr>
         {% endfor %}
         </tbody>

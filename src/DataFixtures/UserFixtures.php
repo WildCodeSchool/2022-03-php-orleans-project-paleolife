@@ -67,6 +67,25 @@ class UserFixtures extends Fixture
             $aleaClient->setPassword($hashedPassword);
             $manager->persist($aleaClient);
         }
+
+        $faker = Factory::create();
+        for ($i = 0; $i < 3; $i++) {
+            $aleaClient = new User();
+            $aleaClient->setEmail($faker->email());
+            $aleaClient->setRoles(['ROLE_USER']);
+            $aleaClient->setName($faker->name());
+            $aleaClient->setDate($faker->dateTime());
+            $hashedPassword = $this->passwordHasher->hashPassword(
+                $aleaClient,
+                $faker->sentence(
+                    1,
+                    true
+                )
+            );
+            $aleaClient->setPassword($hashedPassword);
+            $manager->persist($aleaClient);
+        }
+
         $manager->flush();
     }
 }
