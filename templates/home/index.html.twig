@@ -19,17 +19,17 @@
 		<div class="bg-dark div-dark d-none d-lg-block position-relative"></div>
 		<div class="bg-light div-light d-none d-lg-block position-relative"></div>
 	</section>
-	<section class="pb-5">
-		<h1 class="text-center bg-light py-3">Présentation</h1>
+	<section>
+		<h1 class="text-center bg-light my-4">Présentation</h1>
 		<div class="container-fluid bg-dark d-flex justify-content-center align-items-center presentation">
 			<div class="row d-flex justify-content-center align-items-center">
 				<div class="col-lg-6 d-flex justify-content-center align-items-center overflow-hidden photoPresentation me-lg-5 my-4">
 					<img src="{{ asset('build/images/home.png') }}" class="presentationImg" alt="Photo du coach"/>
 				</div>
-				<div class="col-lg-6 align-items-center my-lg-4 px-4">
-					<p class="text-light fs-4">It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+				<div class="col-lg-6 align-items-center my-lg-4 px-4 ms-5">
+					<p class="text-light fs-5">It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
 				</br>
-				<p class="text-light fs-4">
+				<p class="text-light fs-5">
 					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi iusto odit adipisci quia praesentium nemo autem maiores pariatur magnam, assumenda aspernatur, ullam saepe labore ipsum nulla aperiam voluptates vitae blanditiis.
 				</p>
 			</div>
@@ -37,18 +37,20 @@
 	</div>
 </section>
 <section>
+	<h1 class="d-flex justify-content-center mb-4 mt-5">Mes services personnels</h1>
 	{% for service in services %}
-		<div class="card container-fluid mb-5 border border-white row">
+		<div class="card container-fluid mb-5 border border-light bg-light row">
 			<div class="d-lg-flex justify-content-lg-around align-items-center">
 				<div class="col-md-6{% if loop.index is even %} order-lg-1 {% endif %}">
 					<img src="{{ asset('build/images/placeholderservice.jpg') }}" class="img-fluid rounded m-2" alt="jogging">
 				</div>
 				<div class="col-md-6">
 					<div class="card-body {% if loop.index is even %} order-lg-2 ps-lg-0 {% else %} pe-lg-0 {% endif %}">
-						<h2 class="card-title mb-4">{{ service.title }}</h2>
-						<p class="card-text fs-4 mb-4 {% if loop.index is even %} text-lg-start {% else %} text-lg-start{% endif %}">{{ service.description }}
+						<h2 class="card-title mb-5">{{ service.title }}</h2>
+						<p class="card-text fs-5 mb-4 {% if loop.index is even %} text-lg-start {% else %} text-lg-start{% endif %}">{{ service.description }}
 						</p>
-						<a href="/contact" class="btn btn-primary m-2 fs-5 col-12 col-lg-3"><i class="bi bi-send-fill me-3"></i>Me contacter</a>
+						<a href="/contact" class="btn btn-primary m-2 fs-5 col-12 col-lg-3">
+							<i class="bi bi-send-fill me-3"></i>Me contacter</a>
 					</div>
 				</div>
 			</div>
