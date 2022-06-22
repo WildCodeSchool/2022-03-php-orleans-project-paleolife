@@ -10,7 +10,7 @@
 	{% endif %}
 	<form action="" method="post">
 		<div class="row">
-			<div class="container shadow border border-2 border-dark bg-secondary mt-auto rounded-5 d-flex flex-column align-items-center col-lg-5 col-10">
+			<div class="container shadow bg-light rounded d-flex flex-column align-items-center col-lg-5 col-10 mb-4">
 				<div class="d-flex flex-column justify-content-center align-items-center col-lg-10 mt-5">
 					<label class="w-100 fs-5 mb-2" for="username">E-mail</label>
 					<input class=" p-2 fs-5 form-control border-dark" type="text" id="username" name="_username" value="{{ last_username }}" required placeholder="votre.email@paleolife.com"/>
@@ -24,7 +24,7 @@
 				</div>
 				<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 				<div class="d-flex justify-content-center my-5">
-					<button class="btn btn-button bg-dark text-light fs-5" type="submit">
+					<button class="btn btn-dark text-light fs-5" type="submit">
 						<i class="bi bi-box-arrow-in-left me-2"></i>Se connecter</button>
 				</div>
 			</div>
