@@ -59,7 +59,7 @@ class RegistrationController extends AbstractController
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );
             // do anything else you need here, like send an email
-            $this->addFlash('success', '<i class="bi bi-check-circle"></i> Vous êtes bien enregistré !');
+            $this->addFlash('success', 'Vous êtes bien enregistré !');
             return $this->redirectToRoute('app_register');
         }
 
