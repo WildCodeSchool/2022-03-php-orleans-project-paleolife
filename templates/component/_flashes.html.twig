@@ -1,0 +1,9 @@
+{% for label, messages in app.flashes %}
+	{% for message in messages %}
+		<div class="d-flex flex-column align-items-center mt-2">
+			<div class="bg-light shadow-sm alert alert-{{ label }}">
+				{{ message|raw }}
+			</div>
+		</div>
+	{% endfor %}
+{% endfor %}
