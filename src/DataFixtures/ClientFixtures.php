@@ -13,7 +13,7 @@ class ClientFixtures extends Fixture implements DependentFixtureInterface
     {
         for ($i = 0; $i < UserFixtures::CLIENT_NUMBER; $i++) {
             $client = new Client();
-            $client->setPhotoBefore('/assets/images/photoBefore.jpg');
+            $client->setPhotoBefore('');
             $client->setUser($this->getReference('client' . $i));
             $manager->persist($client);
         }

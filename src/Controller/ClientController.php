@@ -10,14 +10,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/client')]
+#[Route('/compte')]
 class ClientController extends AbstractController
 {
-    #[Route('/', name: 'app_client_index', methods: ['GET'])]
-    public function index(ClientRepository $clientRepository): Response
+    #[Route('/{id}', name: 'app_client_index', methods: ['GET'])]
+    public function index(Client $client): Response
     {
         return $this->render('client/index.html.twig', [
-            'clients' => $clientRepository->findAll(),
+            'client' => $client,
         ]);
     }
 
@@ -37,14 +37,6 @@ class ClientController extends AbstractController
         return $this->renderForm('client/new.html.twig', [
             'client' => $client,
             'form' => $form,
-        ]);
-    }
-
-    #[Route('/{id}', name: 'app_client_show', methods: ['GET'])]
-    public function show(Client $client): Response
-    {
-        return $this->render('client/show.html.twig', [
-            'client' => $client,
         ]);
     }
 
@@ -69,7 +61,7 @@ class ClientController extends AbstractController
     #[Route('/{id}', name: 'app_client_delete', methods: ['POST'])]
     public function delete(Request $request, Client $client, ClientRepository $clientRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$client->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $client->getId(), $request->request->get('_token'))) {
             $clientRepository->remove($client, true);
         }
 

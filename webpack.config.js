@@ -33,6 +33,7 @@ Encore
      */
     .addEntry('app', './assets/app.js')
     .addStyleEntry('home', './assets/styles/home.scss')
+    .addStyleEntry('client', './assets/styles/client.scss')
     .addStyleEntry('admin', './assets/styles/admin.scss')
 
 
