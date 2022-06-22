@@ -29,7 +29,7 @@
 							<a href="{{ path('app_user_edit', {'id': client.id}) }}">edit</a>
 						</td>
 						<td>
-							<form method="post" action="{{ path('app_user_delete', {'id': client.id}) }}" onsubmit="return confirm('Etes vous certain de supprimer cet utilisateur?');">
+							<form method="post" action="{{ path('app_user_delete', {'id': client.id}) }}" onsubmit="return confirm('Etes-vous certain de supprimer cet utilisateur?');">
 								<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ client.id) }}">
 								<button class="btn btn-danger Fs-5"><i class="bi bi-trash-fill me-2"></i>Supprimer</button>
 							</form>
@@ -37,7 +37,7 @@
 					</tr>
 				{% else %}
 					<tr>
-						<td colspan="5">Pas de clients</td>
+						<td colspan="5">Pas de client</td>
 					</tr>
 				{% endfor %}
 				{% for user in users %}
@@ -54,7 +54,7 @@
 					</tr>
 				{% else %}
 					<tr>
-						<td colspan="5">Pas de clients en attentes</td>
+						<td colspan="5">Pas de client en attente</td>
 					</tr>
 				{% endfor %}
 			</tbody>
