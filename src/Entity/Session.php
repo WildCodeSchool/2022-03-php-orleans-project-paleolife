@@ -26,7 +26,7 @@ class Session
     #[ORM\Column(type: 'integer')]
     private int $number;
 
-    #[ORM\OneToMany(mappedBy: 'session', targetEntity: Exercise::class)]
+    #[ORM\OneToMany(mappedBy: 'session', targetEntity: Exercise::class, cascade:['persist'])]
     private Collection $exercises;
 
     public function __construct()

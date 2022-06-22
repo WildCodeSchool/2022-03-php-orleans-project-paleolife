@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Session;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -16,6 +17,12 @@ class SessionType extends AbstractType
         $builder
             ->add('name', TextType::class, ['label' => 'Nom'])
             ->add('number', IntegerType::class, ['label' => 'Nombre'])
+            ->add('exercises', CollectionType::class, [
+                'entry_type' => ExerciseType::class,
+                'entry_options' => ['label' => false],
+                'allow_add' => true,
+                'by_reference' => false,
+            ])
         ;
     }
 
