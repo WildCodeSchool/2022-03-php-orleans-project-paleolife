@@ -1,15 +1,13 @@
 {{ form_start(form) }}
-{{ form_row(form.name)}}
-{{ form_row(form.number)}}
-    <h3>Exercice</h3>
-    {# <ul class="exercise">
-        {% for exercise in form.exercises %}
-            <li>{{ form_row(exercise.name) }}</li>
-			<li>{{ form_row(exercise.duration) }}</li>
-			<li>{{ form_row(exercise.repetition) }}</li>
-        {% endfor %}
-    </ul> #}
-	{# <button type="button" class="add_item_link" data-collection-holder-class="tags">Add a exercise </button> #}
-	
-<button>Valider</button>
+<div class="d-flex justify-content-between">
+<div class="col-6">{{ form_row(form.name)}}</div>
+	{{ form_row(form.number)}}
+</div>
+
+
+{{ form_row(form.exercises)}}
+
+<button class="btn btn-primary">Valider</button>
+
 {{ form_end(form) }}
+
