@@ -12,13 +12,13 @@ class Client
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private int $id;
 
     #[Assert\Length(
         max: 100,
     )]
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $photoBefore;
+    private ?string $photoBefore;
 
     #[ORM\OneToOne(inversedBy: 'client', targetEntity: User::class, cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
