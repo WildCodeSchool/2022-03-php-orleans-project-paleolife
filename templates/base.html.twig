@@ -13,14 +13,18 @@
 		{{ encore_entry_script_tags('app') }}
 		{% block javascripts %}{% endblock %}
 	</head>
-  
-	<body class="d-flex flex-column">
-      <header>
-      {% block navbar %}
-      {% endblock %}
-      </header>
+
+	<body class="d-flex flex-column bg-light">
+		<header>
+			{% block navbar %}{% endblock %}
+			{% block flashes %}
+				{% include 'component/_flashes.html.twig'%}
+			{% endblock %}
+		</header>
 		<div class="main-container"> {% block body %}{% endblock %}
-		</div>
-		{% block footer %}{% include 'component/_footer.html.twig'%}{% endblock %}
-	</body>
-</html>
+			</div>
+			{% block footer %}
+				{% include 'component/_footer.html.twig'%}
+			{% endblock %}
+		</body>
+	</html>

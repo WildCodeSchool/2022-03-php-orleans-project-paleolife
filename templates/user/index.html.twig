@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Index des clients
+{% endblock %}
+
+{% block body %}
+	<main class="container mb-5">
+		<h1 class="my-5 text-center">Liste des Clients</h1>
+		<table class="table">
+			<thead class="fs-4">
+				<tr>
+					<th>Nom</th>
+					<th>Email</th>
+					<th>Fin du programme</th>
+					<th>Status du compte</th>
+					<th>Actions</th>
+					<th>Suppression de l'utilisateur</th>
+				</tr>
+			</thead>
+			<tbody class="fs-5">
+				{% for client in clients %}
+					<tr>
+						<td>{{ client.name }}</td>
+						<td>{{ client.email }}</td>
+						<td>{{ client.date|date('d-m-Y') }}</td>
+						<td>{{ client.isVerified ? 'Activé' : 'Désactivé' }}</td>
+						<td>
+							<a href="{{ path('app_user_show', {'id': client.id}) }}">show</a>
+							<a href="{{ path('app_user_edit', {'id': client.id}) }}">edit</a>
+						</td>
+						<td>
+							<form method="post" action="{{ path('app_user_delete', {'id': client.id}) }}" onsubmit="return confirm('Êtes-vous certain de supprimer cet utilisateur?');">
+								<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ client.id) }}">
+								<button class="btn btn-danger Fs-5"><i class="bi bi-trash-fill me-2"></i>Supprimer</button>
+							</form>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="5">Pas de client</td>
+					</tr>
+				{% endfor %}
+				{% for user in users %}
+					<tr>
+						<td>{{ user.name }}</td>
+						<td>{{ user.email }}</td>
+						<td>{{ user.date|date('d-m-Y') }}</td>
+						<td>{{ user.isVerified ? 'Activé' : 'Désactivé' }}</td>
+						<td>
+							<a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
+							<a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
+						</td>
+						<td>{{ include('user/_delete_form.html.twig') }}</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="5">Pas de client en attente</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</main>
+
+	<a href="{{ path('app_user_new') }}">Create new</a>
+{% endblock %}

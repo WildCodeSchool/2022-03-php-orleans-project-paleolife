@@ -4,25 +4,25 @@
 {% endblock %}
 
 {% block body %}
-	<h1 class="d-flex justify-content-center mt-5 mb-3">Enregistrement du compte</h1>
+	<h1 class="d-flex justify-content-center mt-5 mb-5">Enregistrement du compte</h1>
 	{% for flash_error in app.flashes('verify_email_error') %}
 		<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
 	{% endfor %}
 
 	{{ form_start(registrationForm) }}
-	<div class="row">
-		<div class="container shadow border border-2 border-dark bg-secondary mt-auto rounded-5 d-flex flex-column align-items-center col-lg-5 col-10">
+	<div class="row mb-5">
+		<div class="container shadow bg-light rounded d-flex flex-column align-items-center col-lg-5 col-10 mb-4">
 			<div class="align-items-center col-lg-6 col-md-12 mt-5 fs-5 w-75">
-				{{ form_row (registrationForm.email)}}
+				{{ form_row (registrationForm.email, {'attr':{'class':'form-control border-dark'}})}}
 			</div>
 			<div class="align-items-center col-lg-6 col-md-12 mt-4 fs-5 w-75">
-				{{ form_row (registrationForm.name)}}
+				{{ form_row (registrationForm.name, {'attr':{'class':'form-control border-dark'}})}}
 			</div>
 			<div class="align-items-center col-lg-6 col-md-12 mt-4 fs-5 w-75">
-				{{ form_row (registrationForm.plainPassword)}}
+				{{ form_row (registrationForm.plainPassword, {'attr':{'class':'form-control border-dark'}})}}
 			</div>
 			<div class="d-flex justify-content-center my-5">
-				<button type="submit" class="btn border bg-black text-light rounded mb-3 fs-5">
+				<button type="submit" class="btn btn-dark text-light mb-3 fs-5">
 					<i class="bi bi-person-badge-fill me-2"></i>S'enregister</button>
 			</div>
 		</div>

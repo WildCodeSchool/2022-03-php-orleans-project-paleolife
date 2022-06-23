@@ -6,7 +6,7 @@
 }
 
 .div-light {
-    height: $header-size;
+    height: $header-size +2rem;
     z-index: -1;
 }
 
@@ -16,8 +16,8 @@
  }
 
  .photoPresentation {
-    width: 17rem;
-    height: 17rem;
+    width: 20rem;
+    height: 20rem;
     border-radius: 50%;
  }
 

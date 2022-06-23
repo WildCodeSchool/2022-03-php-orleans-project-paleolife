@@ -2,7 +2,7 @@
 
 {% block title %}Admin ajouter séance
 {% endblock %}
-
+{% block javascripts %}{{ encore_entry_script_tags('collection') }}{% endblock %}
 {% block body %}
 	<main class="container">
 		<h1 class="d-flex justify-content-center my-5">Ajouter une nouvelle séance</h1>
