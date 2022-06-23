@@ -3,11 +3,11 @@
 {% block stylesheets %}
 	{{ encore_entry_link_tags('client') }}
 {% endblock %}
-{% block title %}Mon compte
+{% block title %}Mon profil
 {% endblock %}
 
 {% block body %}
-	<main class="">
+	<main>
 		<h1>Client index</h1>
 		<div class="row my-md-5 mx-1">
 			<div class="d-flex justify-content-around">
@@ -15,25 +15,20 @@
 					<h2 class="card-title d-flex justify-content-center my-3">Avant</h2>
 					<div class="overflow-hidden photoBeforeSize">
 						{% if client.photoBefore is empty %}
-							<img src="{{ asset('build/images/placeholderPhotoBefore.jpg')}}" alt="Photo d'après" class="photoBefore img-fluid float-center">
+							<img src="{{ asset('build/images/placeholderClient.jpg') }}" alt="Photo d'avant" class="photoClient img-fluid float-center">
 						{% else %}
-							<img src="" alt="Photo d'après" class="photoBefore">
+						<img src="{{vich_uploader_asset(client, 'beforeFile')}}" alt="Photo d'avant" class="photoClient"> 
 						{% endif %}
 					</div>
-					<div class="card-body">
-						<h2 class="card-title d-flex justify-content-center my-3">Mensurations</h2>
-						<div class="d-flex justify-content-between">
-							{% if client.photoBefore is empty %}
-								<a href="{{ path('app_client_new') }}" class="btn btn-dark">Ajouter photo</a>
-							{% else %}
-								<a class="btn btn-primary text-dark" href="{{ path('app_client_edit', {'id': client.id}) }}">Modifier photo</a>
-							{% endif %}
-							{% if client.photoBefore is empty %}
-								<a href="#" class="btn btn-dark">Ajouter mensurations</a>
-							{% else %}
-								<a href="#" class="btn btn-primary text-dark">Modifier mensurations</a>
-							{% endif %}
-						</div>
+				</div>
+				<div class="card shadow-sm rounded col-lg-4 col-md-6 col-12 p-2">
+					<h2 class="card-title d-flex justify-content-center my-3">Après</h2>
+					<div class="overflow-hidden photoBeforeSize">
+						{% if client.photoAfter is empty %}
+							<img src="{{ asset('build/images/placeholderClient.jpg') }}" alt="Photo d'après" class="photoClient img-fluid float-center">
+						{% else %}
+							<img src="{{vich_uploader_asset(client, 'afterFile') }}" alt="Photo d'après" class="photoClient">
+						{% endif %}
 					</div>
 				</div>
 			</div>
