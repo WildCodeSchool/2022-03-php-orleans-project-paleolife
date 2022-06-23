@@ -27,7 +27,14 @@
 					<tr>
 						<td>{{ objective.globalName }}</td>
 						<td>{{ objective.monthName }}</td>
-						<td class="d-flex justify-content-end">
+						<td class="d-flex justify-content-end">							<a class="btn btn-info" href="{{ path('app_user_show', {'id': user.id}) }}">
+								<i class="bi bi-book-fill me-2"></i>
+								Détails
+							</a>
+							<a class="btn btn-warning mx-3" href="{{ path('app_user_edit', {'id': user.id}) }}">
+								<i class="bi bi-pen-fill me-2"></i>
+								Modifier
+							</a>
 							<a class="btn btn-warning mx-3 fs-5" href="{{ path('app_objective_edit', {'id': objective.id}) }}">
                             <i class= "bi bi-pen-fill me-2" ></i>
                             Modifier
