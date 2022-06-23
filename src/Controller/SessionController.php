@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Exercise;
 use App\Entity\Session;
 use App\Form\SessionType;
+use App\Repository\ExerciseRepository;
 use App\Repository\SessionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,6 +27,7 @@ class SessionController extends AbstractController
     public function new(Request $request, SessionRepository $sessionRepository): Response
     {
         $session = new Session();
+
         $form = $this->createForm(SessionType::class, $session);
         $form->handleRequest($request);
 
