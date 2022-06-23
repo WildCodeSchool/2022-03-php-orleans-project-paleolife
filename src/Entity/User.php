@@ -51,6 +51,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\Date()]
     private ?DateTimeInterface $date;
 
+    #[ORM\OneToOne(mappedBy: 'user', targetEntity: Client::class, cascade: ['persist', 'remove'])]
+    private ?Client $client;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -153,6 +156,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setDate(?\DateTimeInterface $date): self
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    public function getClient(): ?Client
+    {
+        return $this->client;
+    }
+
+    public function setClient(?Client $client): self
+    {
+        $this->client = $client;
 
         return $this;
     }
