@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/seance')]
+#[Route('/admin/seance')]
 class SessionController extends AbstractController
 {
     #[Route('/', name: 'app_session_index', methods: ['GET'])]
