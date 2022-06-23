@@ -18,19 +18,15 @@
 			<tbody class="fs-5">
 				{% for client in clients %}
 					<tr>
-						<td class="col-lg-4">{{ client.user.name }}</td>
+						<td class="col-lg-5">{{ client.user.name }}</td>
 						<td class="col-lg-4">{{ client.user.email }}</td>
 						<td class="d-flex">
-							<a class="btn btn-info" href="{{ path('app_user_show', {'id': client.id}) }}">
-								<i class="bi bi-book-fill me-2"></i>
-								Détails
-							</a>
-							<a class="btn btn-warning mx-3" href="{{ path('app_client_edit', {'id': client.id}) }}">
+							<a class="btn btn-warning me-3" href="{{ path('app_client_edit', {'id': client.id}) }}">
 								<i class="bi bi-pen-fill me-2"></i>
-								Modifier
+								Éditer
 							</a>
-							<form method="post" action="{{ path('app_user_delete', {'id': client.id}) }}" onsubmit="return confirm('Êtes-vous certain de supprimer cet utilisateur?');">
-								<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ client.id) }}">
+							<form method="post" action="{{ path('app_user_delete', {'id': client.user.id}) }}" onsubmit="return confirm('Êtes-vous certain de supprimer cet utilisateur?');">
+								<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ client.user.id) }}">
 								<button class="btn btn-danger">
 									<i class="bi bi-trash-fill me-2"></i>Supprimer</button>
 							</form>
