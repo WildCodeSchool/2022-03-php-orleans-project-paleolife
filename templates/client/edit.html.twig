@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier le client
+{% endblock %}
+
+{% block body %}
+	<main class="container">
+		<h1 class="m-5 text-center">Modifier le client</h1>
+		<section class="fs-5">
+			{{ include('client/_form.html.twig', {'button_label': 'Modifier'}) }}
+		</section>
+
+	</main>
+{% endblock %}

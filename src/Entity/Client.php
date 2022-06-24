@@ -2,12 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\ObjectiveRepository;
+use App\Repository\ClientRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
-#[ORM\Entity(repositoryClass: ObjectiveRepository::class)]
-class Objective
+#[ORM\Entity(repositoryClass: ClientRepository::class)]
+class Client
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -15,18 +14,13 @@ class Objective
     private int $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Assert\NotBlank]
-    #[Assert\Length(
-        max : 255
-    )]
     private string $globalName;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Assert\NotBlank]
-    #[Assert\Length(
-        max : 255
-    )]
     private string $monthName;
+
+    #[ORM\OneToOne(inversedBy: 'client', targetEntity: User::class, cascade: ['persist', 'remove'])]
+    private ?User $user;
 
     public function getId(): ?int
     {
@@ -53,6 +47,28 @@ class Objective
     public function setMonthName(string $monthName): self
     {
         $this->monthName = $monthName;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($user === null && $this->user !== null) {
+            $this->user->setClient(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($user !== null && $user->getClient() !== $this) {
+            $user->setClient($this);
+        }
+
+        $this->user = $user;
 
         return $this;
     }

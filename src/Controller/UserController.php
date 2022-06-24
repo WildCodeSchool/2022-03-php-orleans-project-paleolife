@@ -5,19 +5,20 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
+use App\Repository\ClientRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/utilisateur')]
+#[Route('admin/utilisateur')]
 class UserController extends AbstractController
 {
     #[Route('/', name: 'app_user_index', methods: ['GET'])]
-    public function index(UserRepository $userRepository): Response
+    public function index(UserRepository $userRepository, ClientRepository $clientRepository): Response
     {
         return $this->render('user/index.html.twig', [
-            'clients' => $userRepository->findAllClient('["ROLE_CLIENT"]'),
+            'clients' => $clientRepository->findAll(),
             'users' => $userRepository->findAllClient('["ROLE_USER"]'),
         ]);
     }
