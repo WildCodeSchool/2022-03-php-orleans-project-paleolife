@@ -22,7 +22,7 @@ class Client
     #[Vich\UploadableField(mapping: 'client_image', fileNameProperty: 'photoBefore')]
     #[Assert\File(
         maxSize: '1M',
-        mimeTypes: ['photoBefore/jpeg', 'photoBefore/png', 'photoBefore/webp', 'photoBefore/jpg'],
+        mimeTypes: ['image/jpeg', 'image/png', 'image/webp'],
     )]
     private ?File $beforeFile = null;
 
@@ -42,7 +42,7 @@ class Client
     #[Vich\UploadableField(mapping: 'client_image', fileNameProperty: 'photoAfter')]
     #[Assert\File(
         maxSize: '1M',
-        mimeTypes: ['photoBefore/jpeg', 'photoBefore/png', 'photoBefore/webp', 'photoBefore/jpg'],
+        mimeTypes: ['image/jpeg', 'image/png', 'image/webp'],
     )]
     private ?File $afterFile = null;
 
