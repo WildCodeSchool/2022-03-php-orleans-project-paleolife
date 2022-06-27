@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Entity\Client;
 use App\Form\ClientType;
 use App\Repository\ClientRepository;
@@ -9,15 +10,20 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
-#[Route('/client')]
+#[Route('/profil')]
 class ClientController extends AbstractController
 {
     #[Route('/', name: 'app_client_index', methods: ['GET'])]
-    public function index(ClientRepository $clientRepository): Response
+    #[IsGranted('ROLE_CLIENT')]
+    public function index(): Response
     {
+        /** @var User  */
+        $user = $this->getUser();
+        $client = $user->getClient();
         return $this->render('client/index.html.twig', [
-            'clients' => $clientRepository->findAll(),
+            'client' => $client,
         ]);
     }
 
