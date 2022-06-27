@@ -25,3 +25,13 @@
     transform: scale(2.5);
      translate: 1rem 25rem;
  }
+
+ .logoGreen {
+    width: $header-size /2;
+    height: $header-size /2;
+ }
+
+ .title {
+    border-left: 5px solid $primary;
+    border-bottom: 5px solid $primary;
+ }
