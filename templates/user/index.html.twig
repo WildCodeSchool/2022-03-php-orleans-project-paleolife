@@ -58,7 +58,7 @@
 						<td>{{ user.name }}</td>
 						<td>{{ user.email }}</td>
 						<td>{{ user.date|date('d-m-Y') }}</td>
-						<td>{{ user.isVerified ? 'Activé' : 'Désactivé' }}</td>
+						<td><button>{{ user.isVerified ? 'Activé' : 'Désactivé' }}</button></td>
 						<td class="d-flex">
 							{{ include('user/_delete_form.html.twig') }}
 						</td>

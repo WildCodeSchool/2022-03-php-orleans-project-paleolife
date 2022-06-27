@@ -41,6 +41,7 @@ class UserFixtures extends Fixture
         $client->setEmail('client@monsite.com');
         $client->setRoles(['ROLE_CLIENT']);
         $client->setName('Fabrice');
+        $client->setIsVerified(true);
         $client->setDate(
             GlobalDateTime::createFromFormat('!Y-m-d', '2022-10-4')
         );
@@ -59,6 +60,7 @@ class UserFixtures extends Fixture
             $aleaClient->setRoles(['ROLE_CLIENT']);
             $aleaClient->setName($faker->name());
             $aleaClient->setDate($faker->dateTime());
+            $aleaClient->setIsVerified(true);
             $this->addReference('client_' . $i, $aleaClient);
             $hashedPassword = $this->passwordHasher->hashPassword(
                 $aleaClient,
