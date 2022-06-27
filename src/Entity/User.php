@@ -53,7 +53,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?DateTimeInterface $date;
 
     #[ORM\OneToOne(mappedBy: 'user', targetEntity: Client::class, cascade: ['persist', 'remove'])]
-    private Client $client;
+    private ?Client $client;
 
     public function getId(): ?int
     {
@@ -172,9 +172,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         if ($client->getUser() !== $this) {
             $client->setUser($this);
         }
-
         $this->client = $client;
 
         return $this;
     }
+
 }

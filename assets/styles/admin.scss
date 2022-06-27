@@ -21,3 +21,8 @@ body {
     font-family: $text_font;
     background-color: $light;
 }
+
+fieldset > div > fieldset > div{
+    display: flex;
+    justify-content: space-between;
+}

@@ -20,40 +20,51 @@
 		<div class="bg-light div-light d-none d-lg-block position-relative"></div>
 	</section>
 	<section>
-		<h1 class="text-center bg-light my-4">Présentation</h1>
+		<h1 class="d-flex justify-content-center my-5 p-4">Seb, votre coach sportif
+			À Montpellier et dans toute la France</h1>
 		<div class="container-fluid bg-dark d-flex justify-content-center align-items-center presentation">
-			<div class="row d-flex justify-content-center align-items-center">
-				<div class="col-lg-6 d-flex justify-content-center align-items-center overflow-hidden photoPresentation me-lg-5 my-4">
+			<div class="row d-flex justify-content-center align-items-center px-5">
+				<div class="col-lg-5 col-11 d-flex justify-content-center align-items-center overflow-hidden photoPresentation me-lg-5 my-4">
 					<img src="{{ asset('build/images/home.png') }}" class="presentationImg" alt="Photo du coach"/>
 				</div>
-				<div class="col-lg-6 align-items-center my-lg-4 px-4 ms-5">
-					<p class="text-light fs-5">It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+				<div class="col-lg-7 align-items-center my-lg-4 p-4 ms-5">
+					<p class="text-light fs-5">Être coach est une véritable vocation pour moi. J’ai grandi et je vis sport depuis mon plus
+																														jeune âge, de la compétition à en faire mes études et maintenant mon avenir.
+																														Je suis quelqu’un de vivant, d’ambitieux, toujours en quête de partage, d’apprentissage,
+																														je vis au rythme de mes aventures. L’énergie positive et mes valeurs sont mes deux traits
+																														de caractères, qui me permettent aujourd’hui de m’épanouir dans ce métier passion.</p>
 				</br>
 				<p class="text-light fs-5">
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi iusto odit adipisci quia praesentium nemo autem maiores pariatur magnam, assumenda aspernatur, ullam saepe labore ipsum nulla aperiam voluptates vitae blanditiis.
+					Coach sportif diplômé, expérimenté, passionné et bienveillant. En effet, j’anime depuis
+																				des années mes propres concepts de cours collectif en extérieur, j’ai pu également
+																				coacher en entreprise, puis en salle de sport à titre d’indépendant.
 				</p>
+
+			</br>
+			<p class="text-light fs-5">
+				Sébastien coach sportif inspirant et solaire, saura vous sortir de votre zone de confort et
+								atteindre vos objectifs avec sérieux, sans se prendre au sérieux. Son but vous faire
+								tomber amoureux d’une vie plus saine et équilibré.
+			</p>
+		</div>
+	</div>
+</div></section><section>
+<h1 class="d-flex justify-content-center mb-4 mt-5">Mes services personnels</h1>
+{% for service in services %}
+	<div class="card container-fluid mb-5 border border-light bg-light row">
+		<div class="d-lg-flex justify-content-lg-around align-items-center">
+			<div class="col-md-6{% if loop.index is even %} order-lg-1 {% endif %}">
+				<img src="{{ asset('build/images/placeholderservice.jpg') }}" class="img-fluid rounded m-2" alt="jogging">
+			</div>
+			<div class="col-md-6">
+				<div class="card-body {% if loop.index is even %} order-lg-2 ps-lg-0 {% else %} pe-lg-0 {% endif %}">
+					<h2 class="card-title mb-5">{{ service.title }}</h2>
+					<p class="card-text fs-5 mb-4 {% if loop.index is even %} text-lg-start {% else %} text-lg-start{% endif %}">{{ service.description }}
+					</p>
+					<a href="/contact" class="btn btn-primary m-2 fs-5 col-12 col-lg-3">
+						<i class="bi bi-send-fill me-3"></i>Me contacter</a>
+				</div>
 			</div>
 		</div>
 	</div>
-</section>
-<section>
-	<h1 class="d-flex justify-content-center mb-4 mt-5">Mes services personnels</h1>
-	{% for service in services %}
-		<div class="card container-fluid mb-5 border border-light bg-light row">
-			<div class="d-lg-flex justify-content-lg-around align-items-center">
-				<div class="col-md-6{% if loop.index is even %} order-lg-1 {% endif %}">
-					<img src="{{ asset('build/images/placeholderservice.jpg') }}" class="img-fluid rounded m-2" alt="jogging">
-				</div>
-				<div class="col-md-6">
-					<div class="card-body {% if loop.index is even %} order-lg-2 ps-lg-0 {% else %} pe-lg-0 {% endif %}">
-						<h2 class="card-title mb-5">{{ service.title }}</h2>
-						<p class="card-text fs-5 mb-4 {% if loop.index is even %} text-lg-start {% else %} text-lg-start{% endif %}">{{ service.description }}
-						</p>
-						<a href="/contact" class="btn btn-primary m-2 fs-5 col-12 col-lg-3">
-							<i class="bi bi-send-fill me-3"></i>Me contacter</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	{% endfor %}
-</section>{% endblock %}
+{% endfor %}</section>{% endblock %}

@@ -24,7 +24,9 @@ class ClientFixtures extends Fixture implements DependentFixtureInterface
             $photoAfter = 'PhotoAfter' . $i . 'jpg';
             copy('src/DataFixtures/PhotoAfter.jpg', 'public/uploads/client/' . $photoAfter);
             $client->setPhotoAfter($photoAfter);
-            $client->setUser($this->getReference('client' . $i));
+            $client->setGlobalName('Perte de poids');
+            $client->setMonthName('Remise à niveau');
+            $client->setUser($this->getReference('client_' . $i));
             $manager->persist($client);
         }
         $manager->flush();
@@ -33,7 +35,6 @@ class ClientFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return [
-
             UserFixtures::class,
         ];
     }

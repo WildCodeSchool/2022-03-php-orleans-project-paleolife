@@ -28,6 +28,9 @@ class Exercise
 
     private string $repetition;
 
+    #[ORM\ManyToOne(targetEntity: Session::class, inversedBy: 'exercises')]
+    private Session $session;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -65,6 +68,18 @@ class Exercise
     public function setRepetition(string $repetition): self
     {
         $this->repetition = $repetition;
+
+        return $this;
+    }
+
+    public function getSession(): ?Session
+    {
+        return $this->session;
+    }
+
+    public function setSession(?Session $session): self
+    {
+        $this->session = $session;
 
         return $this;
     }

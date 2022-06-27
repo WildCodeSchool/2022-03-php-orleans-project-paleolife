@@ -50,6 +50,12 @@ class Client
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $photoAfter;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private string $globalName;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private string $monthName;
+
     public function __construct()
     {
         $this->updatedAt = new \DateTimeImmutable();
@@ -60,14 +66,25 @@ class Client
         return $this->id;
     }
 
+
     public function getPhotoBefore(): ?string
     {
         return $this->photoBefore;
     }
 
-    public function setPhotoBefore(?string $photoBefore): self
+    public function setPhotoBefore(?string $photoBefore): void
     {
         $this->photoBefore = $photoBefore;
+    }
+
+    public function getGlobalName(): ?string
+    {
+        return $this->globalName;
+    }
+
+    public function setGlobalName(string $globalName): self
+    {
+        $this->globalName = $globalName;
 
         return $this;
     }
@@ -77,9 +94,19 @@ class Client
         return $this->user;
     }
 
-    public function setUser(User $user): self
+    public function setUser(User $user): void
     {
         $this->user = $user;
+    }
+
+    public function getMonthName(): ?string
+    {
+        return $this->monthName;
+    }
+
+    public function setMonthName(string $monthName): self
+    {
+        $this->monthName = $monthName;
 
         return $this;
     }
