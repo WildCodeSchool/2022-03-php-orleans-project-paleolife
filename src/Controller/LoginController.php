@@ -28,7 +28,7 @@ class LoginController extends AbstractController
         if ($this->isGranted('ROLE_ADMIN')) {
             return $this->redirectToRoute('app_user_index');
         } elseif ($this->isGranted('ROLE_CLIENT')) {
-            return $this->redirectToRoute('app_home');
+            return $this->redirectToRoute('app_client_index');
         } else {
             return $this->redirectToRoute('app_home');
         }
