@@ -44,7 +44,6 @@ class ServiceRepository extends ServiceEntityRepository
 //     */
 //    public function findByExampleField($value): array
 //    {
-    // qui par a la  chasse perd sa place
 //        return $this->createQueryBuilder('s')
 //            ->andWhere('s.exampleField = :val')
 //            ->setParameter('val', $value)
