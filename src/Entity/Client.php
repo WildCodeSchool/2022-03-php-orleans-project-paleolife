@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ClientRepository;
+use DateTime;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
@@ -57,6 +58,14 @@ class Client
 
     #[ORM\Column(type: 'string', length: 255)]
     private string $monthName;
+
+    #[Assert\Date]
+    #[ORM\Column(type: 'date', nullable: true)]
+    private ?DateTimeInterface $dateBefore;
+
+    #[Assert\Date]
+    #[ORM\Column(type: 'date', nullable: true)]
+    private ?DateTimeInterface $dateAfter;
 
     public function __construct()
     {
@@ -155,5 +164,29 @@ class Client
     public function getAfterFile(): ?File
     {
         return $this->afterFile;
+    }
+
+    public function getDateBefore(): ?DateTimeInterface
+    {
+        return $this->dateBefore;
+    }
+
+    public function setDateBefore(?DateTimeInterface $dateBefore): self
+    {
+        $this->dateBefore = $dateBefore;
+
+        return $this;
+    }
+
+    public function getDateAfter(): ?DateTimeInterface
+    {
+        return $this->dateAfter;
+    }
+
+    public function setDateAfter(?DateTimeInterface $dateAfter): self
+    {
+        $this->dateAfter = $dateAfter;
+
+        return $this;
     }
 }
