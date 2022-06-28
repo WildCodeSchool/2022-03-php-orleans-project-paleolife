@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'layoutClient.html.twig' %}
 
 {% block stylesheets %}
 	{{ encore_entry_link_tags('client') }}
@@ -10,7 +10,7 @@
 	<main>
 		<h1>Client index</h1>
 		<div class="row my-md-5 mx-1">
-			<div class="d-flex justify-content-around">
+			<div class="d-flex justify-content-around align-items-center">
 				<div class="card shadow-sm rounded col-lg-4 col-md-6 col-12 p-2">
 					<h2 class="card-title d-flex justify-content-center my-3">Avant</h2>
 					<div class="overflow-hidden photoBeforeSize">
@@ -20,6 +20,9 @@
 						<img src="{{vich_uploader_asset(client, 'beforeFile')}}" alt="Photo d'avant" class="photoClient"> 
 						{% endif %}
 					</div>
+				</div>
+				<div class="">
+				<a class="btn btn-primary text-dark rounded fs-4" href="{{ path('client_edit_profil') }}"><i class="bi bi-plus-circle me-2"></i>Modifier mon profil</a>
 				</div>
 				<div class="card shadow-sm rounded col-lg-4 col-md-6 col-12 p-2">
 					<h2 class="card-title d-flex justify-content-center my-3">Après</h2>
