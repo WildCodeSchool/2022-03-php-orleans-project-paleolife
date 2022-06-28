@@ -59,11 +59,9 @@ class Client
     #[ORM\Column(type: 'string', length: 255)]
     private string $monthName;
 
-    #[Assert\Date]
     #[ORM\Column(type: 'date', nullable: true)]
     private ?DateTimeInterface $dateBefore;
 
-    #[Assert\Date]
     #[ORM\Column(type: 'date', nullable: true)]
     private ?DateTimeInterface $dateAfter;
 
