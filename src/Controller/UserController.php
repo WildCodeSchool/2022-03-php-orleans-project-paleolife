@@ -2,10 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Client;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
 use App\Repository\ClientRepository;
+use Doctrine\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,7 +20,7 @@ class UserController extends AbstractController
     public function index(UserRepository $userRepository, ClientRepository $clientRepository): Response
     {
         return $this->render('user/index.html.twig', [
-            'clients' => $clientRepository->findAll(),
+            'clients' => $userRepository->findAllClient('["ROLE_CLIENT"]'),
             'users' => $userRepository->findAllClient('["ROLE_USER"]'),
         ]);
     }
@@ -66,6 +68,23 @@ class UserController extends AbstractController
             'user' => $user,
             'form' => $form,
         ]);
+    }
+
+
+
+    #[Route('/{id}/change', name: 'app_user_change', methods: ['POST'])]
+    public function change(Request $request, User $user, UserRepository $userRepository): Response
+    {
+        if ($this->isCsrfTokenValid('change' . $user->getId(), $request->request->get('_token'))) {
+            if (in_array('ROLE_CLIENT', $user->getRoles())) {
+                $user->setRoles(['ROLE_USER']);
+            } else {
+                $user->setRoles(['ROLE_CLIENT']);
+            }
+            $userRepository->add($user, true);
+        }
+
+        return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
     }
 
     #[Route('/{id}', name: 'app_user_delete', methods: ['POST'])]

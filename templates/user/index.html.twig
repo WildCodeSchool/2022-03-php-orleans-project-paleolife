@@ -12,21 +12,29 @@
 				<tr>
 					<th>Nom</th>
 					<th>Email</th>
+					<th>Désactivation du compte</th>
 					<th>Gestion du compte</th>
 				</tr>
 			</thead>
 			<tbody class="fs-5">
 				{% for client in clients %}
 					<tr>
-						<td class="col-lg-5">{{ client.user.name }}</td>
-						<td class="col-lg-4">{{ client.user.email }}</td>
+						<td class="col-lg-3">{{ client.name }}</td>
+						<td class="col-lg-3">{{ client.email }}</td>
+						<td><form method="post" action="{{ path('app_user_change', {'id': client.id}) }}" onsubmit="return confirm('Êtes-vous certain de mettre cet utilisateur en attente?');">
+						<input type="hidden" name="_token" value="{{ csrf_token('change' ~ client.id) }}">
+						<button class="btn bg-black text-light me-3">
+								<i class="bi bi-person-dash-fill me-2"></i>
+							Désactivation</button>
+						</form>
+						</td>
 						<td class="d-flex">
 							<a class="btn btn-warning me-3" href="{{ path('app_client_edit', {'id': client.id}) }}">
 								<i class="bi bi-pen-fill me-2"></i>
 								Éditer
 							</a>
-							<form method="post" action="{{ path('app_user_delete', {'id': client.user.id}) }}" onsubmit="return confirm('Êtes-vous certain de supprimer cet utilisateur?');">
-								<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ client.user.id) }}">
+							<form method="post" action="{{ path('app_user_delete', {'id': client.id}) }}" onsubmit="return confirm('Êtes-vous certain de supprimer cet utilisateur?');">
+								<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ client.id) }}">
 								<button class="btn btn-danger">
 									<i class="bi bi-trash-fill me-2"></i>Supprimer</button>
 							</form>
@@ -46,8 +54,7 @@
 				<tr>
 					<th>Nom</th>
 					<th>Email</th>
-					<th>Fin du programme</th>
-					<th>Status du compte</th>
+					<th>Activation du compte</th>
 					<th>Suppression de l'utilisateur</th>
 				</tr>
 			</thead>
@@ -57,8 +64,13 @@
 					<tr>
 						<td>{{ user.name }}</td>
 						<td>{{ user.email }}</td>
-						<td>{{ user.date|date('d-m-Y') }}</td>
-						<td><button>{{ user.isVerified ? 'Activé' : 'Désactivé' }}</button></td>
+						<td><form method="post" action="{{ path('app_user_change', {'id': user.id}) }}" onsubmit="return confirm('Êtes-vous certain d'accepter cet utilisateur?');">
+						<input type="hidden" name="_token" value="{{ csrf_token('change' ~ user.id) }}">
+						<button class="btn btn-success me-3">
+								<i class="bi bi-person-plus-fill me-2"></i>
+							Activation</button>
+						</form>
+						</td>
 						<td class="d-flex">
 							{{ include('user/_delete_form.html.twig') }}
 						</td>

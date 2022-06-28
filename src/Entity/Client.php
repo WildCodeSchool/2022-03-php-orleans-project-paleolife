@@ -13,11 +13,11 @@ class Client
     #[ORM\Column(type: 'integer')]
     private int $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private string $globalName;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $globalName;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private string $monthName;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $monthName;
 
     #[ORM\OneToOne(inversedBy: 'client', targetEntity: User::class, cascade: ['persist', 'remove'])]
     private ?User $user;
@@ -32,7 +32,7 @@ class Client
         return $this->globalName;
     }
 
-    public function setGlobalName(string $globalName): self
+    public function setGlobalName(?string $globalName): self
     {
         $this->globalName = $globalName;
 
@@ -44,7 +44,7 @@ class Client
         return $this->monthName;
     }
 
-    public function setMonthName(string $monthName): self
+    public function setMonthName(?string $monthName): self
     {
         $this->monthName = $monthName;
 
