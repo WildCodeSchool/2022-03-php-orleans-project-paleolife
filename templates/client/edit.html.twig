@@ -1,14 +1,15 @@
-{% extends 'base.html.twig' %}
+{% extends 'layoutClient.html.twig' %}
 
-{% block title %}Modifier le client
+{% block stylesheets %}
+	{{ encore_entry_link_tags('client') }}
+{% endblock %}
+{% block title %}Modifier mon profil
 {% endblock %}
 
 {% block body %}
-	<main class="container">
-		<h1 class="m-5 text-center">Modifier le client</h1>
-		<section class="fs-5">
-			{{ include('client/_form.html.twig', {'button_label': 'Modifier'}) }}
-		</section>
-
+	<main>
+		<h1 class="d-flex justify-content-center mt-5">Modifier votre profil
+			{{ client.user.name }}</h1>
+            {{ include('client/_form.html.twig', {'button_label': 'Modifier'}) }}
 	</main>
 {% endblock %}
