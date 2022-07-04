@@ -8,6 +8,7 @@ use App\Form\UserType;
 use App\Repository\UserRepository;
 use App\Repository\ClientRepository;
 use Doctrine\Persistence\ObjectManager;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,11 +18,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
     #[Route('/', name: 'app_user_index', methods: ['GET'])]
-    public function index(UserRepository $userRepository, ClientRepository $clientRepository): Response
+    public function index(UserRepository $userRepository): Response
     {
         return $this->render('user/index.html.twig', [
-            'clients' => $userRepository->findAllClient('["ROLE_CLIENT"]'),
-            'users' => $userRepository->findAllClient('["ROLE_USER"]'),
+            'users' => $userRepository->findAllClient('["ROLE_CLIENT"]'),
+            'unvalids' => $userRepository->findAllClient('["ROLE_USER"]'),
         ]);
     }
 
@@ -71,7 +72,6 @@ class UserController extends AbstractController
     }
 
 
-
     #[Route('/{id}/change', name: 'app_user_change', methods: ['POST'])]
     public function change(Request $request, User $user, UserRepository $userRepository): Response
     {
@@ -80,6 +80,13 @@ class UserController extends AbstractController
                 $user->setRoles(['ROLE_USER']);
             } else {
                 $user->setRoles(['ROLE_CLIENT']);
+                if (($user->getClient()) === null) {
+                    $client = new Client();
+                    $client->setGlobalName(' ');
+                    $client->setMonthName(' ');
+                    $client->setUser($user);
+                    $user->setClient($client);
+                }
             }
             $userRepository->add($user, true);
         }
