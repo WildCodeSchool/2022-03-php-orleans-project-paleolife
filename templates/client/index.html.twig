@@ -3,41 +3,52 @@
 {% block stylesheets %}
 	{{ encore_entry_link_tags('client') }}
 {% endblock %}
-{% block title %}Mon profil
+{% block title %}
+	{{ parent() }}||Mon profil
 {% endblock %}
 
 {% block body %}
 	<main>
-		<h1>Client index</h1>
-		<h2 class="text-center my-5">Votre objectif global : {{ client.globalName}}</h2>
-		<div class="row my-md-5 mx-1">
-			<div class="d-flex justify-content-around align-items-center">
-				<div class="card shadow-sm rounded col-lg-4 col-md-6 col-12 p-2">
-					<h2 class="card-title d-flex justify-content-center my-3">Avant</h2>
-					<div class="overflow-hidden photoBeforeSize">
+		<section>
+			<div class="row mt-3 justify-content-center position-absolute w-100">
+				<div class="d-lg-flex justify-content-center align-items-center d-none">
+					<div class="photoClient">
 						{% if client.photoBefore is empty %}
-							<img src="{{ asset('build/images/placeholderClient.jpg') }}" alt="Photo d'avant" class="photoClient img-fluid float-center">
+							<img src="{{ asset('build/images/placeholderClient.jpg') }}" alt="Photo d'avant" class="photo w-100">
 						{% else %}
-							<img src="{{vich_uploader_asset(client, 'beforeFile')}}" alt="Photo d'avant" class="photoClient">
+							<img src="{{vich_uploader_asset(client, 'beforeFile')}}" alt="Photo d'avant" class="photo w-100">
 						{% endif %}
+						<div class="d-flex justify-content-center">Avant</div>
 					</div>
-				</div>
-				<div class="">
-				<a class="btn btn-primary text-dark rounded fs-4" href="{{ path('client_edit_profil') }}"><i class="bi bi-plus-circle me-2"></i>Modifier mon profil</a>
-				</div>
-				<div class="card shadow-sm rounded col-lg-4 col-md-6 col-12 p-2">
-					<h2 class="card-title d-flex justify-content-center my-3">Après</h2>
-					<div class="overflow-hidden photoBeforeSize">
+					<div class="photoClient">
 						{% if client.photoAfter is empty %}
-							<img src="{{ asset('build/images/placeholderClient.jpg') }}" alt="Photo d'après" class="photoClient img-fluid float-center">
+							<img src="{{ asset('build/images/placeholderClient.jpg') }}" alt="Photo d'après" class="photo w-100">
 						{% else %}
-							<img src="{{vich_uploader_asset(client, 'afterFile') }}" alt="Photo d'après" class="photoClient">
+							<img src="{{vich_uploader_asset(client, 'afterFile') }}" alt="Photo d'après" class="photo w-100">
 						{% endif %}
+						<div class="d-flex justify-content-center">Après</div>
 					</div>
 				</div>
 			</div>
+			<div class="bg-dark div-dark d-none d-lg-block position-relative"></div>
+			<div class="bg-light div-light d-none d-lg-block position-relative"></div>
+		</section>
+		<section class="d-flex flex-column align-items-start">
+			<h1 class="text-center mb-3 mt-5 title p-2">
+				<i class="bi bi-speedometer me-2"></i>Objectifs
+			</h1>
+			<div class="d-flex">
+				<p class="fs-5 objectif me-2">Global:</p>
+				<p class="fs-5">{{ client.globalName}}</p>
+			</div>
+			<div class="d-flex">
+				<p class="fs-5 me-2 objectif">Mensuel:</p>
+				<p class="fs-5">{{ client.monthName}}</p>
+			</div>
+		</section>
+		<div class="">
+			<a class="btn btn-primary text-dark rounded fs-4" href="{{ path('client_edit_profil') }}">
+				<i class="bi bi-plus-circle me-2"></i>Modifier mon profil</a>
 		</div>
-		<h2 class="text-center my-5">Votre objectif du mois : {{ client.monthName}}</h2>
-
 	</main>
 {% endblock %}
