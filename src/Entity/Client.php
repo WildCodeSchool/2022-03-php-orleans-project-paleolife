@@ -3,8 +3,10 @@
 namespace App\Entity;
 
 use App\Repository\ClientRepository;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use DateTime;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
@@ -63,6 +65,12 @@ class Client implements Serializable
 
     #[ORM\OneToMany(mappedBy: 'client', targetEntity: Session::class)]
     private Collection $sessions;
+
+    #[ORM\Column(type: 'date', nullable: true)]
+    private ?DateTimeInterface $dateBefore;
+
+    #[ORM\Column(type: 'date', nullable: true)]
+    private ?DateTimeInterface $dateAfter;
 
     public function __construct()
     {
@@ -164,22 +172,46 @@ class Client implements Serializable
         return $this->afterFile;
     }
 
+    public function getDateBefore(): ?DateTimeInterface
+    {
+        return $this->dateBefore;
+    }
+
+    public function setDateBefore(?DateTimeInterface $dateBefore): self
+    {
+        $this->dateBefore = $dateBefore;
+
+        return $this;
+    }
+
+    public function getDateAfter(): ?DateTimeInterface
+    {
+        return $this->dateAfter;
+    }
+
+    public function setDateAfter(?DateTimeInterface $dateAfter): self
+    {
+        $this->dateAfter = $dateAfter;
+
+        return $this;
+    }
+
     /** @see \Serializable::serialize() */
     public function serialize()
     {
         return serialize(array(
-              $this->id,
-              $this->photoBefore,
-              $this->photoAfter,
-          ));
+            $this->id,
+            $this->photoBefore,
+            $this->photoAfter,
+        ));
     }
 
     /** @see \Serializable::unserialize() */
     public function unserialize($serialized)
     {
         list(
-              $this->id,
-          ) = unserialize($serialized);
+            $this->id,
+        ) = unserialize($serialized);
     }
 
     /**
