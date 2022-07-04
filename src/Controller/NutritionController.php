@@ -69,7 +69,7 @@ class NutritionController extends AbstractController
     #[Route('/{id}', name: 'app_nutrition_delete', methods: ['POST'])]
     public function delete(Request $request, Nutrition $nutrition, NutritionRepository $nutritionRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$nutrition->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $nutrition->getId(), $request->request->get('_token'))) {
             $nutritionRepository->remove($nutrition, true);
         }
 
