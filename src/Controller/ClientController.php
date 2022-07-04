@@ -2,49 +2,52 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Entity\Client;
 use App\Form\ClientType;
+use App\Form\ProfilClientType;
 use App\Repository\ClientRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
-#[Route('/client')]
+#[Route('/profil')]
 class ClientController extends AbstractController
 {
     #[Route('/', name: 'app_client_index', methods: ['GET'])]
-    public function index(ClientRepository $clientRepository): Response
+    #[IsGranted('ROLE_CLIENT')]
+    public function index(): Response
     {
+        /** @var User  */
+        $user = $this->getUser();
+        $client = $user->getClient();
         return $this->render('client/index.html.twig', [
-            'clients' => $clientRepository->findAll(),
+            'client' => $client,
         ]);
     }
 
-    #[Route('/new', name: 'app_client_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, ClientRepository $clientRepository): Response
+    #[Route('/modifier-profil', name: 'client_edit_profil', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_CLIENT')]
+    public function editProfil(Request $request, ClientRepository $clientRepository): Response
     {
-        $client = new Client();
-        $form = $this->createForm(ClientType::class, $client);
+        /** @var User  */
+        $user = $this->getUser();
+        $client = $user->getClient();
+        $form = $this->createForm(ProfilClientType::class, $client);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $clientRepository->add($client, true);
+            $this->addFlash('success', 'Votre profil à bien été modifié !');
 
-            return $this->redirectToRoute('app_client_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('client_edit_profil', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('client/new.html.twig', [
+        return $this->renderForm('client/edit.html.twig', [
             'client' => $client,
             'form' => $form,
-        ]);
-    }
-
-    #[Route('/{id}', name: 'app_client_show', methods: ['GET'])]
-    public function show(Client $client): Response
-    {
-        return $this->render('client/show.html.twig', [
-            'client' => $client,
         ]);
     }
 
@@ -60,7 +63,7 @@ class ClientController extends AbstractController
             return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('client/edit.html.twig', [
+        return $this->renderForm('adminClient/edit.html.twig', [
             'client' => $client,
             'form' => $form,
         ]);
@@ -73,6 +76,6 @@ class ClientController extends AbstractController
             $clientRepository->remove($client, true);
         }
 
-        return $this->redirectToRoute('app_client_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
     }
 }

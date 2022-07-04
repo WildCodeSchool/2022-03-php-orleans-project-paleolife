@@ -44,6 +44,7 @@ class UserFixtures extends Fixture
         $client->setDate(
             GlobalDateTime::createFromFormat('!Y-m-d', '2022-10-4')
         );
+        $this->addReference('client_0', $client);
         $hashedPassword = $this->passwordHasher->hashPassword(
             $client,
             'azerty'
