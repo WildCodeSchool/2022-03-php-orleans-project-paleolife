@@ -16,7 +16,7 @@ class ClientFixtures extends Fixture implements DependentFixtureInterface
         $filesystem->remove('public/uploads/client');
         $filesystem->mkdir('public/uploads/client');
 
-        for ($i = 1; $i < UserFixtures::CLIENT_NUMBER; $i++) {
+        for ($i = 0; $i < UserFixtures::CLIENT_NUMBER; $i++) {
             $client = new Client();
             $photoBefore = 'PhotoBefore' . $i . 'jpg';
             copy('src/DataFixtures/PhotoBefore.jpg', 'public/uploads/client/' . $photoBefore);
