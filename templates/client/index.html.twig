@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'layoutClient.html.twig' %}
 
 {% block stylesheets %}
 	{{ encore_entry_link_tags('client') }}
@@ -8,9 +8,10 @@
 
 {% block body %}
 	<main>
-		<h1>Client index</h1>
+		<h1 class="d-flex justify-content-center mt-5">Bienvenue {{ client.user.name }}</h1>
+		<h2 class="text-center my-5">Votre objectif global : {{ client.globalName}}</h2>
 		<div class="row my-md-5 mx-1">
-			<div class="d-flex justify-content-around">
+			<div class="d-flex justify-content-around align-items-center">
 				<div class="card shadow-sm rounded col-lg-4 col-md-6 col-12 p-2">
 				<div class="d-flex justify-content-around align-items-center my-3">
 					<h2 class="card-title">Avant</h2>
@@ -20,9 +21,12 @@
 						{% if client.photoBefore is empty %}
 							<img src="{{ asset('build/images/placeholderClient.jpg') }}" alt="Photo d'avant" class="photoClient img-fluid float-center">
 						{% else %}
-						<img src="{{vich_uploader_asset(client, 'beforeFile')}}" alt="Photo d'avant" class="photoClient"> 
+							<img src="{{vich_uploader_asset(client, 'beforeFile')}}" alt="Photo d'avant" class="photoClient">
 						{% endif %}
 					</div>
+				</div>
+				<div class="">
+				<a class="btn btn-primary text-dark rounded fs-4" href="{{ path('client_edit_profil') }}"><i class="bi bi-plus-circle me-2"></i>Modifier mon profil</a>
 				</div>
 				<div class="card shadow-sm rounded col-lg-4 col-md-6 col-12 p-2">
 				<div class="d-flex justify-content-around align-items-center my-3">
@@ -39,5 +43,7 @@
 				</div>
 			</div>
 		</div>
+		<h2 class="text-center my-5">Votre objectif du mois : {{ client.monthName}}</h2>
+
 	</main>
 {% endblock %}

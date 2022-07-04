@@ -10,10 +10,11 @@ use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\ORM\Mapping as ORM;
 use DateTimeImmutable;
 use DateTimeInterface;
+use Serializable;
 
 #[ORM\Entity(repositoryClass: ClientRepository::class)]
 #[Vich\Uploadable]
-class Client
+class Client implements Serializable
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -186,5 +187,23 @@ class Client
         $this->dateAfter = $dateAfter;
 
         return $this;
+    }
+
+    /** @see \Serializable::serialize() */
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->photoBefore,
+            $this->photoAfter,
+        ));
+    }
+
+    /** @see \Serializable::unserialize() */
+    public function unserialize($serialized)
+    {
+        list(
+            $this->id,
+        ) = unserialize($serialized);
     }
 }
