@@ -57,8 +57,8 @@ class Client implements Serializable
     #[ORM\Column(type: 'string', length: 255)]
     private string $globalName;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private string $monthName;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $monthName;
 
     #[ORM\Column(type: 'date', nullable: true)]
     private ?DateTimeInterface $dateBefore;
@@ -92,7 +92,7 @@ class Client implements Serializable
         return $this->globalName;
     }
 
-    public function setGlobalName(string $globalName): self
+    public function setGlobalName(?string $globalName): self
     {
         $this->globalName = $globalName;
 
@@ -114,7 +114,7 @@ class Client implements Serializable
         return $this->monthName;
     }
 
-    public function setMonthName(string $monthName): self
+    public function setMonthName(?string $monthName): self
     {
         $this->monthName = $monthName;
 

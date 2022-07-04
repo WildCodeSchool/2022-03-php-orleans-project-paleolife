@@ -51,7 +51,7 @@ class UserFixtures extends Fixture
         );
         $client->setPassword($hashedPassword);
         $manager->persist($client);
-        $this->addReference($client->getEmail(), $client);
+        $this->addReference('client_0', $client);
 
         $faker = Factory::create();
         for ($i = 1; $i < self::CLIENT_NUMBER; $i++) {
