@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\ClientRepository;
-
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use DateTime;
