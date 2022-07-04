@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\Client;
+use App\Entity\Session;
 use App\Form\ClientType;
 use App\Form\ProfilClientType;
 use App\Repository\ClientRepository;
@@ -54,6 +55,7 @@ class ClientController extends AbstractController
     #[Route('/{id}/edit', name: 'app_client_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Client $client, ClientRepository $clientRepository): Response
     {
+        $sessions = $client->getSessions();
         $form = $this->createForm(ClientType::class, $client);
         $form->handleRequest($request);
 
@@ -64,6 +66,7 @@ class ClientController extends AbstractController
         }
 
         return $this->renderForm('adminClient/edit.html.twig', [
+            'sessions' => $sessions,
             'client' => $client,
             'form' => $form,
         ]);

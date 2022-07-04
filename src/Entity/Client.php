@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ClientRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
@@ -59,9 +61,13 @@ class Client implements Serializable
     #[ORM\Column(type: 'string', length: 255)]
     private string $monthName;
 
+    #[ORM\OneToMany(mappedBy: 'client', targetEntity: Session::class)]
+    private Collection $sessions;
+
     public function __construct()
     {
         $this->updatedAt = new DateTimeImmutable();
+        $this->sessions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -174,5 +180,35 @@ class Client implements Serializable
         list(
               $this->id,
           ) = unserialize($serialized);
+    }
+
+    /**
+     * @return Collection<int, Session>
+     */
+    public function getSessions(): Collection
+    {
+        return $this->sessions;
+    }
+
+    public function addSession(Session $session): self
+    {
+        if (!$this->sessions->contains($session)) {
+            $this->sessions[] = $session;
+            $session->setClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSession(Session $session): self
+    {
+        if ($this->sessions->removeElement($session)) {
+            // set the owning side to null (unless already changed)
+            if ($session->getClient() === $this) {
+                $session->setClient(null);
+            }
+        }
+
+        return $this;
     }
 }
