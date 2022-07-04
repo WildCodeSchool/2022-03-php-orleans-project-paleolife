@@ -60,7 +60,7 @@ class UserFixtures extends Fixture
             $aleaClient->setRoles(['ROLE_CLIENT']);
             $aleaClient->setName($faker->name());
             $aleaClient->setDate($faker->dateTime());
-            $this->addReference('client_' . $i, $aleaClient);
+            $this->addReference('user_' . $i, $aleaClient);
             $hashedPassword = $this->passwordHasher->hashPassword(
                 $aleaClient,
                 $faker->sentence(

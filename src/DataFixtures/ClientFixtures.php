@@ -16,7 +16,7 @@ class ClientFixtures extends Fixture implements DependentFixtureInterface
         $filesystem->remove('public/uploads/client');
         $filesystem->mkdir('public/uploads/client');
 
-        for ($i = 0; $i < UserFixtures::CLIENT_NUMBER; $i++) {
+        for ($i = 1; $i < UserFixtures::CLIENT_NUMBER; $i++) {
             $client = new Client();
             $photoBefore = 'PhotoBefore' . $i . 'jpg';
             copy('src/DataFixtures/PhotoBefore.jpg', 'public/uploads/client/' . $photoBefore);
@@ -26,7 +26,8 @@ class ClientFixtures extends Fixture implements DependentFixtureInterface
             $client->setPhotoAfter($photoAfter);
             $client->setGlobalName('Perte de poids');
             $client->setMonthName('Remise à niveau');
-            $client->setUser($this->getReference('client_' . $i));
+            $client->setUser($this->getReference('user_' . $i));
+            $this->addReference('client_' . $i, $client);
             $manager->persist($client);
         }
         $manager->flush();

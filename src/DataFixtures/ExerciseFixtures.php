@@ -14,11 +14,12 @@ class ExerciseFixtures extends Fixture
     {
         $faker = Factory::create();
 
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 1; $i < 5; $i++) {
             $exercise = new Exercise();
             $exercise->setName($faker->word());
             $exercise->setDuration($faker->randomFloat(2, 1, 5));
             $exercise->setRepetition($faker->randomDigitNotNull() . 'x' . $faker->randomDigitNotNull());
+            $this->addReference('exercise_' . $i, $exercise);
             $manager->persist($exercise);
         }
         $manager->flush();
