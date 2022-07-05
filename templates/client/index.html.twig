@@ -9,7 +9,8 @@
 {% block body %}
 	<main>
 		<h1>Client index</h1>
-		<h2 class="text-center my-5">Votre objectif global : {{ client.globalName}}</h2>
+		<h2 class="text-center my-5">Votre objectif global :
+			{{ client.globalName}}</h2>
 		<div class="row my-md-5 mx-1">
 			<div class="d-flex justify-content-around align-items-center">
 				<div class="card shadow-sm rounded col-lg-4 col-md-6 col-12 p-2">
@@ -23,7 +24,8 @@
 					</div>
 				</div>
 				<div class="">
-				<a class="btn btn-primary text-dark rounded fs-4" href="{{ path('client_edit_profil') }}"><i class="bi bi-plus-circle me-2"></i>Modifier mon profil</a>
+					<a class="btn btn-primary text-dark rounded fs-4" href="{{ path('client_edit_profil') }}">
+						<i class="bi bi-plus-circle me-2"></i>Modifier mon profil</a>
 				</div>
 				<div class="card shadow-sm rounded col-lg-4 col-md-6 col-12 p-2">
 					<h2 class="card-title d-flex justify-content-center my-3">Après</h2>
@@ -37,7 +39,44 @@
 				</div>
 			</div>
 		</div>
-		<h2 class="text-center my-5">Votre objectif du mois : {{ client.monthName}}</h2>
+		<h2 class="text-center my-5">Votre objectif du mois :
+			{{ client.monthName}}
+		</h2>
+		<ul class="container nav nav-pills mb-3" id="pills-tab" role="tablist">
+			{% for session in client.getSessions() %}
+				<li class="nav-item" role="presentation">
+					<button class="nav-link " id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-{{session.id}}" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Séance
+						{{session.number}}</button>
+				</li>
+			{% endfor %}
+		</ul>
+		<div class="tab-content" id="pills-tabContent">
+			{% for session in client.getSessions()  %}
 
+				<div class="tab-pane fade" id="pills-{{session.id}}" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+					<h3 class="text-center"> Séance {{session.name}}</h3>
+					<table class="table table-dark table-striped container fs-5 my-4">
+						<thead class="border-bottom">
+							<tr class=" rounded-3">
+								<th>Exercices</th>
+								<th>Répetitions</th>
+								<th>Repos</th>
+							</tr>
+						</thead>
+						{% for exercise in session.getExercises() %}
+
+							<tbody class="border-top-0">
+								<tr>
+									<td class="border-top-0">{{exercise.name}}</td>
+									<td class="border-top-0">{{exercise.repetition}}</td>
+									<td class="border-top-0">{{exercise.duration}}
+										min</td>
+								</tr>
+							</tbody>
+						{% endfor %}
+					</table>
+				</div>
+			{% endfor %}
+		</div>
 	</main>
 {% endblock %}

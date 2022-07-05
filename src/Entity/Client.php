@@ -62,6 +62,7 @@ class Client implements Serializable
     private string $monthName;
 
     #[ORM\OneToMany(mappedBy: 'client', targetEntity: Session::class)]
+    #[ORM\OrderBy(['number' => 'ASC'])]
     private ?Collection $sessions;
 
     public function __construct()

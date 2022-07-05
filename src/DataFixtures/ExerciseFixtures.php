@@ -14,7 +14,7 @@ class ExerciseFixtures extends Fixture
     {
         $faker = Factory::create();
 
-        for ($i = 1; $i < 5; $i++) {
+        for ($i = 0; $i < 5; $i++) {
             $exercise = new Exercise();
             $exercise->setName($faker->word());
             $exercise->setDuration($faker->randomFloat(2, 1, 5));
