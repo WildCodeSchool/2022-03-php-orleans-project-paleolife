@@ -7,3 +7,13 @@
 .photoClient{
     translate: 0 -4rem;
 }
+
+.column{
+    border-color: $primary;
+}
+
+.title {
+    border-left: 5px solid $primary;
+    border-bottom: 5px solid $primary;
+    width: $header-size +1rem;
+ } 
