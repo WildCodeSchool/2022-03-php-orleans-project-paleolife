@@ -58,8 +58,17 @@ class Client implements Serializable
     #[ORM\Column(type: 'string', length: 255)]
     private string $globalName;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private string $monthName;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $monthName;
+
+    #[ORM\OneToMany(mappedBy: 'client', targetEntity: Session::class)]
+    private Collection $sessions;
+
+    #[ORM\Column(type: 'date', nullable: true)]
+    private ?DateTimeInterface $dateBefore;
+
+    #[ORM\Column(type: 'date', nullable: true)]
+    private ?DateTimeInterface $dateAfter;
 
     #[ORM\OneToMany(mappedBy: 'client', targetEntity: MeasurementClient::class)]
     private Collection $measurementClients;
@@ -68,6 +77,7 @@ class Client implements Serializable
     {
         $this->updatedAt = new DateTimeImmutable();
         $this->measurementClients = new ArrayCollection();
+        $this->sessions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -91,7 +101,7 @@ class Client implements Serializable
         return $this->globalName;
     }
 
-    public function setGlobalName(string $globalName): self
+    public function setGlobalName(?string $globalName): self
     {
         $this->globalName = $globalName;
 
@@ -113,7 +123,7 @@ class Client implements Serializable
         return $this->monthName;
     }
 
-    public function setMonthName(string $monthName): self
+    public function setMonthName(?string $monthName): self
     {
         $this->monthName = $monthName;
 
@@ -164,22 +174,76 @@ class Client implements Serializable
         return $this->afterFile;
     }
 
+    public function getDateBefore(): ?DateTimeInterface
+    {
+        return $this->dateBefore;
+    }
+
+    public function setDateBefore(?DateTimeInterface $dateBefore): self
+    {
+        $this->dateBefore = $dateBefore;
+
+        return $this;
+    }
+
+    public function getDateAfter(): ?DateTimeInterface
+    {
+        return $this->dateAfter;
+    }
+
+    public function setDateAfter(?DateTimeInterface $dateAfter): self
+    {
+        $this->dateAfter = $dateAfter;
+
+        return $this;
+    }
+
     /** @see \Serializable::serialize() */
     public function serialize()
     {
         return serialize(array(
-              $this->id,
-              $this->photoBefore,
-              $this->photoAfter,
-          ));
+            $this->id,
+            $this->photoBefore,
+            $this->photoAfter,
+        ));
     }
 
     /** @see \Serializable::unserialize() */
     public function unserialize($serialized)
     {
         list(
-              $this->id,
-          ) = unserialize($serialized);
+            $this->id,
+        ) = unserialize($serialized);
+    }
+
+    /**
+     * @return Collection<int, Session>
+     */
+    public function getSessions(): Collection
+    {
+        return $this->sessions;
+    }
+
+    public function addSession(Session $session): self
+    {
+        if (!$this->sessions->contains($session)) {
+            $this->sessions[] = $session;
+            $session->setClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSession(Session $session): self
+    {
+        if ($this->sessions->removeElement($session)) {
+            // set the owning side to null (unless already changed)
+            if ($session->getClient() === $this) {
+                $session->setClient(null);
+            }
+        }
+
+        return $this;
     }
 
     /**
