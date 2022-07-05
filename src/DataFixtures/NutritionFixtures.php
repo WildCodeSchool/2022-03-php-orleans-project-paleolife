@@ -10,11 +10,13 @@ class NutritionFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        $nutrition = new Nutrition();
+        for ($i = 1; $i <= 50; $i++) {
+            $nutrition = new Nutrition();
 
-        $nutrition->setName('Petit déjeuner');
+            $nutrition->setName('Petit déjeuner');
 
-        $manager->persist($nutrition);
+            $manager->persist($nutrition);
+        }
 
         $manager->flush();
     }
