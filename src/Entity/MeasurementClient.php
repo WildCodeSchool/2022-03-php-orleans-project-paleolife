@@ -18,11 +18,11 @@ class MeasurementClient
 
     #[Assert\Positive]
     #[ORM\Column(type: 'decimal', precision: 4, scale: 1, nullable: true)]
-    private float $valueBefore;
+    private ?float $valueBefore;
 
     #[Assert\Positive]
     #[ORM\Column(type: 'decimal', precision: 4, scale: 1, nullable: true)]
-    private float $valueAfter;
+    private ?float $valueAfter;
 
     #[ORM\ManyToOne(targetEntity: Measurement::class, inversedBy: 'measurementClients')]
     private ?Measurement $measurement;
@@ -35,24 +35,24 @@ class MeasurementClient
         return $this->id;
     }
 
-    public function getValueBefore(): ?string
+    public function getValueBefore(): ?float
     {
         return $this->valueBefore;
     }
 
-    public function setValueBefore(?string $valueBefore): self
+    public function setValueBefore(?float $valueBefore): self
     {
         $this->valueBefore = $valueBefore;
 
         return $this;
     }
 
-    public function getValueAfter(): ?string
+    public function getValueAfter(): ?float
     {
         return $this->valueAfter;
     }
 
-    public function setValueAfter(?string $valueAfter): self
+    public function setValueAfter(?float $valueAfter): self
     {
         $this->valueAfter = $valueAfter;
 
