@@ -27,6 +27,7 @@ class ClientFixtures extends Fixture implements DependentFixtureInterface
             $client->setGlobalName('Perte de poids');
             $client->setMonthName('Remise à niveau');
             $client->setUser($this->getReference('client_' . $i));
+            $this->addReference('validateClient_' . $i, $client);
             $manager->persist($client);
         }
         $manager->flush();
