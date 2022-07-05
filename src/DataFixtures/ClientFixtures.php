@@ -31,6 +31,7 @@ class ClientFixtures extends Fixture implements DependentFixtureInterface
             $client->setDateBefore($faker->dateTime());
             $client->setDateAfter($faker->dateTime());
             $client->setUser($this->getReference('client_' . $i));
+            $this->addReference('validateClient_' . $i, $client);
             $manager->persist($client);
         }
         $manager->flush();

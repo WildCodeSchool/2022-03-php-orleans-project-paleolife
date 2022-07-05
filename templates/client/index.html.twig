@@ -8,8 +8,10 @@
 
 {% block body %}
 	<main>
-		<h1 class="d-flex justify-content-center mt-5">Bienvenue {{ client.user.name }}</h1>
-		<h2 class="text-center my-5">Votre objectif global : {{ client.globalName}}</h2>
+		<h1 class="d-flex justify-content-center mt-5">Bienvenue
+			{{ client.user.name }}</h1>
+		<h2 class="text-center my-5">Votre objectif global :
+			{{ client.globalName}}</h2>
 		<div class="row my-md-5 mx-1">
 			<div class="d-flex justify-content-around align-items-center">
 				<div class="card shadow-sm rounded col-lg-4 col-md-6 col-12 p-2">
@@ -26,7 +28,8 @@
 					</div>
 				</div>
 				<div class="">
-				<a class="btn btn-primary text-dark rounded fs-4" href="{{ path('client_edit_profil') }}"><i class="bi bi-plus-circle me-2"></i>Modifier mon profil</a>
+					<a class="btn btn-primary text-dark rounded fs-4" href="{{ path('client_edit_profil') }}">
+						<i class="bi bi-plus-circle me-2"></i>Modifier mon profil</a>
 				</div>
 				<div class="card shadow-sm rounded col-lg-4 col-md-6 col-12 p-2">
 				<div class="d-flex justify-content-around align-items-center my-3">
@@ -43,7 +46,35 @@
 				</div>
 			</div>
 		</div>
-		<h2 class="text-center my-5">Votre objectif du mois : {{ client.monthName}}</h2>
-
+		<h2 class="text-center my-5">Votre objectif du mois :
+			{{ client.monthName}}</h2>
+		<section>
+			<div class="d-flex justify-content-center">
+				<h2 class="mb-3 title p-3 d-flex justify-content-center">
+					<i class="bi bi-rulers me-2"></i>Mensurations</h2>
+			</div>
+			<div class="container shadow rounded">
+				<table class="table table-hover">
+					<thead>
+						<tr class="fs-4">
+							<th>Nom</th>
+							<th>Avant</th>
+							<th>Après</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for measurementClient in client.measurementClients %}
+							<tr class="fs-5">
+								<td class="column">{{ measurementClient.measurement.name }}</td>
+								<td class="column">{{ measurementClient.valueBefore }}
+									{{measurementClient.measurement.unity}}</td>
+								<td class="column">{{ measurementClient.valueAfter }}
+									{{measurementClient.measurement.unity}}</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</section>
 	</main>
 {% endblock %}

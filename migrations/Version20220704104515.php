@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20220704074018 extends AbstractMigration
+final class Version20220704104515 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,16 +20,12 @@ final class Version20220704074018 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE session ADD client_id INT DEFAULT NULL');
-        $this->addSql('ALTER TABLE session ADD CONSTRAINT FK_D044D5D419EB6921 FOREIGN KEY (client_id) REFERENCES client (id)');
-        $this->addSql('CREATE INDEX IDX_D044D5D419EB6921 ON session (client_id)');
+        $this->addSql('CREATE TABLE measurement (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, unity VARCHAR(50) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE session DROP FOREIGN KEY FK_D044D5D419EB6921');
-        $this->addSql('DROP INDEX IDX_D044D5D419EB6921 ON session');
-        $this->addSql('ALTER TABLE session DROP client_id');
+        $this->addSql('DROP TABLE measurement');
     }
 }

@@ -5,7 +5,6 @@ namespace App\Entity;
 use App\Repository\ClientRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use DateTime;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
@@ -71,9 +70,13 @@ class Client implements Serializable
     #[ORM\Column(type: 'date', nullable: true)]
     private ?DateTimeInterface $dateAfter;
 
+    #[ORM\OneToMany(mappedBy: 'client', targetEntity: MeasurementClient::class)]
+    private Collection $measurementClients;
+
     public function __construct()
     {
         $this->updatedAt = new DateTimeImmutable();
+        $this->measurementClients = new ArrayCollection();
         $this->sessions = new ArrayCollection();
     }
 
@@ -237,6 +240,36 @@ class Client implements Serializable
             // set the owning side to null (unless already changed)
             if ($session->getClient() === $this) {
                 $session->setClient(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, MeasurementClient>
+     */
+    public function getMeasurementClients(): Collection
+    {
+        return $this->measurementClients;
+    }
+
+    public function addMeasurementClient(MeasurementClient $measurementClient): self
+    {
+        if (!$this->measurementClients->contains($measurementClient)) {
+            $this->measurementClients[] = $measurementClient;
+            $measurementClient->setClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMeasurementClient(MeasurementClient $measurementClient): self
+    {
+        if ($this->measurementClients->removeElement($measurementClient)) {
+            // set the owning side to null (unless already changed)
+            if ($measurementClient->getClient() === $this) {
+                $measurementClient->setClient(null);
             }
         }
 
