@@ -34,6 +34,7 @@ Encore
     .addEntry('app', './assets/app.js')
     .addEntry('collection', './assets/collection.js')
     .addStyleEntry('home', './assets/styles/home.scss')
+    .addStyleEntry('client', './assets/styles/client.scss')
     .addStyleEntry('admin', './assets/styles/admin.scss')
 
 

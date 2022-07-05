@@ -44,16 +44,16 @@ class UserFixtures extends Fixture
         $client->setDate(
             GlobalDateTime::createFromFormat('!Y-m-d', '2022-10-4')
         );
+        $this->addReference('client_0', $client);
         $hashedPassword = $this->passwordHasher->hashPassword(
             $client,
             'azerty'
         );
         $client->setPassword($hashedPassword);
         $manager->persist($client);
-        $this->addReference($client->getEmail(), $client);
 
         $faker = Factory::create();
-        for ($i = 0; $i < self::CLIENT_NUMBER; $i++) {
+        for ($i = 1; $i < self::CLIENT_NUMBER; $i++) {
             $aleaClient = new User();
             $aleaClient->setEmail($faker->email());
             $aleaClient->setRoles(['ROLE_CLIENT']);
