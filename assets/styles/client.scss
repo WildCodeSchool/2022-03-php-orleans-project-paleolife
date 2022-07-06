@@ -1,9 +1,33 @@
 @import 'variable.scss';
 
-.photoBeforeSize {
-    height:40rem;
+.photoClient {
+ width: $photo-size;
+ aspect-ratio: 2/3;
 }
 
-.photoClient{
-    translate: 0 -4rem;
+.photo{
+    object-fit: cover ;
+    object-position: top;
+    width: $photo-size;
+    aspect-ratio: 2/3;
+}
+
+.div-dark {
+    height: $header-size;
+    z-index: -1;
+}
+
+.div-light {
+    height: $header-size +2rem;
+    z-index: -1;
+}
+
+.objectif{
+    font-weight: 500;
+    color: darkcyan;
+}
+
+.title{
+    border-left: 5px solid $primary;
+    border-bottom: 5px solid $primary;
 }
