@@ -32,6 +32,9 @@ class Session
     #[ORM\ManyToOne(targetEntity: Client::class, inversedBy: 'sessions')]
     private ?Client $client;
 
+    #[ORM\Column(type: 'text', nullable: true)]
+    private string $comment;
+
     public function __construct()
     {
         $this->exercises = new ArrayCollection();
@@ -104,6 +107,18 @@ class Session
     public function setClient(?Client $client): self
     {
         $this->client = $client;
+
+        return $this;
+    }
+
+    public function getComment(): ?string
+    {
+        return $this->comment;
+    }
+
+    public function setComment(?string $comment): self
+    {
+        $this->comment = $comment;
 
         return $this;
     }

@@ -10,11 +10,13 @@ use Faker\Factory;
 
 class ExerciseFixtures extends Fixture
 {
+    public const EXERCISE_NUMBER = 30;
+
     public function load(ObjectManager $manager): void
     {
         $faker = Factory::create();
 
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i <= self::EXERCISE_NUMBER; $i++) {
             $exercise = new Exercise();
             $exercise->setName($faker->word());
             $exercise->setDuration($faker->randomFloat(2, 1, 5));

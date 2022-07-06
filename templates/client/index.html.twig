@@ -3,41 +3,58 @@
 {% block stylesheets %}
 	{{ encore_entry_link_tags('client') }}
 {% endblock %}
-{% block title %}Mon profil
+{% block title %}
+	{{ parent() }}||Mon profil
 {% endblock %}
 
 {% block body %}
 	<main>
-		<h1>Client index</h1>
-		<h2 class="text-center my-5">Votre objectif global :
-			{{ client.globalName}}</h2>
-		<div class="row my-md-5 mx-1">
-			<div class="d-flex justify-content-around align-items-center">
-				<div class="card shadow-sm rounded col-lg-4 col-md-6 col-12 p-2">
-					<h2 class="card-title d-flex justify-content-center my-3">Avant</h2>
-					<div class="overflow-hidden photoBeforeSize">
+		<section>
+			<div class="row mt-3 justify-content-center position-absolute w-100">
+				<div class="d-lg-flex justify-content-center align-items-center d-none">
+					<div class="photoClient">
 						{% if client.photoBefore is empty %}
-							<img src="{{ asset('build/images/placeholderClient.jpg') }}" alt="Photo d'avant" class="photoClient img-fluid float-center">
+							<img src="{{ asset('build/images/placeholderClient.jpg') }}" alt="Photo d'avant" class="photo w-100">
 						{% else %}
-							<img src="{{vich_uploader_asset(client, 'beforeFile')}}" alt="Photo d'avant" class="photoClient">
+							<img src="{{vich_uploader_asset(client, 'beforeFile')}}" alt="Photo d'avant" class="photo w-100">
 						{% endif %}
+						<div class="d-flex justify-content-center">Avant
+							{{ client.dateBefore|date("d/m/Y") }}</div>
 					</div>
-				</div>
-				<div class="">
-					<a class="btn btn-primary text-dark rounded fs-4" href="{{ path('client_edit_profil') }}">
-						<i class="bi bi-plus-circle me-2"></i>Modifier mon profil</a>
-				</div>
-				<div class="card shadow-sm rounded col-lg-4 col-md-6 col-12 p-2">
-					<h2 class="card-title d-flex justify-content-center my-3">Après</h2>
-					<div class="overflow-hidden photoBeforeSize">
+					<div class="photoClient">
 						{% if client.photoAfter is empty %}
-							<img src="{{ asset('build/images/placeholderClient.jpg') }}" alt="Photo d'après" class="photoClient img-fluid float-center">
+							<img src="{{ asset('build/images/placeholderClient.jpg') }}" alt="Photo d'après" class="photo w-100">
 						{% else %}
-							<img src="{{vich_uploader_asset(client, 'afterFile') }}" alt="Photo d'après" class="photoClient">
+							<img src="{{vich_uploader_asset(client, 'afterFile') }}" alt="Photo d'après" class="photo w-100">
 						{% endif %}
+						<div class="d-flex justify-content-center">Après
+							{{ client.dateAfter|date("d/m/Y") }}</div>
 					</div>
 				</div>
 			</div>
+			<div class="bg-dark div-dark d-none d-lg-block position-relative"></div>
+			<div class="bg-light div-light d-none d-lg-block position-relative"></div>
+		</section>
+		<section class="d-flex flex-column align-items-center">
+			<h1 class="d-flex justify-content-center mb-4 mt-5 title p-2">
+				<i class="bi bi-speedometer me-2"></i>Objectifs
+			</h1>
+			<div class="container w-25 p-3 shadow rounded">
+				<div class="d-flex">
+					<p class="fs-5 objectif me-2">Global:</p>
+					<p class="fs-5">{{ client.globalName}}</p>
+				</div>
+				<div class="d-flex">
+					<p class="fs-5 me-2 objectif">Mensuel:</p>
+					<p class="fs-5">{{ client.monthName}}</p>
+				</div>
+			</div>
+		</section>
+		<h1 class="d-flex justify-content-center mt-5">Bienvenue
+			{{ client.user.name }}</h1>
+		<div class="">
+			<a class="btn btn-primary text-dark rounded fs-4" href="{{ path('client_edit_profil') }}">
+				<i class="bi bi-plus-circle me-2"></i>Modifier mon profil</a>
 		</div>
 		<h2 class="text-center my-5">Votre objectif du mois :
 			{{ client.monthName}}
@@ -50,6 +67,41 @@
 				</li>
 			{% endfor %}
 		</ul>
+		<section>
+			<div class="d-flex justify-content-center">
+				<h1 class="mb-3 title p-3 d-flex justify-content-center">
+					<i class="bi bi-rulers me-2"></i>Mensurations</h1>
+			</div>
+			<div class="container shadow rounded">
+				<table class="table table-hover">
+					<thead>
+						<tr class="fs-4">
+							<th>Nom</th>
+							<th>Avant</th>
+							<th>Après</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for measurementClient in client.measurementClients %}
+							<tr class="fs-5">
+								<td class="column">{{ measurementClient.measurement.name }}</td>
+								<td class="column">{{ measurementClient.valueBefore }}
+									{{measurementClient.measurement.unity}}</td>
+								<td class="column">{{ measurementClient.valueAfter }}
+									{{measurementClient.measurement.unity}}</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</section>
+		<div>
+			{% for session in client.sessions %}
+				<div>
+					{% include "client/_comment_form.html.twig" %}
+				</div>
+			{% endfor %}
+		</div>
 		<div class="tab-content" id="pills-tabContent">
 			{% for session in client.sessions  %}
 				<div class="tab-pane fade" id="pills-{{session.id}}" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">

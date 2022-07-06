@@ -58,8 +58,17 @@ class Client implements Serializable
     #[ORM\Column(type: 'string', length: 255)]
     private string $globalName;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private string $monthName;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $monthName;
+
+    #[ORM\Column(type: 'date', nullable: true)]
+    private ?DateTimeInterface $dateBefore;
+
+    #[ORM\Column(type: 'date', nullable: true)]
+    private ?DateTimeInterface $dateAfter;
+
+    #[ORM\OneToMany(mappedBy: 'client', targetEntity: MeasurementClient::class)]
+    private Collection $measurementClients;
 
     #[ORM\OneToMany(mappedBy: 'client', targetEntity: Session::class)]
     #[ORM\OrderBy(['number' => 'ASC'])]
@@ -68,6 +77,7 @@ class Client implements Serializable
     public function __construct()
     {
         $this->updatedAt = new DateTimeImmutable();
+        $this->measurementClients = new ArrayCollection();
         $this->sessions = new ArrayCollection();
     }
 
@@ -92,7 +102,7 @@ class Client implements Serializable
         return $this->globalName;
     }
 
-    public function setGlobalName(string $globalName): self
+    public function setGlobalName(?string $globalName): self
     {
         $this->globalName = $globalName;
 
@@ -114,7 +124,7 @@ class Client implements Serializable
         return $this->monthName;
     }
 
-    public function setMonthName(string $monthName): self
+    public function setMonthName(?string $monthName): self
     {
         $this->monthName = $monthName;
 
@@ -165,22 +175,46 @@ class Client implements Serializable
         return $this->afterFile;
     }
 
+    public function getDateBefore(): ?DateTimeInterface
+    {
+        return $this->dateBefore;
+    }
+
+    public function setDateBefore(?DateTimeInterface $dateBefore): self
+    {
+        $this->dateBefore = $dateBefore;
+
+        return $this;
+    }
+
+    public function getDateAfter(): ?DateTimeInterface
+    {
+        return $this->dateAfter;
+    }
+
+    public function setDateAfter(?DateTimeInterface $dateAfter): self
+    {
+        $this->dateAfter = $dateAfter;
+
+        return $this;
+    }
+
     /** @see \Serializable::serialize() */
     public function serialize()
     {
         return serialize(array(
-              $this->id,
-              $this->photoBefore,
-              $this->photoAfter,
-          ));
+            $this->id,
+            $this->photoBefore,
+            $this->photoAfter,
+        ));
     }
 
     /** @see \Serializable::unserialize() */
     public function unserialize($serialized)
     {
         list(
-              $this->id,
-          ) = unserialize($serialized);
+            $this->id,
+        ) = unserialize($serialized);
     }
 
     /**
@@ -207,6 +241,36 @@ class Client implements Serializable
             // set the owning side to null (unless already changed)
             if ($session->getClient() === $this) {
                 $session->setClient(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, MeasurementClient>
+     */
+    public function getMeasurementClients(): Collection
+    {
+        return $this->measurementClients;
+    }
+
+    public function addMeasurementClient(MeasurementClient $measurementClient): self
+    {
+        if (!$this->measurementClients->contains($measurementClient)) {
+            $this->measurementClients[] = $measurementClient;
+            $measurementClient->setClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMeasurementClient(MeasurementClient $measurementClient): self
+    {
+        if ($this->measurementClients->removeElement($measurementClient)) {
+            // set the owning side to null (unless already changed)
+            if ($measurementClient->getClient() === $this) {
+                $measurementClient->setClient(null);
             }
         }
 

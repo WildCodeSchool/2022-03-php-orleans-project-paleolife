@@ -13,7 +13,7 @@ use Faker\Factory;
 
 class UserFixtures extends Fixture
 {
-    public const CLIENT_NUMBER = 10;
+    public const CLIENT_NUMBER = 30;
     private UserPasswordHasherInterface $passwordHasher;
 
     public function __construct(UserPasswordHasherInterface $passwordHasher)
@@ -51,7 +51,6 @@ class UserFixtures extends Fixture
         );
         $client->setPassword($hashedPassword);
         $manager->persist($client);
-        $this->addReference($client->getEmail(), $client);
 
         $faker = Factory::create();
         for ($i = 1; $i < self::CLIENT_NUMBER; $i++) {

@@ -6,6 +6,7 @@ use App\Entity\Client;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
+use Faker\Factory;
 use Symfony\Component\Filesystem\Filesystem;
 
 class ClientFixtures extends Fixture implements DependentFixtureInterface
@@ -15,6 +16,7 @@ class ClientFixtures extends Fixture implements DependentFixtureInterface
         $filesystem = new Filesystem();
         $filesystem->remove('public/uploads/client');
         $filesystem->mkdir('public/uploads/client');
+        $faker = Factory::create();
 
         for ($i = 0; $i < UserFixtures::CLIENT_NUMBER; $i++) {
             $client = new Client();
@@ -26,8 +28,11 @@ class ClientFixtures extends Fixture implements DependentFixtureInterface
             $client->setPhotoAfter($photoAfter);
             $client->setGlobalName('Perte de poids');
             $client->setMonthName('Remise à niveau');
+            $client->setDateBefore($faker->dateTime());
+            $client->setDateAfter($faker->dateTime());
             $client->setUser($this->getReference('user_' . $i));
             $this->addReference('client_' . $i, $client);
+            $this->addReference('validateClient_' . $i, $client);
             $manager->persist($client);
         }
         $manager->flush();

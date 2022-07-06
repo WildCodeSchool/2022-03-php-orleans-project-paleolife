@@ -32,7 +32,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private array $roles = [];
 
     #[ORM\Column(type: 'string')]
-    #[Assert\NotBlank()]
     #[Assert\Length(
         max: 255
     )]
@@ -44,9 +43,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         max: 255
     )]
     private string $name;
-
-    #[ORM\Column(type: 'boolean')]
-    private bool $isVerified = false;
 
     #[ORM\Column(type: 'date', nullable: true)]
     #[Assert\Date()]
@@ -133,18 +129,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setName(string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function isVerified(): bool
-    {
-        return $this->isVerified;
-    }
-
-    public function setIsVerified(bool $isVerified): self
-    {
-        $this->isVerified = $isVerified;
 
         return $this;
     }
