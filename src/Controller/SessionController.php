@@ -43,14 +43,6 @@ class SessionController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_session_show', methods: ['GET'])]
-    public function show(Session $session): Response
-    {
-        return $this->render('session/show.html.twig', [
-            'session' => $session,
-        ]);
-    }
-
     #[Route('/{id}/modifier', name: 'app_session_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Session $session, SessionRepository $sessionRepository): Response
     {
@@ -76,6 +68,6 @@ class SessionController extends AbstractController
             $sessionRepository->remove($session, true);
         }
 
-        return $this->redirectToRoute('app_session_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
     }
 }

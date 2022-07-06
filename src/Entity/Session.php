@@ -26,14 +26,14 @@ class Session
     #[ORM\Column(type: 'integer')]
     private int $number;
 
-    #[ORM\OneToMany(mappedBy: 'session', targetEntity: Exercise::class, cascade:['persist'])]
+    #[ORM\OneToMany(mappedBy: 'session', targetEntity: Exercise::class, cascade:['persist', 'remove'])]
     private Collection $exercises;
 
     #[ORM\ManyToOne(targetEntity: Client::class, inversedBy: 'sessions')]
     private ?Client $client;
 
     #[ORM\Column(type: 'text', nullable: true)]
-    private string $comment;
+    private ?string $comment;
 
     public function __construct()
     {
