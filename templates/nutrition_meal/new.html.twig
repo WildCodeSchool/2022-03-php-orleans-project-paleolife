@@ -1,0 +1,12 @@
+{% extends 'layoutAdmin.html.twig' %}
+
+{% block title %}Ajouter un repas
+{% endblock %}
+
+{% block body %}
+	<main class="container">
+		<h1 class="text-center my-5">Ajouter un repas</h1>
+
+		{{ include('nutrition_meal/_form.html.twig') }}
+	</main>
+{% endblock %}
