@@ -64,12 +64,16 @@
 							</td>
 
 						</tr>
-						<tr>
-							<td>
-								{{ session.comment }}
-							</td>
-						</tr>
+
 					{% endfor %}
+                    <tr>
+                        <th>Commentaire</th>                  
+                    </tr>
+					<tr>
+						<td>
+							{{ session.comment }}
+						</td>
+					</tr>
 				</tbody>
 			{% endfor %}
 		</table>
