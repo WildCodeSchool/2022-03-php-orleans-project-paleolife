@@ -74,6 +74,9 @@ class Client implements Serializable
     #[ORM\OrderBy(['number' => 'ASC'])]
     private ?Collection $sessions;
 
+    #[ORM\OneToOne(mappedBy: 'client', targetEntity: Nutrition::class, cascade: ['persist', 'remove'])]
+    private ?Nutrition $nutrition;
+
     public function __construct()
     {
         $this->updatedAt = new DateTimeImmutable();
@@ -273,6 +276,28 @@ class Client implements Serializable
                 $measurementClient->setClient(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getNutrition(): ?Nutrition
+    {
+        return $this->nutrition;
+    }
+
+    public function setNutrition(?Nutrition $nutrition): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($nutrition === null && $this->nutrition !== null) {
+            $this->nutrition->setClient(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($nutrition !== null && $nutrition->getClient() !== $this) {
+            $nutrition->setClient($this);
+        }
+
+        $this->nutrition = $nutrition;
 
         return $this;
     }
