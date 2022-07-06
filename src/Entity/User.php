@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use DateTimeInterface;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -31,7 +32,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private array $roles = [];
 
     #[ORM\Column(type: 'string')]
-    #[Assert\NotBlank()]
     #[Assert\Length(
         max: 255
     )]
@@ -43,9 +43,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         max: 255
     )]
     private string $name;
-
-    #[ORM\Column(type: 'boolean')]
-    private bool $isVerified = false;
 
     #[ORM\Column(type: 'date', nullable: true)]
     #[Assert\Date()]
@@ -136,18 +133,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function isVerified(): bool
-    {
-        return $this->isVerified;
-    }
-
-    public function setIsVerified(bool $isVerified): self
-    {
-        $this->isVerified = $isVerified;
-
-        return $this;
-    }
-
     public function getDate(): ?\DateTimeInterface
     {
         return $this->date;
@@ -165,8 +150,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->client;
     }
 
-    public function setClient(?Client $client): self
+    public function setClient(Client $client): self
     {
+        // set the owning side of the relation if necessary
+        if ($client->getUser() !== $this) {
+            $client->setUser($this);
+        }
         $this->client = $client;
 
         return $this;

@@ -29,6 +29,9 @@ class Service
     #[Assert\Length(max: 255)]
     private string $photo;
 
+    #[ORM\Column(type: 'text', nullable: true)]
+    private ?string $question;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -66,6 +69,18 @@ class Service
     public function setPhoto(string $photo): self
     {
         $this->photo = $photo;
+
+        return $this;
+    }
+
+    public function getQuestion(): ?string
+    {
+        return $this->question;
+    }
+
+    public function setQuestion(?string $question): self
+    {
+        $this->question = $question;
 
         return $this;
     }
