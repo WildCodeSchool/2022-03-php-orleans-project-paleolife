@@ -33,7 +33,7 @@ class Session
     private ?Client $client;
 
     #[ORM\Column(type: 'text', nullable: true)]
-    private string $comment;
+    private ?string $comment;
 
     public function __construct()
     {
