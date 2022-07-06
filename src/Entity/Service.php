@@ -9,7 +9,6 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
 use DateTimeImmutable;
 use DateTimeInterface;
-use Serializable;
 
 #[ORM\Entity(repositoryClass: ServiceRepository::class)]
 #[Vich\Uploadable]
@@ -119,22 +118,4 @@ class Service
     {
         return $this->photoFile;
     }
-
-        /** @see \Serializable::serialize() */
-        public function serialize()
-        {
-            return serialize(array(
-                $this->id,
-                $this->photo,
-
-            ));
-        }
-    
-        /** @see \Serializable::unserialize() */
-        public function unserialize($serialized)
-        {
-            list(
-                $this->id,
-            ) = unserialize($serialized);
-        }
 }
