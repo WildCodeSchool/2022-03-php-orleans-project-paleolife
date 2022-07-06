@@ -22,7 +22,7 @@
 	</section>
 	<section>
 		<h1 class="d-flex justify-content-center my-5 p-4">Seb, votre coach sportif
-											à Montpellier et dans toute la France</h1>
+																	à Montpellier et dans toute la France</h1>
 		<div class="container-fluid bg-dark d-flex justify-content-center align-items-center presentation">
 			<div class="row d-flex justify-content-center align-items-center px-5">
 				<div class="col-lg-5 col-11 d-flex justify-content-center align-items-center overflow-hidden photoPresentation me-lg-5 my-4">
@@ -30,21 +30,21 @@
 				</div>
 				<div class="col-lg-7 align-items-center my-lg-4 p-4 ms-5">
 					<p class="text-light fs-5">Être coach est une véritable vocation pour moi. J’ai grandi et je vis sport depuis mon plus
-																										jeune âge, de la compétition à en faire mes études et maintenant mon avenir.
-																									    Je suis quelqu’un de vivant, d’ambitieux, toujours en quête de partage, d’apprentissage,
-																									    je vis au rythme de mes aventures. L’énergie positive et mes valeurs sont mes deux traits
-																									    de caractères, qui me permettent aujourd’hui de m’épanouir dans ce métier passion.</p>
+																							   jeune âge, de la compétition à en faire mes études et maintenant mon avenir.
+																							   Je suis quelqu’un de vivant, d’ambitieux, toujours en quête de partage, d’apprentissage,
+																							   je vis au rythme de mes aventures. L’énergie positive et mes valeurs sont mes deux traits
+																							   de caractères, qui me permettent aujourd’hui de m’épanouir dans ce métier passion.</p>
 				</br>
 				<p class="text-light fs-5">
 					Coach sportif diplômé, expérimenté, passionné et bienveillant. En effet, j’anime depuis
-																						    des années mes propres concepts de cours collectif en extérieur, j’ai pu également
-																						    coacher en entreprise, puis en salle de sport à titre d’indépendant.
+															des années mes propres concepts de cours collectif en extérieur, j’ai pu également
+															coacher en entreprise, puis en salle de sport à titre d’indépendant.
 				</p>
 			</br>
 			<p class="text-light fs-5">
 				Sébastien coach sportif inspirant et solaire, saura vous sortir de votre zone de confort et
-																		atteindre vos objectifs avec sérieux, sans se prendre au sérieux. Son but vous faire
-																		tomber amoureux d’une vie plus saine et équilibré.
+											    atteindre vos objectifs avec sérieux, sans se prendre au sérieux. Son but vous faire
+												tomber amoureux d’une vie plus saine et équilibré.
 			</p>
 		</div>
 	</div>
@@ -52,18 +52,24 @@
 <section>
 	<h1 class="d-flex justify-content-center mb-4 mt-5">Mes services personnels</h1>
 	{% for service in services %}
-		<div class="card container-fluid mb-5 border border-light bg-light row p-0">
-			<div class="d-md-flex justify-content-md-evenly align-items-center p-0">
+		<div class="card mb-5 border border-light bg-light row p-0">
+			<div class="d-md-flex justify-content-md-evenly align-items-stretch p-0">
 				<div class="col-md-5{% if loop.index is even %} order-lg-1 {% endif %}">
-					<img src="{{ asset('build/images/placeholderservice.jpg') }}" class="img-fluid rounded m-2" alt="jogging">
+					{% if service.photo is empty %}
+						<img src="{{ asset('build/images/placeholderservice.jpg') }}" class="img-fluid rounded m-2" alt="jogging">
+					{% else %}
+						<img src="{{vich_uploader_asset(service, 'photoFile')}}" class="img-fluid rounded m-2" alt="jogging">
+					{% endif %}
 				</div>
-				<div class="col-md-5">
-					<div class="card-body {% if loop.index is even %} order-lg-2 ps-lg-0 {% else %} pe-lg-0 {% endif %}">
-						<h2 class="card-title mb-5">{{ service.title }}</h2>
-						<h3 class="fs-5 fw-bold fst-italic mb-3">{{ service.question|nl2br }}</h3>
-						<p class="card-text fs-5 mb-4 {% if loop.index is even %} text-lg-start {% else %} text-lg-start{% endif %}">{{ service.description|nl2br }}
-						</p>
-						<a href="/contact" class="btn btn-primary m-2 fs-5 col-12 col-lg-3">
+				<div class="col-md-5 d-flex align-items-stretch">
+					<div class="card-body d-flex flex-column justify-content-between {% if loop.index is even %} order-lg-2 ps-lg-0 {% else %} pe-lg-0 {% endif %}">
+						<div>
+							<h2 class="card-title mb-3">{{ service.title }}</h2>
+							<h3 class="fs-5 fw-bold fst-italic mb-5">{{ service.question|nl2br }}</h3>
+							<p class="card-text fs-5 mb-3 {% if loop.index is even %} text-lg-start {% else %} text-lg-start{% endif %}">{{ service.description|nl2br }}
+							</p>
+						</div>
+						<a href="/contact" class="btn btn-primary fs-5 col-12 col-lg-3">
 							<i class="bi bi-send-fill me-3"></i>Me contacter</a>
 					</div>
 				</div>
@@ -77,14 +83,14 @@
 			<div class="card-body">
 				<h2 class="card-title mb-2 mt-3">Coaching sportif en entreprise</h2>
 				<p class="card-text mb-4 fs-5">Plus de convivialité et de cohésion dans votre équipe de travail ?
-																				Laissez vous guider et motiver par des séances collectives, dynamiques et de cohésion
-																				pour des salariés heureux.
-																				Concevoir, équiper, et animer une activité physique au sein de votre entreprise permettra
-																				d’impulser une dynamique de bien-être sur le lieu de travail.
-																				
-																				Je propose un large choix de cours collectif, préalablement réfléchis et adaptés en
-																				entreprise. Format événementiel unique ou récurrent, sous forme de team building, je
-																				répond aux différentes demandes.</p>
+																					   Laissez vous guider et motiver par des séances collectives, dynamiques et de cohésion
+																					   pour des salariés heureux.
+																					   Concevoir, équiper, et animer une activité physique au sein de votre entreprise permettra
+																					   d’impulser une dynamique de bien-être sur le lieu de travail.
+																														
+																					   Je propose un large choix de cours collectif, préalablement réfléchis et adaptés en
+																					   entreprise. Format événementiel unique ou récurrent, sous forme de team building, je
+																					   répond aux différentes demandes.</p>
 				<div class="d-flex justify-content-end me-4">
 					<a href="/contact" class="btn btn-primary fs-5 p-2">
 						<i class="bi bi-send-fill me-2"></i>Détails</a>

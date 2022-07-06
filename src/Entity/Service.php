@@ -5,8 +5,14 @@ namespace App\Entity;
 use App\Repository\ServiceRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+use DateTimeImmutable;
+use DateTimeInterface;
+use Serializable;
 
 #[ORM\Entity(repositoryClass: ServiceRepository::class)]
+#[Vich\Uploadable]
 class Service
 {
     #[ORM\Id]
@@ -23,14 +29,27 @@ class Service
     #[Assert\NotBlank]
     private string $description;
 
+    #[Vich\UploadableField(mapping: 'service_image', fileNameProperty: 'photo')]
+    #[Assert\File(
+        maxSize: '500K',
+        mimeTypes: ['image/jpeg', 'image/png', 'image/webp'],
+    )]
+    private ?File $photoFile = null;
+
     #[ORM\Column(type: 'string', length: 255)]
-    #[Assert\NotBlank]
-    #[Assert\Url]
     #[Assert\Length(max: 255)]
     private string $photo;
 
     #[ORM\Column(type: 'text', nullable: true)]
     private ?string $question;
+
+    #[ORM\Column(type: 'datetime')]
+    private ?DateTimeInterface $updatedAt = null;
+
+    public function __construct()
+    {
+        $this->updatedAt = new DateTimeImmutable();
+    }
 
     public function getId(): ?int
     {
@@ -84,4 +103,38 @@ class Service
 
         return $this;
     }
+
+    public function setPhotoFile(?File $photoFile = null): void
+    {
+        $this->photoFile = $photoFile;
+
+        if (null !== $photoFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new DateTimeImmutable();
+        }
+    }
+
+    public function getPhotoFile(): ?File
+    {
+        return $this->photoFile;
+    }
+
+        /** @see \Serializable::serialize() */
+        public function serialize()
+        {
+            return serialize(array(
+                $this->id,
+                $this->photo,
+
+            ));
+        }
+    
+        /** @see \Serializable::unserialize() */
+        public function unserialize($serialized)
+        {
+            list(
+                $this->id,
+            ) = unserialize($serialized);
+        }
 }
