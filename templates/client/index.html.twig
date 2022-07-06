@@ -1,7 +1,7 @@
 {% extends 'layoutClient.html.twig' %}
 
 {% block stylesheets %}
-    {{ encore_entry_link_tags('client') }}
+	{{ encore_entry_link_tags('client') }}
 {% endblock %}
 {% block title %}
 	{{ parent() }}||Mon profil
@@ -40,14 +40,14 @@
 				<i class="bi bi-speedometer me-2"></i>Objectifs
 			</h1>
 			<div class="container w-25 p-3 shadow rounded">
-			<div class="d-flex">
-				<p class="fs-5 objectif me-2">Global:</p>
-				<p class="fs-5">{{ client.globalName}}</p>
-			</div>
-			<div class="d-flex">
-				<p class="fs-5 me-2 objectif">Mensuel:</p>
-				<p class="fs-5">{{ client.monthName}}</p>
-			</div>
+				<div class="d-flex">
+					<p class="fs-5 objectif me-2">Global:</p>
+					<p class="fs-5">{{ client.globalName}}</p>
+				</div>
+				<div class="d-flex">
+					<p class="fs-5 me-2 objectif">Mensuel:</p>
+					<p class="fs-5">{{ client.monthName}}</p>
+				</div>
 			</div>
 		</section>
 		<h1 class="d-flex justify-content-center mt-5">Bienvenue
@@ -56,6 +56,17 @@
 			<a class="btn btn-primary text-dark rounded fs-4" href="{{ path('client_edit_profil') }}">
 				<i class="bi bi-plus-circle me-2"></i>Modifier mon profil</a>
 		</div>
+		<h2 class="text-center my-5">Votre objectif du mois :
+			{{ client.monthName}}
+		</h2>
+		<ul class="container nav nav-pills mb-3" id="pills-tab" role="tablist">
+			{% for session in client.sessions %}
+				<li class="nav-item" role="presentation">
+					<button class="nav-link" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-{{session.id}}" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Séance
+						{{session.number}}</button>
+				</li>
+			{% endfor %}
+		</ul>
 		<section>
 			<div class="d-flex justify-content-center">
 				<h1 class="mb-3 title p-3 d-flex justify-content-center">
@@ -91,5 +102,32 @@
 				</div>
 			{% endfor %}
 		</div>
-</main>
+		<div class="tab-content" id="pills-tabContent">
+			{% for session in client.sessions  %}
+				<div class="tab-pane fade" id="pills-{{session.id}}" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+					<h3 class="text-center">
+						Séance
+						{{session.name}}</h3>
+					<table class="table table-dark table-striped container fs-5 my-4">
+						<thead class="border-bottom">
+							<tr class=" rounded-3">
+								<th>Exercices</th>
+								<th>Répetitions</th>
+								<th>Repos</th>
+							</tr>
+						</thead>
+						{% for exercise in session.exercises %}
+							<tbody class="border-top-0">
+								<tr>
+									<td class="border-top-0">{{exercise.name}}</td>
+									<td class="border-top-0">{{exercise.repetition}}</td>
+									<td class="border-top-0">{{exercise.duration}}min</td>
+								</tr>
+							</tbody>
+						{% endfor %}
+					</table>
+				</div>
+			{% endfor %}
+		</div>
+	</main>
 {% endblock %}

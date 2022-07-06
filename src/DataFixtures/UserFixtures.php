@@ -13,7 +13,7 @@ use Faker\Factory;
 
 class UserFixtures extends Fixture
 {
-    public const CLIENT_NUMBER = 10;
+    public const CLIENT_NUMBER = 30;
     private UserPasswordHasherInterface $passwordHasher;
 
     public function __construct(UserPasswordHasherInterface $passwordHasher)
@@ -44,7 +44,7 @@ class UserFixtures extends Fixture
         $client->setDate(
             GlobalDateTime::createFromFormat('!Y-m-d', '2022-10-4')
         );
-        $this->addReference('client_0', $client);
+        $this->addReference('user_0', $client);
         $hashedPassword = $this->passwordHasher->hashPassword(
             $client,
             'azerty'
@@ -59,7 +59,7 @@ class UserFixtures extends Fixture
             $aleaClient->setRoles(['ROLE_CLIENT']);
             $aleaClient->setName($faker->name());
             $aleaClient->setDate($faker->dateTime());
-            $this->addReference('client_' . $i, $aleaClient);
+            $this->addReference('user_' . $i, $aleaClient);
             $hashedPassword = $this->passwordHasher->hashPassword(
                 $aleaClient,
                 $faker->sentence(
