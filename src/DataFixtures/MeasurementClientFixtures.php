@@ -18,7 +18,8 @@ class MeasurementClientFixtures extends Fixture implements DependentFixtureInter
                 $measurementClient = new MeasurementClient();
                 $measurementClient->setValueBefore($faker->randomFloat(1, 10, 90));
                 $measurementClient->setValueAfter($faker->randomFloat(1, 10, 90));
-                $measurementClient->setClient($this->getReference('validateClient_' . $i));
+                $measurementClient->setClient($this->getReference('validateClient_' .
+                    rand(0, UserFixtures::CLIENT_NUMBER - 1)));
                 $measurementClient->setMeasurement($this->getReference('measurement_' . $j));
                 $manager->persist($measurementClient);
             }

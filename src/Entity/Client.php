@@ -61,9 +61,6 @@ class Client implements Serializable
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $monthName;
 
-    #[ORM\OneToMany(mappedBy: 'client', targetEntity: Session::class)]
-    private Collection $sessions;
-
     #[ORM\Column(type: 'date', nullable: true)]
     private ?DateTimeInterface $dateBefore;
 
@@ -72,6 +69,10 @@ class Client implements Serializable
 
     #[ORM\OneToMany(mappedBy: 'client', targetEntity: MeasurementClient::class)]
     private Collection $measurementClients;
+
+    #[ORM\OneToMany(mappedBy: 'client', targetEntity: Session::class)]
+    #[ORM\OrderBy(['number' => 'ASC'])]
+    private ?Collection $sessions;
 
     public function __construct()
     {
