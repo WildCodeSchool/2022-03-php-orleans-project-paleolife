@@ -45,10 +45,11 @@
 		<ul class="container nav nav-pills mb-3" id="pills-tab" role="tablist">
 			{% for session in client.getSessions() %}
 				<li class="nav-item" role="presentation">
-					<button class="nav-link " id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-{{session.id}}" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Séance
+					<button class="nav-link" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-{{session.id}}" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Séance
 						{{session.number}}</button>
 				</li>
 			{% endfor %}
+			
 		</ul>
 		<div class="tab-content" id="pills-tabContent">
 			{% for session in client.getSessions()  %}
