@@ -18,7 +18,7 @@
 						{% else %}
 							<img src="{{vich_uploader_asset(client, 'beforeFile')}}" alt="Photo d'avant" class="photo w-100">
 						{% endif %}
-						<div class="d-flex justify-content-center">Avant
+						<div class="d-flex justify-content-center fs-5">Avant
 							{{ client.dateBefore|date("d/m/Y") }}</div>
 					</div>
 					<div class="photoClient">
@@ -27,7 +27,7 @@
 						{% else %}
 							<img src="{{vich_uploader_asset(client, 'afterFile') }}" alt="Photo d'après" class="photo w-100">
 						{% endif %}
-						<div class="d-flex justify-content-center">Après
+						<div class="d-flex justify-content-center fs-5">Après
 							{{ client.dateAfter|date("d/m/Y") }}</div>
 					</div>
 				</div>
@@ -36,37 +36,24 @@
 			<div class="bg-light div-light d-none d-lg-block position-relative"></div>
 		</section>
 		<section class="d-flex flex-column align-items-center">
-			<h1 class="d-flex justify-content-center mb-4 mt-5 title p-2">
+			<h1 class="d-flex justify-content-center mb-3 mt-4 title p-2">
 				<i class="bi bi-speedometer me-2"></i>Objectifs
 			</h1>
-			<div class="container w-25 p-3 shadow rounded">
+			<div class="container w-50 p-3">
 				<div class="d-flex">
-					<p class="fs-5 objectif me-2">Global:</p>
+					<p class="fs-5 objectif me-2 text-secondary">Global:</p>
 					<p class="fs-5">{{ client.globalName}}</p>
 				</div>
 				<div class="d-flex">
-					<p class="fs-5 me-2 objectif">Mensuel:</p>
+					<p class="fs-5 me-2 objectif text-secondary">Mensuel:</p>
 					<p class="fs-5">{{ client.monthName}}</p>
 				</div>
 			</div>
 		</section>
-		<h1 class="d-flex justify-content-center mt-5">Bienvenue
-			{{ client.user.name }}</h1>
-		<div class="">
+		{# <div class="">
 			<a class="btn btn-primary text-dark rounded fs-4" href="{{ path('client_edit_profil') }}">
 				<i class="bi bi-plus-circle me-2"></i>Modifier mon profil</a>
-		</div>
-		<h2 class="text-center my-5">Votre objectif du mois :
-			{{ client.monthName}}
-		</h2>
-		<ul class="container nav nav-pills mb-3" id="pills-tab" role="tablist">
-			{% for session in client.sessions %}
-				<li class="nav-item" role="presentation">
-					<button class="nav-link" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-{{session.id}}" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Séance
-						{{session.number}}</button>
-				</li>
-			{% endfor %}
-		</ul>
+		</div> #}
 		<section>
 			<div class="d-flex justify-content-center">
 				<h1 class="mb-3 title p-3 d-flex justify-content-center">
@@ -95,20 +82,25 @@
 				</table>
 			</div>
 		</section>
-		<div>
-			{% for session in client.sessions %}
-				<div>
-					{% include "client/_comment_form.html.twig" %}
-				</div>
-			{% endfor %}
-		</div>
-		<div class="tab-content" id="pills-tabContent">
+		<div class="tab-content mt-5" id="pills-tabContent">
+		<div class="d-flex justify-content-center">
+				<h1 class="mb-3 title p-3 d-flex justify-content-center">
+					<i class="bi bi-check-all"></i>Séances</h1>
+			</div>
+			<ul class="container nav nav-pills mb-3" id="pills-tab" role="tablist">
+				{% for session in client.sessions %}
+					<li class="nav-item" role="presentation">
+						<button class="nav-link" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-{{session.id}}" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Séance
+							{{session.number}}</button>
+					</li>
+				{% endfor %}
+			</ul>
 			{% for session in client.sessions  %}
 				<div class="tab-pane fade" id="pills-{{session.id}}" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
 					<h3 class="text-center">
 						Séance
 						{{session.name}}</h3>
-					<table class="table table-dark table-striped container fs-5 my-4">
+					<table class="table table-striped container fs-5 my-4">
 						<thead class="border-bottom">
 							<tr class=" rounded-3">
 								<th>Exercices</th>
@@ -122,6 +114,9 @@
 									<td class="border-top-0">{{exercise.name}}</td>
 									<td class="border-top-0">{{exercise.repetition}}</td>
 									<td class="border-top-0">{{exercise.duration}}min</td>
+								</tr>
+								<tr>
+									<td colspan="3">{% include "client/_comment_form.html.twig" %}</td>
 								</tr>
 							</tbody>
 						{% endfor %}
