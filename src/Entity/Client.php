@@ -74,11 +74,24 @@ class Client implements Serializable
     #[ORM\OrderBy(['number' => 'ASC'])]
     private ?Collection $sessions;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private string $objectiveNutrition;
+
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private int $energyExpenditure;
+
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private int $water;
+
+    #[ORM\OneToMany(mappedBy: 'client', targetEntity: NutritionMeal::class)]
+    private Collection $nutritionMeals;
+
     public function __construct()
     {
         $this->updatedAt = new DateTimeImmutable();
         $this->measurementClients = new ArrayCollection();
         $this->sessions = new ArrayCollection();
+        $this->nutritionMeals = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -271,6 +284,72 @@ class Client implements Serializable
             // set the owning side to null (unless already changed)
             if ($measurementClient->getClient() === $this) {
                 $measurementClient->setClient(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getObjectiveNutrition(): ?string
+    {
+        return $this->objectiveNutrition;
+    }
+
+    public function setObjectiveNutrition(?string $objectiveNutrition): self
+    {
+        $this->objectiveNutrition = $objectiveNutrition;
+
+        return $this;
+    }
+
+    public function getEnergyExpenditure(): ?int
+    {
+        return $this->energyExpenditure;
+    }
+
+    public function setEnergyExpenditure(?int $energyExpenditure): self
+    {
+        $this->energyExpenditure = $energyExpenditure;
+
+        return $this;
+    }
+
+    public function getWater(): ?int
+    {
+        return $this->water;
+    }
+
+    public function setWater(?int $water): self
+    {
+        $this->water = $water;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, NutritionMeal>
+     */
+    public function getNutritionMeals(): Collection
+    {
+        return $this->nutritionMeals;
+    }
+
+    public function addNutritionMeal(NutritionMeal $nutritionMeal): self
+    {
+        if (!$this->nutritionMeals->contains($nutritionMeal)) {
+            $this->nutritionMeals[] = $nutritionMeal;
+            $nutritionMeal->setClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeNutritionMeal(NutritionMeal $nutritionMeal): self
+    {
+        if ($this->nutritionMeals->removeElement($nutritionMeal)) {
+            // set the owning side to null (unless already changed)
+            if ($nutritionMeal->getClient() === $this) {
+                $nutritionMeal->setClient(null);
             }
         }
 
