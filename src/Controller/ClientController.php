@@ -8,6 +8,7 @@ use App\Entity\Session;
 use App\Form\ClientType;
 use App\Form\ProfilClientType;
 use App\Repository\ClientRepository;
+use App\Repository\SessionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,13 +18,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 #[Route('/profil')]
 class ClientController extends AbstractController
 {
-    #[Route('/', name: 'app_client_index', methods: ['GET'])]
+    #[Route('/', name: 'app_client_index', methods: ['GET', 'POST'])]
     #[IsGranted('ROLE_CLIENT')]
     public function index(): Response
     {
         /** @var User  */
         $user = $this->getUser();
         $client = $user->getClient();
+
         return $this->render('client/index.html.twig', [
             'client' => $client,
         ]);
@@ -80,5 +82,16 @@ class ClientController extends AbstractController
         }
 
         return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/comment/add/{session}', name: 'app_comment_add', methods: ['GET', 'POST'])]
+    public function addComment(SessionRepository $sessionRepository, Session $session, Request $request): Response
+    {
+        if ($this->isCsrfTokenValid('add' . $session->getId(), $request->request->get('_token'))) {
+            $session->setComment($request->request->get('comment'));
+            $sessionRepository->add($session, true);
+        }
+
+        return $this->redirectToRoute('app_client_index', [], Response::HTTP_SEE_OTHER);
     }
 }

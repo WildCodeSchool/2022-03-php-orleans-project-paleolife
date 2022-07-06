@@ -1,7 +1,7 @@
 {% extends 'layoutClient.html.twig' %}
 
 {% block stylesheets %}
-	{{ encore_entry_link_tags('client') }}
+    {{ encore_entry_link_tags('client') }}
 {% endblock %}
 {% block title %}
 	{{ parent() }}||Mon profil
@@ -84,5 +84,12 @@
 				</table>
 			</div>
 		</section>
-	</main>
+		<div>
+			{% for session in client.sessions %}
+				<div>
+					{% include "client/_comment_form.html.twig" %}
+				</div>
+			{% endfor %}
+		</div>
+</main>
 {% endblock %}
