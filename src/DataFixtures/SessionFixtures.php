@@ -16,6 +16,7 @@ class SessionFixtures extends Fixture
             $session = new Session();
             $session->setName($faker->sentence());
             $session->setNumber($faker->randomDigitNotNull());
+            $session->setComment($faker->sentence());
             $manager->persist($session);
         }
         $manager->flush();

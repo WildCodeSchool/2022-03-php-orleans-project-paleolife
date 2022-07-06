@@ -1,49 +1,78 @@
 {% extends 'layoutClient.html.twig' %}
 
 {% block stylesheets %}
-	{{ encore_entry_link_tags('client') }}
+    {{ encore_entry_link_tags('client') }}
 {% endblock %}
-{% block title %}Mon profil
+{% block title %}
+    Mon profil
+    
 {% endblock %}
 
 {% block body %}
-	<main>
-		<h1 class="d-flex justify-content-center mt-5">Bienvenue {{ client.user.name }}</h1>
-		<h2 class="text-center my-5">Votre objectif global : {{ client.globalName}}</h2>
-		<div class="row my-md-5 mx-1">
-			<div class="d-flex justify-content-around align-items-center">
-				<div class="card shadow-sm rounded col-lg-4 col-md-6 col-12 p-2">
-				<div class="d-flex justify-content-around align-items-center my-3">
-					<h2 class="card-title">Avant</h2>
-					<p class="fs-3">{{ client.dateBefore|date("d/m/Y") }}</p>
-					</div>
-					<div class="overflow-hidden photoBeforeSize">
-						{% if client.photoBefore is empty %}
-							<img src="{{ asset('build/images/placeholderClient.jpg') }}" alt="Photo d'avant" class="photoClient img-fluid float-center">
-						{% else %}
-							<img src="{{vich_uploader_asset(client, 'beforeFile')}}" alt="Photo d'avant" class="photoClient">
-						{% endif %}
-					</div>
-				</div>
-				<div class="">
-				<a class="btn btn-primary text-dark rounded fs-4" href="{{ path('client_edit_profil') }}"><i class="bi bi-plus-circle me-2"></i>Modifier mon profil</a>
-				</div>
-				<div class="card shadow-sm rounded col-lg-4 col-md-6 col-12 p-2">
-				<div class="d-flex justify-content-around align-items-center my-3">
-					<h2 class="card-title">Après</h2>
-					<p class="fs-3">{{ client.dateAfter|date("d/m/Y") }}</p>
-					</div>
-					<div class="overflow-hidden photoBeforeSize">
-						{% if client.photoAfter is empty %}
-							<img src="{{ asset('build/images/placeholderClient.jpg') }}" alt="Photo d'après" class="photoClient img-fluid float-center">
-						{% else %}
-							<img src="{{vich_uploader_asset(client, 'afterFile') }}" alt="Photo d'après" class="photoClient">
-						{% endif %}
-					</div>
-				</div>
-			</div>
-		</div>
-		<h2 class="text-center my-5">Votre objectif du mois : {{ client.monthName}}</h2>
-
-	</main>
-{% endblock %}
+    <main>
+        <h1 class="d-flex justify-content-center mt-5">
+            Bienvenue 
+            {{ client.user.name }}
+        </h1>
+        <h2 class="text-center my-5">
+            Votre objectif global : 
+            {{ client.globalName }}
+        </h2>
+        <div class="row my-md-5 mx-1">
+            <div class="d-flex justify-content-around align-items-center">
+                <div class="card shadow-sm rounded col-lg-4 col-md-6 col-12 p-2">
+                    <div class="d-flex justify-content-around align-items-center my-3">
+                        <h2 class="card-title">
+                            Avant
+                        </h2>
+                        <p class="fs-3">
+                            {{ client.dateBefore|date("d/m/Y") }}
+                        </p>
+                    </div>
+                    <div class="overflow-hidden photoBeforeSize">
+                        {% if client.photoBefore is empty %}
+                            <img
+                            src="{{ asset('build/images/placeholderClient.jpg') }}" alt="Photo d'avant" class="photoClient img-fluid float-center">
+                                {% else %}
+                                <img src="{{ vich_uploader_asset(client, 'beforeFile') }}" alt="Photo d'avant" class="photoClient">
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="">
+                            <a class="btn btn-primary text-dark rounded fs-4" href="{{ path('client_edit_profil') }}">
+                                <i class="bi bi-plus-circle me-2"></i>
+                                Modifier mon profil
+                            </a>
+                        </div>
+                        <div class="card shadow-sm rounded col-lg-4 col-md-6 col-12 p-2">
+                            <div class="d-flex justify-content-around align-items-center my-3">
+                                <h2 class="card-title">
+                                    Après
+                                </h2>
+                                <p class="fs-3">
+                                    {{ client.dateAfter|date("d/m/Y") }}
+                                </p>
+                            </div>
+                            <div class="overflow-hidden photoBeforeSize">
+                                {% if client.photoAfter is empty %}
+                                    <img
+                                    src="{{ asset('build/images/placeholderClient.jpg') }}" alt="Photo d'après" class="photoClient img-fluid float-center">
+                                        {% else %}
+                                        <img src="{{ vich_uploader_asset(client, 'afterFile') }}" alt="Photo d'après" class="photoClient">
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h2 class="text-center my-5">
+                            Votre objectif du mois : 
+                            {{ client.monthName }}
+                        </h2>
+                        {% for session in client.sessions %}
+                            <div>
+                                {% include "client/_comment_form.html.twig" %}
+                            </div>
+                        {% endfor %}
+                    </main>
+                {% endblock %}
+                
