@@ -90,16 +90,17 @@
 						<i class="bi bi-briefcase-fill me-3"></i>Détails
 					</button>
 					<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  						<div class="modal-dialog modal-xl">
+  						<div class="modal-dialog">
     						<div class="modal-content">
       							<div class="modal-header">
         							<h5 class="modal-title" id="exampleModalLabel">Coaching entreprise</h5>
         							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       							</div>
      							<div class="modal-body">
-									<img src="{{ asset('build/images/PlaquetteDeVente.jpg') }}" class="rounded card-img-top p-2" alt="plaquette d'entreprise">
+									<img src="{{ asset('build/images/PlaquetteDeVente.jpg') }}" class="rounded card-img-top p-2 w-100" alt="plaquette d'entreprise">
       							</div>
       							<div class="modal-footer">
+									<a target="_blank" href="{{ asset('build/images/PlaquetteDeVente.pdf') }}" class="btn btn-primary">Télécharger le PDF</a>
         							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
       							</div>
     						</div>
