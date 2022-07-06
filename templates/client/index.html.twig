@@ -33,74 +33,65 @@
 				</div>
 			</div>
 			<div class="bg-dark div-dark d-none d-lg-block position-relative"></div>
-			<div class="bg-light div-light d-none d-lg-block position-relative"></div>
 		</section>
-		<div class="offcanvas offcanvas-start bg-dark" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
-			<div class="offcanvas-header d-flex justify-content-end">
-				<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-			</div>
-			<div class="offcanvas-body">
-				<div class="d-flex justify-content-start mb-2 ms-2">
-					<a href="{{ path('client_edit_profil') }}" class="offcanvas-title text-light fs-4 text-decoration-none" id="offcanvasScrollingLabel">{{ client.user.name }}<i class="bi bi-pencil-square ms-2"></i>
+		<div class="row">
+			<div class="col-md-2 bg-dark">
+				<nav id="sidebar" class="d-flex flex-column sticky-md-top">
+					<h1 class="d-flex justify-content-center my-md-3 text-primary">{{ client.user.name }}</h1>
+					<a href="{{ path('client_edit_profil') }}" class="d-flex justify-content-center text-light fs-4 text-decoration-none">Modifier mon profil<i class="bi bi-pencil-square ms-2"></i>
 					</a>
-				</div>
-				<div class="d-flex justify-content-start mb-2 ms-2">
-					<a href="#goal" class="fs-5 text-light text-decoration-none">Objectifs</a>
-				</div>
-				<div class="d-flex justify-content-start mb-2 ms-2">
-					<a href="#measurement" class="fs-5 text-light text-decoration-none">Mensurations</a>
-				</div>
+					<a href="#goal" class="fs-4 d-flex justify-content-center text-light mt-3 text-decoration-none">Objectifs</a>
+					<a href="#measurement" class="fs-4 d-flex justify-content-center text-light mt-3 text-decoration-none">Mensurations</a>
+				</nav>
+			</div>
+			<div data-bs-spy="scroll" data-bs-target="#sidebar" data-bs-offset="0" data-bs-smooth-scroll="true" class="col-md-8" tabindex="0">
+				<div class="bg-light div-light d-none d-lg-block position-relative"></div>
+				<section class="d-flex flex-column align-items-center">
+					<h1 class="d-flex justify-content-center my-4 mt-5 title p-2" id="goal">
+						<i class="bi bi-speedometer me-2"></i>Objectifs
+					</h1>
+					<div class="row">
+						<div class="container col-12 p-3 shadow rounded mb-5">
+							<div class="d-flex">
+								<p class="fs-5 objectif me-2">Global:</p>
+								<p class="fs-5">{{ client.globalName}}</p>
+							</div>
+							<div class="d-flex">
+								<p class="fs-5 me-2 objectif">Mensuel:</p>
+								<p class="fs-5">{{ client.monthName}}</p>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section>
+					<div class="d-flex justify-content-center">
+						<h1 class="mb-3 mt-4 title p-3 d-flex justify-content-center" id="measurement">
+							<i class="bi bi-rulers me-2"></i>Mensurations</h1>
+					</div>
+					<div class="container shadow rounded">
+						<table class="table table-hover">
+							<thead>
+								<tr class="fs-4">
+									<th>Nom</th>
+									<th>Avant</th>
+									<th>Après</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for measurementClient in client.measurementClients %}
+									<tr class="fs-5">
+										<td class="column">{{ measurementClient.measurement.name }}</td>
+										<td class="column">{{ measurementClient.valueBefore }}
+											{{measurementClient.measurement.unity}}</td>
+										<td class="column">{{ measurementClient.valueAfter }}
+											{{measurementClient.measurement.unity}}</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</section>
 			</div>
 		</div>
-		<section class="d-flex flex-column align-items-center">
-			<div class="d-flex justify-content-center mt-4 mt-md-0">
-				<button class="btn btn-primary sidebar fs-1 shadow-sm" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
-					<i class="bi bi-person-fill"></i>
-				</button>
-			</div>
-			<h1 class="d-flex justify-content-center my-4 mt-5 title p-2" id="goal">
-				<i class="bi bi-speedometer me-2"></i>Objectifs
-			</h1>
-			<div class="row">
-			<div class="container col-12 p-3 shadow rounded mb-5">
-				<div class="d-flex">
-					<p class="fs-5 objectif me-2">Global:</p>
-					<p class="fs-5">{{ client.globalName}}</p>
-				</div>
-				<div class="d-flex">
-					<p class="fs-5 me-2 objectif">Mensuel:</p>
-					<p class="fs-5">{{ client.monthName}}</p>
-				</div>
-			</div>
-			</div>
-		</section>
-		<section>
-			<div class="d-flex justify-content-center">
-				<h1 class="mb-3 mt-4 title p-3 d-flex justify-content-center" id="measurement">
-					<i class="bi bi-rulers me-2"></i>Mensurations</h1>
-			</div>
-			<div class="container shadow rounded">
-				<table class="table table-hover">
-					<thead>
-						<tr class="fs-4">
-							<th>Nom</th>
-							<th>Avant</th>
-							<th>Après</th>
-						</tr>
-					</thead>
-					<tbody>
-						{% for measurementClient in client.measurementClients %}
-							<tr class="fs-5">
-								<td class="column">{{ measurementClient.measurement.name }}</td>
-								<td class="column">{{ measurementClient.valueBefore }}
-									{{measurementClient.measurement.unity}}</td>
-								<td class="column">{{ measurementClient.valueAfter }}
-									{{measurementClient.measurement.unity}}</td>
-							</tr>
-						{% endfor %}
-					</tbody>
-				</table>
-			</div>
-		</section>
 	</main>
 {% endblock %}
