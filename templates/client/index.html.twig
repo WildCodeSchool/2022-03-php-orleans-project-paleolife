@@ -79,7 +79,7 @@
 			</div>
 		</section>
 		<div class="tab-content mt-5" id="pills-tabContent">
-		<div class="d-flex justify-content-center">
+			<div class="d-flex justify-content-center">
 				<h1 class="mb-3 title p-3 d-flex justify-content-center">
 					<i class="bi bi-check-all"></i>Séances</h1>
 			</div>
@@ -104,18 +104,21 @@
 								<th>Repos</th>
 							</tr>
 						</thead>
-						{% for exercise in session.exercises %}
-							<tbody class="border-top-0">
+						<tbody class="border-top-0">
+							{% for exercise in session.exercises %}
+
 								<tr>
 									<td class="border-top-0">{{exercise.name}}</td>
 									<td class="border-top-0">{{exercise.repetition}}</td>
 									<td class="border-top-0">{{exercise.duration}}min</td>
 								</tr>
-								<tr>
-									<td colspan="3">{% include "client/_comment_form.html.twig" %}</td>
-								</tr>
-							</tbody>
-						{% endfor %}
+
+
+							{% endfor %}
+							<tr>
+								<td colspan="3">{% include "client/_comment_form.html.twig" %}</td>
+							</tr>
+						</tbody>
 					</table>
 				</div>
 			{% endfor %}
