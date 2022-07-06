@@ -43,7 +43,7 @@
 			{{ client.monthName}}
 		</h2>
 		<ul class="container nav nav-pills mb-3" id="pills-tab" role="tablist">
-			{% for session in client.getSessions() %}
+			{% for session in client.sessions %}
 				<li class="nav-item" role="presentation">
 					<button class="nav-link" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-{{session.id}}" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Séance
 						{{session.number}}</button>
@@ -51,7 +51,7 @@
 			{% endfor %}
 		</ul>
 		<div class="tab-content" id="pills-tabContent">
-			{% for session in client.getSessions()  %}
+			{% for session in client.sessions  %}
 				<div class="tab-pane fade" id="pills-{{session.id}}" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
 					<h3 class="text-center">
 						Séance
@@ -64,7 +64,7 @@
 								<th>Repos</th>
 							</tr>
 						</thead>
-						{% for exercise in session.getExercises() %}
+						{% for exercise in session.exercises %}
 							<tbody class="border-top-0">
 								<tr>
 									<td class="border-top-0">{{exercise.name}}</td>
