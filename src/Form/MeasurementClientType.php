@@ -13,8 +13,8 @@ class MeasurementClientType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('valueBefore', NumberType::class, ['label' => 'Valeur d\'avant', 'required' => false])
-            ->add('valueAfter', NumberType::class, ['label' => 'Valeur d\'après', 'required' => false])
+            ->add('valueBefore', NumberType::class, ['label' => false, 'required' => false])
+            ->add('valueAfter', NumberType::class, ['label' => false, 'required' => false])
         ;
     }
 
