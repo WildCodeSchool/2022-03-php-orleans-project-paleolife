@@ -53,7 +53,7 @@ class SessionController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $sessionRepository->add($session, true);
 
-            return $this->redirectToRoute('app_session_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('session/edit.html.twig', [
