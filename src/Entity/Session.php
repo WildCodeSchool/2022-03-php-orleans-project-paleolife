@@ -30,7 +30,7 @@ class Session
     private Collection $exercises;
 
     #[ORM\ManyToOne(targetEntity: Client::class, inversedBy: 'sessions')]
-    private Client $client;
+    private ?Client $client;
 
     #[ORM\Column(type: 'text', nullable: true)]
     private string $comment;
