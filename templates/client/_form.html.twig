@@ -1,6 +1,15 @@
 {{ form_start(form) }}
 <div class="container shadow p-4 fs-5">
-	{{ form_widget(form) }}
+	{{ form_row(form.beforeFile) }}
+	{{ form_row(form.dateBefore) }}
+	{{ form_row(form.afterFile) }}
+	{{ form_row(form.dateAfter) }}
+	{% for measurementClientForm in form.measurementClients %}
+	{{ measurementClientForm.vars.value.measurement.name }}
+	{{ form_widget(measurementClientForm) }}
+	
+	{% endfor %}
+	
 	<div class="d-flex justify-content-between">
 		<button class="btn btn-primary fs-5">
 			<i class="bi bi-plus-circle me-2"></i>
