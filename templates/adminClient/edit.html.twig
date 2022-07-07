@@ -1,71 +1,86 @@
 {% extends 'layoutAdmin.html.twig' %}
 
 {% block title %}
-    Modifier le client
-    
+	Modifier le client
+
 {% endblock %}
 
 {% block body %}
-    <main class="container">
-        <h1 class="m-5 text-center">
-            Modifier le client   
-        </h1>
-        <h2 class="text-center">
-            Objectifs
-        </h2>
-        <a class="btn btn-dark text-light fs-5" href="{{ path('app_user_index') }}">
-            <i class="bi bi-box-arrow-left me-2"></i>
-            Retour     
-        </a>
-        <section class="fs-5 mb-5">
-            {{ include('adminClient/_form.html.twig', {'button_label': 'Modifier'}) }}
-        </section>
-        <h2 class="text-center mb-5">
-            Séances et exercices
-        </h2>
-        <table class="w-100 ">
-            {% for session in sessions %}
-                <thead class="m-5">
-                    <tr>
-                        <th>
-                            {{ session.name }}
-                        </th>
-                        <th></th>
-                        <th>
-                            <a href="{{ path('app_session_edit', { 'id' : session.id }) }}" class="btn btn-primary mb-3 mt-3">
-                                Modifier                            
-                            </a>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>
-                            Nom de l'exercice
-                        </th>
-                        <th>
-                            Durée de repos
-                        </th>
-                        <th>
-                            Nombre de répétition
-                        </th>
-                    </tr>
-                </thead>
+	<main class="container">
+		<h1 class="m-5 text-center">
+			Modifier le client
+		</h1>
+		<h2 class="text-center">
+			Objectifs
+		</h2>
+		<a class="btn btn-dark text-light fs-5" href="{{ path('app_user_index') }}">
+			<i class="bi bi-box-arrow-left me-2"></i>
+			Retour
+		</a>
+		<section class="fs-5 mb-5">
+			{{ include('adminClient/_form.html.twig', {'button_label': 'Modifier'}) }}
+		</section>
+		<h2 class="text-center mb-5">
+			Séances et exercices
+		</h2>
+		<table class="w-100 ">
+			{% if sessions is empty  %}
+				<a href="{{ path('app_session_new', { 'id' : client.id }) }}" class="btn btn-primary mb-3 mt-3">
+					Ajouter
+				</a>
+			{% endif %}
+			{% for session in sessions %}
+				<thead class="m-5">
+					<tr>
+						<th>
+							{{ session.name }}
+						</th>
+						<th></th>
+						<th>
+							<a href="{{ path('app_session_edit', { 'id' : session.id }) }}" class="btn btn-primary mb-3 mt-3">
+								Modifier
+							</a>
+						</th>
+					</tr>
+					<tr>
+						<th>
+							Nom de l'exercice
+						</th>
+						<th>
+							Durée de repos
+						</th>
+						<th>
+							Nombre de répétition
+						</th>
+					</tr>
+				</thead>
 
-                <tbody>
-                    {% for exercise in session.exercises %}
-                        <tr>
-                            <td class="m-3">
-                                {{ exercise.name }}
-                            </td>
-                            <td class="m-3">
-                                {{ exercise.duration }}
-                            </td>
-                            <td class="m-3">
-                                {{ exercise.repetition }}
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            {% endfor %}
-        </table>
-    </main>
+				<tbody>
+					{% for exercise in session.exercises %}
+						<tr>
+							<td class="m-3">
+								{{ exercise.name }}
+							</td>
+							<td class="m-3">
+								{{ exercise.duration }}
+							</td>
+							<td class="m-3">
+								{{ exercise.repetition }}
+							</td>
+
+						</tr>
+
+					{% endfor %}
+					<tr>
+						<th>Commentaire</th>
+					</tr>
+					<tr>
+						<td>
+							{{ session.comment }}
+						</td>
+					</tr>
+				</tbody>
+			{% endfor %}
+		</table>
+	</main>
 {% endblock %}
