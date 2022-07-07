@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Client;
 use App\Entity\NutritionMeal;
 use App\Form\NutritionMealType;
 use App\Repository\NutritionMealRepository;
@@ -21,10 +22,11 @@ class NutritionMealController extends AbstractController
         ]);
     }
 
-    #[Route('/ajouter', name: 'app_nutrition_meal_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, NutritionMealRepository $nMealRepository): Response
+    #[Route('/{id}/ajouter', name: 'app_nutrition_meal_new', methods: ['GET', 'POST'])]
+    public function new(Request $request, NutritionMealRepository $nMealRepository, Client $client): Response
     {
         $nutritionMeal = new NutritionMeal();
+        $nutritionMeal->setClient($client);
         $form = $this->createForm(NutritionMealType::class, $nutritionMeal);
         $form->handleRequest($request);
 
