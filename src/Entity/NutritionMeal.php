@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\NutritionMealRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: NutritionMealRepository::class)]
@@ -13,15 +14,20 @@ class NutritionMeal
     #[ORM\Column(type: 'integer')]
     private int $id;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Assert\NotBlank]
+    #[Assert\Length(max: 255)]
+    #[ORM\Column(type: 'string', length: 255, nullable: false)]
     private string $mealName;
 
+    #[Assert\Positive]
     #[ORM\Column(type: 'integer', nullable: true)]
     private int $proteins;
 
+    #[Assert\Positive]
     #[ORM\Column(type: 'integer', nullable: true)]
     private int $lipids;
 
+    #[Assert\Positive]
     #[ORM\Column(type: 'integer', nullable: true)]
     private int $carbohydrate;
 
