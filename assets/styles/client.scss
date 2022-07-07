@@ -5,6 +5,18 @@
  aspect-ratio: 2/3;
 }
 
+.photoClient{
+    translate: 0 -4rem;
+}
+
+.nav-pills .nav-link.active {
+    background-color: black;
+}
+
+.nav-link { 
+    color: black;
+}
+
 .photo{
     object-fit: cover ;
     object-position: top;
