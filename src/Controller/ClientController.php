@@ -58,7 +58,6 @@ class ClientController extends AbstractController
     public function edit(Request $request, Client $client, ClientRepository $clientRepository): Response
     {
         $sessions = $client->getSessions();
-        $nutritions = $client->getNutritionMeals();
         $form = $this->createForm(ClientType::class, $client);
         $form->handleRequest($request);
 
@@ -70,7 +69,6 @@ class ClientController extends AbstractController
 
         return $this->renderForm('adminClient/edit.html.twig', [
             'sessions' => $sessions,
-            'nutritions' => $nutritions,
             'client' => $client,
             'form' => $form,
         ]);
