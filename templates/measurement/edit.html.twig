@@ -1,13 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends 'layoutAdmin.html.twig' %}
 
-{% block title %}Edit Measurement{% endblock %}
+{% block title %}Edit Measurement
+{% endblock %}
 
 {% block body %}
-    <h1>Edit Measurement</h1>
-
-    {{ include('measurement/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_measurement_index') }}">back to list</a>
-
-    {{ include('measurement/_delete_form.html.twig') }}
+	<main class="container">
+		<h1 class="m-5 text-center">Modifier mensuration</h1>
+		<section>
+			{{ include('measurement/_form.html.twig', {'button_label': 'Modifier'}) }}
+		</section>
+	</main>
 {% endblock %}

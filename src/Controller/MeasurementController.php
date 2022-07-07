@@ -58,6 +58,7 @@ class MeasurementController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $measureRepository->add($measurement, true);
 
+            $this->addFlash('success', 'Mensuration bien mofdifiée !');
             return $this->redirectToRoute('app_measurement_index', [], Response::HTTP_SEE_OTHER);
         }
 
