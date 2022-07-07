@@ -6,7 +6,6 @@
 {% endblock %}
 
 {% block body %}
-
 	<main class="container">
 		<h1 class="m-5 text-center">
 			Modifier le client
@@ -21,12 +20,9 @@
 		<section class="fs-5 mb-5">
 			{{ include('adminClient/_form.html.twig', {'button_label': 'Modifier'}) }}
 		</section>
-
-
 		<h2 class="text-center mb-5">
 			Nutrition
 		</h2>
-
 		<section class="fs-5 mb-5">
 			<a class="btn btn-primary" href="{{ path('app_nutrition_meal_new', {'id': client.id}) }}">
 				<i class="bi bi-plus-circle me-2"></i>
@@ -42,7 +38,6 @@
 						<th>
 							Protéines en g
 						</th>
-
 						<th>
 							Lipides en g
 						</th>
@@ -99,7 +94,6 @@
 						</th>
 					</tr>
 				</thead>
-
 				<tbody>
 					{% for exercise in session.exercises %}
 						<tr>
@@ -112,7 +106,6 @@
 							<td class="m-3">
 								{{ exercise.repetition }}
 							</td>
-
 						</tr>
 					{% endfor %}
 					<tr>
