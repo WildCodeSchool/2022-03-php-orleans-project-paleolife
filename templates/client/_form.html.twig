@@ -4,12 +4,18 @@
 	{{ form_row(form.dateBefore) }}
 	{{ form_row(form.afterFile) }}
 	{{ form_row(form.dateAfter) }}
+	<h2 class="d-flex justify-content-center my-5">Mensurations</h2>
 	{% for measurementClientForm in form.measurementClients %}
-	{{ measurementClientForm.vars.value.measurement.name }}
-	{{ form_widget(measurementClientForm) }}
-	
+		<div class="d-flex justify-content-center">
+			{{ measurementClientForm.vars.value.measurement.name }}
+		</div>
+		<div class="d-flex justify-content-around">
+			{{ form_row(measurementClientForm.valueBefore) }}
+			{{ form_row(measurementClientForm.valueAfter) }}
+		</div>
+
 	{% endfor %}
-	
+
 	<div class="d-flex justify-content-between">
 		<button class="btn btn-primary fs-5">
 			<i class="bi bi-plus-circle me-2"></i>
