@@ -25,8 +25,8 @@
 						<td>{{ measurement.name }}</td>
 						<td>{{ measurement.unity }}</td>
 						<td>
-							<a href="{{ path('app_measurement_show', {'id': measurement.id}) }}">show</a>
 							<a href="{{ path('app_measurement_edit', {'id': measurement.id}) }}">edit</a>
+							{{ include('measurement/_delete_form.html.twig') }}
 						</td>
 					</tr>
 				{% else %}
