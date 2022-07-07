@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use App\Entity\Service;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\Filesystem\Filesystem;
 
 class ServiceFixtures extends Fixture
 {
@@ -20,7 +21,6 @@ class ServiceFixtures extends Fixture
     nouvelles sensations de bien-être et de satisfaction.
     Les cours ne vous arrêteront pas de vous surprendre et de vous dépasser.
     Plaisir et régularité sont des ingrédients essentiels pour obtenir vos résultats.',
-            'photo' => ''
         ],
         [
             'title' => 'Suivis à distance',
@@ -32,18 +32,23 @@ class ServiceFixtures extends Fixture
              avec des exercices adaptés et spécialisés.
              Cela vous évitera de perdre un temps considérable et qui, à la longue pèseront sur votre motivation.
              S’ajoute un plan diététique également personnalisé selon votre génétique et objectif.',
-            'photo' => ''
         ]
     ];
 
     public function load(ObjectManager $manager): void
     {
-        foreach (self::SERVICES as $serviceName) {
+        $filesystem = new Filesystem();
+        $filesystem->remove('public/uploads/service');
+        $filesystem->mkdir('public/uploads/service');
+
+        foreach (self::SERVICES as $key => $serviceName) {
             $service = new Service();
             $service->setTitle($serviceName['title']);
             $service->setQuestion($serviceName['question']);
             $service->setDescription($serviceName['description']);
-            $service->setPhoto($serviceName['photo']);
+            $photo = 'personnal' . $key . '.jpg';
+            copy('src/DataFixtures/' . $photo, 'public/uploads/service/' . $photo);
+            $service->setPhoto($photo);
             $manager->persist($service);
         }
         $manager->flush();

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}NutritionMeal{% endblock %}
+
+{% block body %}
+    <h1>NutritionMeal</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ nutrition_meal.id }}</td>
+            </tr>
+            <tr>
+                <th>MealName</th>
+                <td>{{ nutrition_meal.mealName }}</td>
+            </tr>
+            <tr>
+                <th>Proteins</th>
+                <td>{{ nutrition_meal.proteins }}</td>
+            </tr>
+            <tr>
+                <th>Lipids</th>
+                <td>{{ nutrition_meal.lipids }}</td>
+            </tr>
+            <tr>
+                <th>Carbohydrate</th>
+                <td>{{ nutrition_meal.carbohydrate }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_nutrition_meal_index') }}">back to list</a>
+
+    <a href="{{ path('app_nutrition_meal_edit', {'id': nutrition_meal.id}) }}">edit</a>
+
+    {{ include('nutrition_meal/_delete_form.html.twig') }}
+{% endblock %}
