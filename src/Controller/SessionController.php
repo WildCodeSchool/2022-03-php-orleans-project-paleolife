@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Client;
 use App\Entity\Exercise;
 use App\Entity\Session;
 use App\Form\SessionType;
@@ -23,18 +24,18 @@ class SessionController extends AbstractController
         ]);
     }
 
-    #[Route('/ajouter', name: 'app_session_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, SessionRepository $sessionRepository): Response
+    #[Route('/{id}/ajouter', name: 'app_session_new', methods: ['GET', 'POST'])]
+    public function new(Request $request, SessionRepository $sessionRepository, Client $client): Response
     {
         $session = new Session();
-
+        $session->setClient($client);
         $form = $this->createForm(SessionType::class, $session);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $sessionRepository->add($session, true);
 
-            return $this->redirectToRoute('app_session_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('session/new.html.twig', [

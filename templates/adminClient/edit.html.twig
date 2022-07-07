@@ -24,6 +24,11 @@
 			Séances et exercices
 		</h2>
 		<table class="w-100 ">
+			{% if sessions is empty  %}
+				<a href="{{ path('app_session_new', { 'id' : client.id }) }}" class="btn btn-primary mb-3 mt-3">
+					Ajouter
+				</a>
+			{% endif %}
 			{% for session in sessions %}
 				<thead class="m-5">
 					<tr>
@@ -66,9 +71,9 @@
 						</tr>
 
 					{% endfor %}
-                    <tr>
-                        <th>Commentaire</th>                  
-                    </tr>
+					<tr>
+						<th>Commentaire</th>
+					</tr>
 					<tr>
 						<td>
 							{{ session.comment }}
