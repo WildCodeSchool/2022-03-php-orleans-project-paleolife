@@ -74,12 +74,15 @@ class Client implements Serializable
     #[ORM\OrderBy(['number' => 'ASC'])]
     private ?Collection $sessions;
 
+    #[Assert\Length(max: 255)]
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private string $objectiveNutrition;
 
+    #[Assert\Positive]
     #[ORM\Column(type: 'integer', nullable: true)]
     private int $energyExpenditure;
 
+    #[Assert\Positive]
     #[ORM\Column(type: 'integer', nullable: true)]
     private int $water;
 
