@@ -4,7 +4,7 @@ namespace App\Form;
 
 use App\Entity\Client;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -23,10 +23,10 @@ class ClientType extends AbstractType
             ->add('objectiveNutrition', TextType::class, [
                 'label' => 'Objectif de la nutrition'
             ])
-            ->add('energyExpenditure', NumberType::class, [
+            ->add('energyExpenditure', IntegerType::class, [
                 'label' => 'Dépense énergétique'
             ])
-            ->add('water', NumberType::class, [
+            ->add('water', IntegerType::class, [
                 'label' => 'hydratation journalière'
             ])
         ;

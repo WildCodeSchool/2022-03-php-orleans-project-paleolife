@@ -79,6 +79,7 @@ class Client implements Serializable
     private string $objectiveNutrition;
 
     #[Assert\Positive]
+    #[Assert\Type(type: 'integer')]
     #[ORM\Column(type: 'integer', nullable: true)]
     private int $energyExpenditure;
 

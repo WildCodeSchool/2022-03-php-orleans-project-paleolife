@@ -31,7 +31,8 @@ class NutritionMealController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $nMealRepository->add($nutritionMeal, true);
 
-            return $this->redirectToRoute('app_nutrition_meal_index', [], Response::HTTP_SEE_OTHER);
+            $this->addFlash('success', 'Vous-avez bien ajouté un repas');
+            return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('nutrition_meal/new.html.twig', [

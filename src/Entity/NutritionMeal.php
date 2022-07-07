@@ -20,14 +20,17 @@ class NutritionMeal
     private string $mealName;
 
     #[Assert\Positive]
+    #[Assert\Type(type: 'integer')]
     #[ORM\Column(type: 'integer', nullable: true)]
     private int $proteins;
 
     #[Assert\Positive]
+    #[Assert\Type(type: 'integer')]
     #[ORM\Column(type: 'integer', nullable: true)]
     private int $lipids;
 
     #[Assert\Positive]
+    #[Assert\Type(type: 'integer')]
     #[ORM\Column(type: 'integer', nullable: true)]
     private int $carbohydrate;
 
