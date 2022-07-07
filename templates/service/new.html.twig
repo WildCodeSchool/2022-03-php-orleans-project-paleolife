@@ -1,12 +1,15 @@
 {% extends 'layoutAdmin.html.twig' %}
 
-{% block title %}{{ parent() }} || Ajouter service{% endblock %}
+{% block title %}
+	{{ parent() }}
+	|| Ajouter service
+{% endblock %}
 
 {% block body %}
-<main class="container">
-    <h1 class="m-5 text-center">Ajouter un service</h1>
-    <section class="mt-4 fs-5">
-    {{ include('service/_form.html.twig') }}
-    </section>
-</main>
+	<main class="container">
+		<h1 class="m-5 text-center">Ajouter un service</h1>
+		<section class="mt-4 fs-5">
+			{{ include('service/_form.html.twig') }}
+		</section>
+	</main>
 {% endblock %}
