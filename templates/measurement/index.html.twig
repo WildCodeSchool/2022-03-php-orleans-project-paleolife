@@ -26,7 +26,8 @@
 						<td>{{ measurement.unity }}</td>
 						<td>
 							<a href="{{ path('app_measurement_show', {'id': measurement.id}) }}">show</a>
-							<a href="{{ path('app_measurement_edit', {'id': measurement.id}) }}">edit</a>
+							<a class="btn btn-warning mx-3 fs-5" href="{{ path('app_measurement_edit', {'id': measurement.id}) }}">
+								<i class="bi bi-pen-fill me-2"></i>Modifier</a>
 						</td>
 					</tr>
 				{% else %}
