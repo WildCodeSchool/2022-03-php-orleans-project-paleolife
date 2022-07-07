@@ -26,7 +26,7 @@ class Session
     #[ORM\Column(type: 'integer')]
     private int $number;
 
-    #[ORM\OneToMany(mappedBy: 'session', targetEntity: Exercise::class, cascade:['persist'])]
+    #[ORM\OneToMany(mappedBy: 'session', targetEntity: Exercise::class, cascade:['persist', 'remove'])]
     private Collection $exercises;
 
     #[ORM\ManyToOne(targetEntity: Client::class, inversedBy: 'sessions')]
