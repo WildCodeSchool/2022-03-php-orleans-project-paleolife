@@ -34,14 +34,18 @@
 			</div>
 			<div class="bg-dark div-dark d-none d-lg-block position-relative"></div>
 		</section>
-		<div class="row">
-			<div class="col-md-2 bg-dark">
+		<div class="row mt-5">
+			<div class="col-md-2">
 				<nav id="sidebar" class="d-flex flex-column sticky-md-top">
-					<h1 class="d-flex justify-content-center my-md-3 text-primary">{{ client.user.name }}</h1>
-					<a href="{{ path('client_edit_profil') }}" class="d-flex justify-content-center text-light fs-4 text-decoration-none">Modifier mon profil<i class="bi bi-pencil-square ms-2"></i>
+					<h1 class="d-flex justify-content-start my-md-3 text-primary ms-2">{{ client.user.name }}</h1>
+					<a href="{{ path('client_edit_profil') }}" class="d-flex justify-content-start text-dark fs-4 text-decoration-none ms-2">Modifier mon profil<i class="bi bi-pencil-square ms-2"></i>
 					</a>
-					<a href="#goal" class="fs-4 d-flex justify-content-center text-light mt-3 text-decoration-none">Objectifs</a>
-					<a href="#measurement" class="fs-4 d-flex justify-content-center text-light mt-3 text-decoration-none">Mensurations</a>
+					<div class="d-none d-md-block">
+						<a href="#goal" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2">Objectifs</a>
+						<a href="#measurement" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2">Mensurations</a>
+						<a href="#session" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2">Séances</a>
+						<a href="#nutrition" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2">Nutrition</a>
+					</div>
 				</nav>
 			</div>
 			<div data-bs-spy="scroll" data-bs-target="#sidebar" data-bs-offset="0" data-bs-smooth-scroll="true" class="col-md-8" tabindex="0">
@@ -58,6 +62,10 @@
 						<div class="d-flex">
 							<p class="fs-5 me-2 objectif text-secondary">Mensuel:</p>
 							<p class="fs-5">{{ client.monthName}}</p>
+						</div>
+						<div class="d-flex">
+							<p class="fs-5 me-2 objectif text-secondary">Nutrition:</p>
+							<p class="fs-5">{{ client.objectiveNutrition}}</p>
 						</div>
 					</div>
 				</section>
@@ -91,19 +99,19 @@
 				</section>
 				<div class="tab-content mt-5" id="pills-tabContent">
 					<div class="d-flex justify-content-center">
-						<h1 class="mb-3 title p-3 d-flex justify-content-center">
+						<h1 class="mb-3 title p-3 d-flex justify-content-center" id="session">
 							<i class="bi bi-check-all"></i>Séances</h1>
 					</div>
 					<ul class="container nav nav-pills mb-3" id="pills-tab" role="tablist">
 						{% for session in client.sessions %}
 							<li class="nav-item" role="presentation">
-								<button class="nav-link" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-{{session.id}}" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Séance
+								<button class="nav-link {{ loop.first ? 'active' }} " id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-{{session.id}}" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Séance
 									{{session.number}}</button>
 							</li>
 						{% endfor %}
 					</ul>
 					{% for session in client.sessions  %}
-						<div class="tab-pane fade" id="pills-{{session.id}}" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+						<div class="tab-pane fade {{ loop.first ? 'show active' }} " id="pills-{{session.id}}" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
 							<h3 class="text-center">
 								Séance
 								{{session.name}}</h3>
@@ -117,14 +125,11 @@
 								</thead>
 								<tbody class="border-top-0">
 									{% for exercise in session.exercises %}
-
 										<tr>
 											<td class="border-top-0">{{exercise.name}}</td>
 											<td class="border-top-0">{{exercise.repetition}}</td>
 											<td class="border-top-0">{{exercise.duration}}min</td>
 										</tr>
-
-
 									{% endfor %}
 									<tr>
 										<td colspan="3">{% include "client/_comment_form.html.twig" %}</td>
@@ -134,6 +139,46 @@
 						</div>
 					{% endfor %}
 				</div>
+				<section>
+					<div class="d-flex justify-content-center">
+						<h1 class="mb-3 title p-3 d-flex justify-content-center" id="nutrition">
+							<i class="bi bi-cup-straw"></i>Nutrition</h1>
+					</div>
+					<div class="d-flex">
+							<p class="fs-5 me-2 objectif">Dépense énergétique :</p>
+							<p class="fs-5">{{ client.energyExpenditure}}</p>
+						</div>
+						<div class="d-flex">
+							<p class="fs-5 me-2 objectif">Hydratation journalière :</p>
+							<p class="fs-5">{{ client.water}}</p>
+						</div>
+					<div class="container shadow rounded">
+						<table class="table table-hover">
+							<thead>
+								<tr class="fs-4">
+									<th>Nom du repas</th>
+									<th>Protéines</th>
+									<th>Lipides</th>
+									<th>Glucides</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for nutritionMeal in client.nutritionMeals %}
+									<tr class="fs-5">
+										<td class="column">{{nutritionMeal.mealName}}</td>
+										<td class="column">{{nutritionMeal.proteins}}
+											g</td>
+										<td class="column">{{nutritionMeal.lipids}}
+											g</td>
+										<td class="column">{{nutritionMeal.carbohydrate}}
+											g</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</section>
+				<br>
 			</div>
 		</div>
 	</main>

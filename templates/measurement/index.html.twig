@@ -1,0 +1,41 @@
+{% extends 'layoutAdmin.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	||Mensuration
+{% endblock %}
+
+{% block body %}
+	<main class="container">
+		<h1 class="m-5 d-flex justify-content-center">Mensurations</h1>
+		<div>
+			<a href="{{ path('app_measurement_new') }}" class="btn btn-primary d-inline-flex justify-content-end fs-5 mb-2">
+				<i class="bi bi-plus-circle me-2"></i>Ajouter une mensuration</a>
+		</div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Nom</th>
+					<th>Unité</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for measurement in measurements %}
+					<tr>
+						<td>{{ measurement.name }}</td>
+						<td>{{ measurement.unity }}</td>
+						<td>
+							<a class="btn btn-warning mx-3 fs-5" href="{{ path('app_measurement_edit', {'id': measurement.id}) }}">
+								<i class="bi bi-pen-fill me-2"></i>Modifier</a>
+							{{ include('measurement/_delete_form.html.twig') }}
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="4">Pas de mensuration</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</main>
+{% endblock %}

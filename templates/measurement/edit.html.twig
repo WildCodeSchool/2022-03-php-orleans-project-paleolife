@@ -1,0 +1,14 @@
+{% extends 'layoutAdmin.html.twig' %}
+
+{% block title %}{{ parent() }}
+	|| Modifier Mensuration
+{% endblock %}
+
+{% block body %}
+	<main class="container">
+		<h1 class="m-5 text-center">Modifier mensuration</h1>
+		<section>
+			{{ include('measurement/_form.html.twig', {'button_label': 'Modifier'}) }}
+		</section>
+	</main>
+{% endblock %}
