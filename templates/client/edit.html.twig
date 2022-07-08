@@ -8,8 +8,21 @@
 
 {% block body %}
 	<main>
-		<h1 class="d-flex justify-content-center mt-5">Modifier votre profil
-			{{ client.user.name }}</h1>
-            {{ include('client/_form.html.twig', {'button_label': 'Modifier'}) }}
+		<div class="row">
+			<div class="col-md-2 bg-light">
+				<nav id="sidebar" class="d-flex flex-column sticky-md-top">
+					<h1 class="d-flex justify-content-md-start justify-content-center mt-4 mb-3 my-md-3 text-primary ms-2">{{ client.user.name }}</h1>
+					<a href="#profil" class="fs-4 d-md-flex justify-content-start text-dark mt-3 ms-2 text-decoration-none d-none">Profil</a>
+					<a href="#measure" class="fs-4 d-md-flex justify-content-start text-dark mt-3 ms-2 text-decoration-none d-none">Mensurations</a>
+					<a href="{{ path('app_client_index') }}" class="fs-4 d-md-flex justify-content-start text-dark mt-3 ms-2 text-decoration-none d-none">Retour<i class="bi bi-box-arrow-left ms-2"></i></a>
+				</nav>
+			</div>
+			<div data-bs-spy="scroll" data-bs-target="#sidebar" data-bs-offset="0" data-bs-smooth-scroll="true" class="col-md-10 mb-5" tabindex="0">
+			<div class="d-flex justify-content-center">
+				<h1 class="d-flex justify-content-center mt-md-5 mb-3" id="profil">Modifier votre profil</h1>
+				</div>
+				{{ include('client/_form.html.twig', {'button_label': 'Modifier'}) }}
+			</div>
+		</div>
 	</main>
 {% endblock %}

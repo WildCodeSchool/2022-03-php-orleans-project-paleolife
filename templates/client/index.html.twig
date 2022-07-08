@@ -40,10 +40,12 @@
 					<h1 class="d-flex justify-content-start my-md-3 text-primary ms-2">{{ client.user.name }}</h1>
 					<a href="{{ path('client_edit_profil') }}" class="d-flex justify-content-start text-dark fs-4 text-decoration-none ms-2">Modifier mon profil<i class="bi bi-pencil-square ms-2"></i>
 					</a>
-					<a href="#goal" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2">Objectifs</a>
-					<a href="#measurement" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2">Mensurations</a>
-					<a href="#session" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2">Séances</a>
-					<a href="#nutrition" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2">Nutrition</a>
+					<div class="d-none d-md-block">
+						<a href="#goal" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2">Objectifs</a>
+						<a href="#measurement" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2">Mensurations</a>
+						<a href="#session" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2">Séances</a>
+						<a href="#nutrition" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2">Nutrition</a>
+					</div>
 				</nav>
 			</div>
 			<div data-bs-spy="scroll" data-bs-target="#sidebar" data-bs-offset="0" data-bs-smooth-scroll="true" class="col-md-8" tabindex="0">
@@ -60,6 +62,10 @@
 						<div class="d-flex">
 							<p class="fs-5 me-2 objectif text-secondary">Mensuel:</p>
 							<p class="fs-5">{{ client.monthName}}</p>
+						</div>
+						<div class="d-flex">
+							<p class="fs-5 me-2 objectif text-secondary">Nutrition:</p>
+							<p class="fs-5">{{ client.objectiveNutrition}}</p>
 						</div>
 					</div>
 				</section>
@@ -99,13 +105,13 @@
 					<ul class="container nav nav-pills mb-3" id="pills-tab" role="tablist">
 						{% for session in client.sessions %}
 							<li class="nav-item" role="presentation">
-								<button class="nav-link" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-{{session.id}}" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Séance
+								<button class="nav-link {{ loop.first ? 'active' }} " id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-{{session.id}}" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Séance
 									{{session.number}}</button>
 							</li>
 						{% endfor %}
 					</ul>
 					{% for session in client.sessions  %}
-						<div class="tab-pane fade" id="pills-{{session.id}}" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+						<div class="tab-pane fade {{ loop.first ? 'show active' }} " id="pills-{{session.id}}" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
 							<h3 class="text-center">
 								Séance
 								{{session.name}}</h3>
@@ -138,6 +144,14 @@
 						<h1 class="mb-3 title p-3 d-flex justify-content-center" id="nutrition">
 							<i class="bi bi-cup-straw"></i>Nutrition</h1>
 					</div>
+					<div class="d-flex">
+							<p class="fs-5 me-2 objectif">Dépense énergétique :</p>
+							<p class="fs-5">{{ client.energyExpenditure}}</p>
+						</div>
+						<div class="d-flex">
+							<p class="fs-5 me-2 objectif">Hydratation journalière :</p>
+							<p class="fs-5">{{ client.water}}</p>
+						</div>
 					<div class="container shadow rounded">
 						<table class="table table-hover">
 							<thead>
