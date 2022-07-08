@@ -30,7 +30,11 @@ class ClientFixtures extends Fixture implements DependentFixtureInterface
             $client->setMonthName('Remise à niveau');
             $client->setDateBefore($faker->dateTime());
             $client->setDateAfter($faker->dateTime());
-            $client->setUser($this->getReference('client_' . $i));
+            $client->setObjectiveNutrition($faker->word());
+            $client->setEnergyExpenditure($faker->numberBetween(1000, 3000));
+            $client->setWater($faker->numberBetween(1, 3));
+            $client->setUser($this->getReference('user_' . $i));
+            $this->addReference('client_' . $i, $client);
             $this->addReference('validateClient_' . $i, $client);
             $manager->persist($client);
         }

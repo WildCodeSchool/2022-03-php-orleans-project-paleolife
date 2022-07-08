@@ -26,7 +26,7 @@ class Measurement
     #[ORM\Column(type: 'string', length: 50)]
     private string $unity;
 
-    #[ORM\OneToMany(mappedBy: 'measurement', targetEntity: MeasurementClient::class)]
+    #[ORM\OneToMany(mappedBy: 'measurement', targetEntity: MeasurementClient::class, cascade:['remove'])]
     private Collection $measurementClients;
 
     public function __construct()

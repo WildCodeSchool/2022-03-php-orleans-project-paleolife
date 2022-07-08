@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Service;
 use App\Form\ServiceType;
+use App\Repository\MeasurementRepository;
 use App\Repository\ServiceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,10 +15,13 @@ use Symfony\Component\Routing\Annotation\Route;
 class ServiceController extends AbstractController
 {
     #[Route('/', name: 'app_service_index', methods: ['GET'])]
-    public function index(ServiceRepository $serviceRepository): Response
-    {
+    public function index(
+        ServiceRepository $serviceRepository,
+        MeasurementRepository $measureRepository
+    ): Response {
         return $this->render('service/index.html.twig', [
             'services' => $serviceRepository->findAll(),
+            'measurements' => $measureRepository->findAll(),
         ]);
     }
 
