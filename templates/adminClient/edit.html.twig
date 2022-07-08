@@ -54,6 +54,11 @@
 							<td class="mx-3">{{nutrition.proteins}}</td>
 							<td class="mx-3">{{nutrition.lipids}}</td>
 							<td class="mx-3">{{nutrition.carbohydrate}}</td>
+							<td>
+								<a href="{{ path('app_nutrition_meal_edit', { 'id' : client.id }) }}" class="btn btn-warning mb-3 mt-3">
+								<i class="bi bi-pen-fill me-2"></i>	Modifier
+								</a>
+							</td>
 						</tr>
 					{% endfor %}
 				</tbody>
@@ -63,9 +68,9 @@
 			Séances et exercices
 		</h2>
 		<table class="w-100 ">
-				<a href="{{ path('app_session_new', { 'id' : client.id }) }}" class="btn btn-primary mb-3 mt-3">
-					Ajouter
-				</a>
+			<a href="{{ path('app_session_new', { 'id' : client.id }) }}" class="btn btn-primary mb-3 mt-3">
+				Ajouter
+			</a>
 			{% for session in sessions %}
 				<thead class="m-5">
 					<tr>
