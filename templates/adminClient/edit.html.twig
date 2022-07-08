@@ -53,10 +53,12 @@
 							<td class="mx-3">{{nutrition.proteins}}</td>
 							<td class="mx-3">{{nutrition.lipids}}</td>
 							<td class="mx-3">{{nutrition.carbohydrate}}</td>
-							<td>
-								<a href="{{ path('app_nutrition_meal_edit', { 'id' : nutrition.id }) }}" class="btn btn-primary mb-3 mt-3">
-								<i class="bi bi-pen-fill me-2"></i>	Modifier
+							<td class="d-flex justify-content-end">
+								<a href="{{ path('app_nutrition_meal_edit', { 'id' : nutrition.id }) }}" class="btn btn-primary me-3">
+									<i class="bi bi-pen-fill me-2"></i>
+									Modifier
 								</a>
+								{{ include('nutrition_meal/_delete_form.html.twig') }}
 							</td>
 						</tr>
 					{% endfor %}
@@ -70,16 +72,16 @@
 			</a>
 		</h2>
 		{% for session in sessions %}
-				<h4 class="mt-3 d-flex align-items-center">
-					Séance
-					{{session.number}}:
-					{{ session.name }}
-					<a href="{{ path('app_session_edit', { 'id' : session.id }) }}" class="btn btn-outline-dark mx-2">
-						<i class="bi bi-pen-fill me-2"></i>
-						Modifier
-					</a>
-					{{ include('session/_delete_form.html.twig') }}
-				</h4>
+			<h4 class="mt-3 d-flex align-items-center">
+				Séance
+				{{session.number}}:
+				{{ session.name }}
+				<a href="{{ path('app_session_edit', { 'id' : session.id }) }}" class="btn btn-outline-dark mx-2">
+					<i class="bi bi-pen-fill me-2"></i>
+					Modifier
+				</a>
+				{{ include('session/_delete_form.html.twig') }}
+			</h4>
 			<div class="container shadow-sm rounded">
 				<table class="table table-hover">
 					<thead class="m-5">
