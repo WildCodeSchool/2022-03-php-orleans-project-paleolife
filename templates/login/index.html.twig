@@ -9,7 +9,6 @@
 		<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 	{% endif %}
 	<form action="" method="post">
-		<div class="row">
 			<div class="container shadow bg-light rounded d-flex flex-column align-items-center col-lg-5 col-10 mb-4">
 				<div class="d-flex flex-column justify-content-center align-items-center col-lg-10 mt-5">
 					<label class="w-100 fs-5 mb-2" for="username">E-mail</label>
@@ -28,6 +27,5 @@
 						<i class="bi bi-box-arrow-in-left me-2"></i>Se connecter</button>
 				</div>
 			</div>
-		</div>
 	</form>
 {% endblock %}
