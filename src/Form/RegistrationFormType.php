@@ -20,17 +20,26 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [
-                'label' => 'Email'
+                'label' => 'Email',
+                'attr' => [
+                    'placeholder' => 'd.r@exemple.fr',
+                ]
             ])
             ->add('name', TextType::class, [
                 'label' => 'Nom',
+                'attr' => [
+                    'placeholder' => 'Pierre Gicho',
+                ]
             ])
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'label' => 'Mot de passe',
                 'mapped' => false,
-                'attr' => ['autocomplete' => 'new-password'],
+                'attr' => [
+                    'autocomplete' => 'new-password',
+                    'placeholder' => 'Mot de passe'
+                ],
                 'constraints' => [
                     new NotBlank(),
                     new Length([
@@ -39,8 +48,7 @@ class RegistrationFormType extends AbstractType
                         'max' => 4096,
                     ]),
                 ],
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
