@@ -2,7 +2,6 @@
 
 {% block title %}
 	Modifier le client
-
 {% endblock %}
 
 {% block body %}
@@ -10,7 +9,7 @@
 		<h1 class="m-5 text-center">
 			Modifier le client
 		</h1>
-		<h2 class="text-center">
+		<h2>
 			Objectifs
 		</h2>
 		<a class="btn btn-dark text-light fs-5" href="{{ path('app_user_index') }}">
@@ -20,7 +19,7 @@
 		<section class="fs-5 mb-5">
 			{{ include('adminClient/_form.html.twig', {'button_label': 'Modifier'}) }}
 		</section>
-		<h2 class="text-center mb-5">
+		<h2 class="mb-5">
 			Nutrition
 		</h2>
 		<section class="fs-5 mb-5">
@@ -60,63 +59,66 @@
 				</tbody>
 			</table>
 		</div>
-		<h2 class="text-center mb-5">
+		<h2 class="mb-5">
 			Séances et exercices
-		</h2>
-		<table class="w-100 ">
-			<a href="{{ path('app_session_new', { 'id' : client.id }) }}" class="btn btn-primary mb-3 mt-3">
-				Ajouter
+			<a href="{{ path('app_session_new', { 'id' : client.id }) }}" class="btn btn-outline-dark mb-2 mt-2">
+				<i class="bi bi-plus-circle me-2"></i>Ajouter une séance
 			</a>
-			{% for session in sessions %}
-				<thead class="m-5">
-					<tr>
-						<th>
-							{{ session.name }}
-						</th>
-						<th></th>
-						<th>
-							<a href="{{ path('app_session_edit', { 'id' : session.id }) }}" class="btn btn-primary mb-3 mt-3">
-								Modifier
-							</a>
-							{{ include('session/_delete_form.html.twig') }}
-						</th>
-					</tr>
-					<tr>
-						<th>
-							Nom de l'exercice
-						</th>
-						<th>
-							Durée de repos
-						</th>
-						<th>
-							Nombre de répétition
-						</th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for exercise in session.exercises %}
-						<tr>
-							<td class="m-3">
-								{{ exercise.name }}
-							</td>
-							<td class="m-3">
-								{{ exercise.duration }}
-							</td>
-							<td class="m-3">
-								{{ exercise.repetition }}
-							</td>
+		</h2>
+		{% for session in sessions %}
+				<h4 class="mt-3 d-flex align-items-center">
+					Séance
+					{{session.number}}:
+					{{ session.name }}
+					<a href="{{ path('app_session_edit', { 'id' : session.id }) }}" class="btn btn-outline-dark mx-2">
+						<i class="bi bi-pen-fill me-2"></i>
+						Modifier
+					</a>
+					{{ include('session/_delete_form.html.twig') }}
+				</h4>
+			<div class="container shadow-sm rounded">
+				<table class="table table-hover">
+					<thead class="m-5">
+						<tr class="fs-5">
+							<th>
+								Nom de l'exercice
+							</th>
+							<th>
+								Durée de repos
+							</th>
+							<th>
+								Nombre de répétition
+							</th>
 						</tr>
-					{% endfor %}
-					<tr>
-						<th>Commentaire</th>
-					</tr>
-					<tr>
-						<td>
-							{{ session.comment }}
-						</td>
-					</tr>
-				</tbody>
-			{% endfor %}
-		</table>
+					</thead>
+					<tbody>
+						{% for exercise in session.exercises %}
+							<tr class="fs-5">
+								<td class="mx-3 col-lg-4">
+									{{ exercise.name }}
+								</td>
+								<td class="mx-3 col-lg-3">
+									{{ exercise.duration }}
+								</td>
+								<td class="mx-3 col-lg-3">
+									{{ exercise.repetition }}
+								</td>
+
+							</tr>
+						{% endfor %}
+
+					</tbody>
+				</table>
+			</div>
+			<div class="mb-5">
+				<p class="fs-5">Commentaire sur la séance :
+					{% if  session.comment  is empty %}
+						Aucun commentaire
+					{% else %}
+						{{ session.comment }}
+					{% endif %}
+				</p>
+			</div>
+		{% endfor %}
 	</main>
 {% endblock %}
