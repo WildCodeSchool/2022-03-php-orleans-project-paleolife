@@ -61,6 +61,10 @@
 							<p class="fs-5 me-2 objectif text-secondary">Mensuel:</p>
 							<p class="fs-5">{{ client.monthName}}</p>
 						</div>
+						<div class="d-flex">
+							<p class="fs-5 me-2 objectif text-secondary">Nutrition:</p>
+							<p class="fs-5">{{ client.objectiveNutrition}}</p>
+						</div>
 					</div>
 				</section>
 				<section>
@@ -99,13 +103,13 @@
 					<ul class="container nav nav-pills mb-3" id="pills-tab" role="tablist">
 						{% for session in client.sessions %}
 							<li class="nav-item" role="presentation">
-								<button class="nav-link" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-{{session.id}}" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Séance
+								<button class="nav-link {{ loop.first ? 'active' }} " id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-{{session.id}}" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Séance
 									{{session.number}}</button>
 							</li>
 						{% endfor %}
 					</ul>
 					{% for session in client.sessions  %}
-						<div class="tab-pane fade" id="pills-{{session.id}}" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+						<div class="tab-pane fade {{ loop.first ? 'show active' }} " id="pills-{{session.id}}" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
 							<h3 class="text-center">
 								Séance
 								{{session.name}}</h3>
@@ -138,6 +142,14 @@
 						<h1 class="mb-3 title p-3 d-flex justify-content-center" id="nutrition">
 							<i class="bi bi-cup-straw"></i>Nutrition</h1>
 					</div>
+					<div class="d-flex">
+							<p class="fs-5 me-2 objectif">Dépense énergétique :</p>
+							<p class="fs-5">{{ client.energyExpenditure}}</p>
+						</div>
+						<div class="d-flex">
+							<p class="fs-5 me-2 objectif">Hydratation journalière :</p>
+							<p class="fs-5">{{ client.water}}</p>
+						</div>
 					<div class="container shadow rounded">
 						<table class="table table-hover">
 							<thead>

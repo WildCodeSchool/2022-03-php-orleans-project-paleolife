@@ -4,10 +4,12 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\Client;
+use App\Entity\MeasurementClient;
 use App\Entity\Session;
 use App\Form\ClientType;
 use App\Form\ProfilClientType;
 use App\Repository\ClientRepository;
+use App\Repository\MeasurementRepository;
 use App\Repository\SessionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,11 +35,32 @@ class ClientController extends AbstractController
 
     #[Route('/modifier-profil', name: 'client_edit_profil', methods: ['GET', 'POST'])]
     #[IsGranted('ROLE_CLIENT')]
-    public function editProfil(Request $request, ClientRepository $clientRepository): Response
-    {
+    public function editProfil(
+        Request $request,
+        ClientRepository $clientRepository,
+        MeasurementRepository $measureRepository
+    ): Response {
+
         /** @var User  */
         $user = $this->getUser();
         $client = $user->getClient();
+        $actualMeasureClients = $client->getMeasurementClients();
+        $measurements = $measureRepository->findAll();
+
+        foreach ($measurements as $measurement) {
+            $create = true;
+            foreach ($actualMeasureClients as $actualMeasureClient) {
+                if ($actualMeasureClient->getMeasurement() === $measurement) {
+                    $create = false;
+                }
+            }
+            if ($create) {
+                $measureClient = new MeasurementClient();
+                $measureClient->setMeasurement($measurement);
+                $client->addMeasurementClient($measureClient);
+            }
+        }
+
         $form = $this->createForm(ProfilClientType::class, $client);
         $form->handleRequest($request);
 
