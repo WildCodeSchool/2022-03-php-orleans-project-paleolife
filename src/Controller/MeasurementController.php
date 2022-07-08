@@ -59,7 +59,7 @@ class MeasurementController extends AbstractController
             $measureRepository->add($measurement, true);
 
             $this->addFlash('success', 'Mensuration bien mofdifiée !');
-            return $this->redirectToRoute('app_measurement_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_service_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('measurement/edit.html.twig', [
