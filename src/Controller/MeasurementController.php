@@ -79,6 +79,6 @@ class MeasurementController extends AbstractController
         }
 
         $this->addFlash('danger', 'Mensuration supprimée !');
-        return $this->redirectToRoute('app_measurement_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_service_index', [], Response::HTTP_SEE_OTHER);
     }
 }
