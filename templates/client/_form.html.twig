@@ -29,10 +29,10 @@
 			<tbody>
 				{% for measurementClientForm in form.measurementClients %}
 					<tr class="fs-5">
-						<td class="">{{ measurementClientForm.vars.value.measurement.name }}</td>
-						<td class="">{{ form_row(measurementClientForm.valueBefore) }}</td>
-						<td class="">{{ form_row(measurementClientForm.valueAfter) }}</td>
-						<td class="">{{ measurementClientForm.vars.value.measurement.unity }}</td>
+						<td>{{ measurementClientForm.vars.value.measurement.name }}</td>
+						<td>{{ form_row(measurementClientForm.valueBefore) }}</td>
+						<td>{{ form_row(measurementClientForm.valueAfter) }}</td>
+						<td>{{ measurementClientForm.vars.value.measurement.unity }}</td>
 					</tr>
 				{% endfor %}
 			</tbody>
