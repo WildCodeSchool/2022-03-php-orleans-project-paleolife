@@ -62,6 +62,7 @@ class NutritionMealController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $nMealRepository->add($nutritionMeal, true);
+            $this->addFlash('success', 'Vous-avez bien modifié le programme nutritionnel du client');
 
             return $this->redirectToRoute(
                 'app_client_edit',
