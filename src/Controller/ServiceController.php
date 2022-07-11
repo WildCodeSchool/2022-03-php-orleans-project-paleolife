@@ -60,7 +60,7 @@ class ServiceController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $serviceRepository->add($service, true);
-            $this->addFlash('success', 'Votre service est bien été modifié');
+            $this->addFlash('success', 'Votre service a bien été modifié');
 
             return $this->redirectToRoute('app_service_index', [], Response::HTTP_SEE_OTHER);
         }
