@@ -24,10 +24,12 @@ class ClientType extends AbstractType
                 'label' => 'Objectif de la nutrition'
             ])
             ->add('energyExpenditure', IntegerType::class, [
-                'label' => 'Dépense énergétique'
+                'label' => 'Dépense énergétique',
+                'help' => 'Saisir une valeur en kcal'
             ])
             ->add('water', IntegerType::class, [
-                'label' => 'hydratation journalière'
+                'label' => 'hydratation journalière',
+                'help' => 'Saisir une valeur en litre'
             ])
         ;
     }
