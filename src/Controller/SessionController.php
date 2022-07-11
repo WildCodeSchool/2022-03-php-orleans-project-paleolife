@@ -46,8 +46,12 @@ class SessionController extends AbstractController
     }
 
     #[Route('/{id}/modifier', name: 'app_session_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Session $session, SessionRepository $sessionRepository): Response
-    {
+    public function edit(
+        Request $request,
+        Session $session,
+        SessionRepository $sessionRepository,
+        Client $client
+    ): Response {
         $form = $this->createForm(SessionType::class, $session);
         $form->handleRequest($request);
 
@@ -58,6 +62,7 @@ class SessionController extends AbstractController
         }
 
         return $this->renderForm('session/edit.html.twig', [
+            'client' => $client,
             'session' => $session,
             'form' => $form,
         ]);
