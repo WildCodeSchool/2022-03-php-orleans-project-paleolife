@@ -5,7 +5,7 @@
 
 {% block body %}
 	<main class="container">
-		<h1 class="text-center m-5">Modifier les nutritions</h1>
+		<h1 class="text-center m-5">Modifier les nutritions de {{ nutrition_meal.client.user.name }}</h1>
 		{{ include('nutrition_meal/_form.html.twig', {'button_label': '<i class="bi bi-pen-fill me-2"></i> Modifier'})|raw }}
 	</main>
 {% endblock %}
