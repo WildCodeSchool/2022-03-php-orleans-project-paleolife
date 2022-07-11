@@ -7,7 +7,7 @@
 {% block javascripts %}{{ encore_entry_script_tags('collection') }}{% endblock %}
 {% block body %}
 	<main class="container">
-		<h1 class="d-flex justify-content-center my-5">Modifier la séance {{ session.client.user.name }}</h1>
+		<h1 class="d-flex justify-content-center my-5">Modifier la séance de {{ session.client.user.name }}</h1>
 		{{ include('session/_form.html.twig', {'button_label': 'Modifier'}) }}
 	</main>
 {% endblock %}
