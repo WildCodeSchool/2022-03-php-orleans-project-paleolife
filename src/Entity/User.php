@@ -21,7 +21,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private int $id;
 
     #[Assert\NotBlank(message: 'L\'email est obligatoire.')]
-    #[Assert\Email(message: 'Le format de l\'email n\'est pas valide.')]
+    #[Assert\Email()]
     #[Assert\Length(
         max: 180
     )]
@@ -32,8 +32,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private array $roles = [];
 
     #[ORM\Column(type: 'string')]
-    #[Assert\NotBlank(message: 'Le mot de passe est obligatoire.')]
-    #[Assert\NotCompromisedPassword]
+    #[Assert\NotBlank()]
     #[Assert\Length(
         max: 255
     )]
