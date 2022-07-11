@@ -41,3 +41,21 @@
 .title{
     border-bottom: 5px solid $primary;
 }
+
+.font-th{
+    font-size:$font-size-large;
+}
+
+.font-td{
+    font-size: $font-size-middle;
+}
+
+@media screen and (max-width: 600px){
+    .font-th{
+        font-size: $font-size-middle;
+    }
+
+    .font-td{
+        font-size: $font-size-small;
+    }
+}
