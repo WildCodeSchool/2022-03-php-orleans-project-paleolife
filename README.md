@@ -1,8 +1,10 @@
-# Project 3 - Starter Kit - Symfony
+# Project Paléolife - Starter Kit - Symfony
 
 ## Presentation
 
-This starter kit is here to easily start a repository for Wild Code School students.
+This project is a showcase site for the enterprise paléolife.
+This site show the activity of the coach Sébastien Mirland. He have another functionnality, a profil page for each user which are registered. The admin of this site can control his service, his clients and the program and diet of his clients.
+The client, on the other hand, can upload his picture and add his measurement.
 
 It's symfony website-skeleton project with some additional library (webpack, fixtures) and tools to validate code standards.
 
@@ -19,7 +21,6 @@ It's symfony website-skeleton project with some additional library (webpack, fix
     * Tasks to check if vendor, .idea, env.local are not versionned,
     * PHP_CodeSniffer, PHPStan and PHPmd with same configuration as GrumPHP.
 
-## Getting Started for Students
 
 ### Prerequisites
 
@@ -29,9 +30,12 @@ It's symfony website-skeleton project with some additional library (webpack, fix
 ### Install
 
 1. Clone this project
-2. Run `composer install`
-3. Run `yarn install`
-4. Run `yarn encore dev` to build assets
+2. Duplicate the file .env in .env.local
+3. Choose your database, then change the db_user, db_password and db_name by your own
+4. If you want to test the send email, add your own mailer dsn at the end the file
+5. Run `composer install`
+6. Run `yarn install`
+7. Run `yarn encore dev` to build assets
 
 ### Working
 
@@ -47,7 +51,7 @@ It's symfony website-skeleton project with some additional library (webpack, fix
 
 ### Windows Users
 
-If you develop on Windows, you should edit you git configuration to change your end of line rules with this command:
+If you develop on Windows, you should edit your git configuration to change your end of line rules with this command:
 
 `git config --global core.autocrlf true`
 
@@ -97,6 +101,11 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 ## Authors
 
 Wild Code School trainers team
+Alexis Thibault
+Fabrice Gerbaud
+Jean-Sébastien Derouet
+Kylian Moreira
+Vianney Moreau
 
 ## License
 
