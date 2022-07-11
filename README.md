@@ -31,8 +31,8 @@ It's symfony website-skeleton project with some additional library (webpack, fix
 
 1. Clone this project
 2. Duplicate the file .env in .env.local
-3. Comment the line 31 and decomment the line 30, then change the db_user, db_password and db_name by your own
-4. If you want to test the send email, add your own mailer dsn in line 42
+3. Choose your database, then change the db_user, db_password and db_name by your own
+4. If you want to test the send email, add your own mailer dsn at the end the file
 5. Run `composer install`
 6. Run `yarn install`
 7. Run `yarn encore dev` to build assets
