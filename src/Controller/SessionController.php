@@ -50,8 +50,9 @@ class SessionController extends AbstractController
         Request $request,
         Session $session,
         SessionRepository $sessionRepository,
-        Client $client
     ): Response {
+
+
         $form = $this->createForm(SessionType::class, $session);
         $form->handleRequest($request);
 
@@ -62,7 +63,6 @@ class SessionController extends AbstractController
         }
 
         return $this->renderForm('session/edit.html.twig', [
-            'client' => $client,
             'session' => $session,
             'form' => $form,
         ]);
