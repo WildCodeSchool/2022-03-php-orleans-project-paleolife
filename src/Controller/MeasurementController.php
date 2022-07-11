@@ -32,7 +32,7 @@ class MeasurementController extends AbstractController
             $measureRepository->add($measurement, true);
 
             $this->addFlash('success', 'Mensuration bien enregistrée !');
-            return $this->redirectToRoute('app_measurement_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_service_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('measurement/new.html.twig', [
@@ -59,7 +59,7 @@ class MeasurementController extends AbstractController
             $measureRepository->add($measurement, true);
 
             $this->addFlash('success', 'Mensuration bien mofdifiée !');
-            return $this->redirectToRoute('app_measurement_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_service_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('measurement/edit.html.twig', [
@@ -79,6 +79,6 @@ class MeasurementController extends AbstractController
         }
 
         $this->addFlash('danger', 'Mensuration supprimée !');
-        return $this->redirectToRoute('app_measurement_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_service_index', [], Response::HTTP_SEE_OTHER);
     }
 }

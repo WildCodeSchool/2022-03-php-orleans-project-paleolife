@@ -60,6 +60,7 @@ class ServiceController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $serviceRepository->add($service, true);
+            $this->addFlash('success', 'Votre service a bien été modifié');
 
             return $this->redirectToRoute('app_service_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -75,6 +76,7 @@ class ServiceController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete' . $service->getId(), $request->request->get('_token'))) {
             $serviceRepository->remove($service, true);
+            $this->addFlash('danger', 'Service supprimé');
         }
 
         return $this->redirectToRoute('app_service_index', [], Response::HTTP_SEE_OTHER);

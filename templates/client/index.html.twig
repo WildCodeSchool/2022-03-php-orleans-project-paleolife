@@ -32,7 +32,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="bg-dark div-dark d-none d-lg-block position-relative"></div>
+			<div class="bg-black div-dark d-none d-lg-block position-relative"></div>
 		</section>
 		<div class="row mt-5">
 			<div class="col-md-2">
@@ -40,10 +40,12 @@
 					<h1 class="d-flex justify-content-start my-md-3 text-primary ms-2">{{ client.user.name }}</h1>
 					<a href="{{ path('client_edit_profil') }}" class="d-flex justify-content-start text-dark fs-4 text-decoration-none ms-2">Modifier mon profil<i class="bi bi-pencil-square ms-2"></i>
 					</a>
-					<a href="#goal" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2">Objectifs</a>
-					<a href="#measurement" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2">Mensurations</a>
-					<a href="#session" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2">Séances</a>
-					<a href="#nutrition" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2">Nutrition</a>
+					<div class="d-none d-md-block">
+						<a href="#goal" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2">Objectifs</a>
+						<a href="#measurement" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2">Mensurations</a>
+						<a href="#session" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2">Séances</a>
+						<a href="#nutrition" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2">Nutrition</a>
+					</div>
 				</nav>
 			</div>
 			<div data-bs-spy="scroll" data-bs-target="#sidebar" data-bs-offset="0" data-bs-smooth-scroll="true" class="col-md-8" tabindex="0">
@@ -73,26 +75,7 @@
 							<i class="bi bi-rulers me-2"></i>Mensurations</h1>
 					</div>
 					<div class="container shadow rounded">
-						<table class="table table-hover">
-							<thead>
-								<tr class="fs-4">
-									<th>Nom</th>
-									<th>Avant</th>
-									<th>Après</th>
-								</tr>
-							</thead>
-							<tbody>
-								{% for measurementClient in client.measurementClients %}
-									<tr class="fs-5">
-										<td class="column">{{ measurementClient.measurement.name }}</td>
-										<td class="column">{{ measurementClient.valueBefore }}
-											{{measurementClient.measurement.unity}}</td>
-										<td class="column">{{ measurementClient.valueAfter }}
-											{{measurementClient.measurement.unity}}</td>
-									</tr>
-								{% endfor %}
-							</tbody>
-						</table>
+						{% include "component/_measurement_client.html.twig" %}
 					</div>
 				</section>
 				<div class="tab-content mt-5" id="pills-tabContent">

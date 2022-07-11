@@ -78,6 +78,7 @@ class UserController extends AbstractController
         if ($this->isCsrfTokenValid('change' . $user->getId(), $request->request->get('_token'))) {
             if (in_array('ROLE_CLIENT', $user->getRoles())) {
                 $user->setRoles(['ROLE_USER']);
+                $this->addFlash('danger', 'Compte désactivé');
             } else {
                 $user->setRoles(['ROLE_CLIENT']);
                 if (($user->getClient()) === null) {
@@ -87,6 +88,7 @@ class UserController extends AbstractController
                     $client->setUser($user);
                     $user->setClient($client);
                 }
+                $this->addFlash('success', 'Compte activé');
             }
             $userRepository->add($user, true);
         }
@@ -99,6 +101,7 @@ class UserController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
             $userRepository->remove($user, true);
+            $this->addFlash('danger', 'Compte supprimé');
         }
 
         return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);

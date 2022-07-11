@@ -37,7 +37,7 @@ class Service
 
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\Length(max: 255)]
-    private string $photo;
+    private ?string $photo;
 
     #[ORM\Column(type: 'text', nullable: true)]
     private ?string $question;
@@ -84,7 +84,7 @@ class Service
         return $this->photo;
     }
 
-    public function setPhoto(string $photo): self
+    public function setPhoto(?string $photo): self
     {
         $this->photo = $photo;
 

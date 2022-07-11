@@ -34,18 +34,19 @@ class ContactType extends AbstractType
                 ]
             ])
             ->add('telephone', TextType::class, [
+
                 'label' => 'Téléphone',
                 'attr' => [
                     'placeholder' => '06 12 34 57 89',
-                ]
+                ],
+                'required' => false,
             ])
             ->add('message', TextareaType::class, [
                 'label' => 'Message',
                 'attr' => [
                     'placeholder' => 'Mettez votre message ici',
                 ]
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
