@@ -39,6 +39,7 @@ class SessionController extends AbstractController
         }
 
         return $this->renderForm('session/new.html.twig', [
+            'client' => $client,
             'session' => $session,
             'form' => $form,
         ]);
