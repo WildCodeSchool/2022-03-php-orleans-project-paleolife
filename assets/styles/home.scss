@@ -10,18 +10,30 @@
     z-index: -1;
 }
 
- .homePhoto2 {
-     transform: scale(2);
-     translate: 1rem $header-size/1.5;
- }
+.homePhoto2 {
+    transform: scale(2);
+    translate: 1rem $header-size/1.5;
+}
 
- .photoPresentation {
+.photoPresentation {
     width: 20rem;
     height: 20rem;
     border-radius: 50%;
- }
+}
 
- .presentationImg {
+.presentationImg {
     transform: scale(0.5);
-     translate: 2rem 8rem;
- }
+    translate: 2rem 8rem;
+}
+
+.greenLogo {
+    width: 8rem;
+    height: 8rem;
+}
+
+.greenLogo2 {
+    transform: scaleX(-1);
+    width: 8rem;
+    height: 8rem;
+}
+
