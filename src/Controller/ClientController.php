@@ -77,7 +77,7 @@ class ClientController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/{id}/edit', name: 'app_client_edit', methods: ['GET', 'POST'])]
+    #[Route('/admin/{id}/modifier', name: 'app_client_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Client $client, ClientRepository $clientRepository): Response
     {
         $sessions = $client->getSessions();
