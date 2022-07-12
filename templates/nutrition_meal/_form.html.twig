@@ -2,10 +2,9 @@
 {{ form_widget(form) }}
 <div class="d-flex justify-content-between">
 	<button class="btn btn-primary fs-5">
-		<i class="bi bi-plus-circle me-2"></i>
-		{{ button_label|default('Ajouter') }}</button>
-	<a class="btn btn-dark text-light fs-5" href="{{ path('app_user_index')}}">
-		<i class="bi bi-box-arrow-left me-2"></i>
-		Retour</a>
+		{{ button_label|default('<i class="bi bi-plus-circle me-2"></i> Ajouter')|raw }}</button>
+		<a class="btn btn-dark text-light fs-5" href="{{ path('app_client_edit', {'id': nutrition_meal.client.id} ) }}">
+			<i class="bi bi-box-arrow-left me-2"></i>
+			Retour</a>
 </div>
 {{ form_end(form) }}

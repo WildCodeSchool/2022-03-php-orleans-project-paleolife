@@ -16,21 +16,23 @@
 	<div class="d-flex justify-content-center">
 	<h1 class="d-flex justify-content-center mt-5 mb-3" id="measure">Mensurations</h1>
 	</div>
-	<div class="container shadow p-md-4 mb-5 col-11">
+	<div class="container shadow p-md-4 mb-5 col-11 p-2">
 		<table class="table">
 			<thead>
-				<tr class="fs-4">
+				<tr class="fs-5">
 					<th scope="col">Nom</th>
 					<th scope="col">Avant</th>
 					<th scope="col">Après</th>
+					<th scope="col">Unité</th>
 				</tr>
 			</thead>
 			<tbody>
 				{% for measurementClientForm in form.measurementClients %}
 					<tr class="fs-5">
-						<td class="p-2">{{ measurementClientForm.vars.value.measurement.name }}</td>
-						<td class="p-2">{{ form_row(measurementClientForm.valueBefore) }}</td>
-						<td class="p-2">{{ form_row(measurementClientForm.valueAfter) }}</td>
+						<td>{{ measurementClientForm.vars.value.measurement.name }}</td>
+						<td>{{ form_row(measurementClientForm.valueBefore) }}</td>
+						<td>{{ form_row(measurementClientForm.valueAfter) }}</td>
+						<td>{{ measurementClientForm.vars.value.measurement.unity }}</td>
 					</tr>
 				{% endfor %}
 			</tbody>
