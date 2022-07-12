@@ -68,8 +68,11 @@ class SessionController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete' . $session->getId(), $request->request->get('_token'))) {
             $sessionRepository->remove($session, true);
+            $this->addFlash('danger', 'La séance à bien été supprimé');
         }
 
-        return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_client_edit', [
+            'id' => $session->getClient()->getId()
+        ], Response::HTTP_SEE_OTHER);
     }
 }
