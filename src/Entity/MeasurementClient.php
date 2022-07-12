@@ -27,7 +27,7 @@ class MeasurementClient
     #[ORM\ManyToOne(targetEntity: Measurement::class, inversedBy: 'measurementClients')]
     private ?Measurement $measurement;
 
-    #[ORM\ManyToOne(targetEntity: Client::class, inversedBy: 'measurementClients', cascade: ['persist'])]
+    #[ORM\ManyToOne(targetEntity: Client::class, inversedBy: 'measurementClients')]
     private ?Client $client;
 
     public function getId(): ?int

@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 use DateTimeImmutable;
 use DateTimeInterface;
 use Serializable;
+use Symfony\Component\Validator\Constraints\Cascade;
 
 #[ORM\Entity(repositoryClass: ClientRepository::class)]
 #[Vich\Uploadable]
@@ -67,10 +68,10 @@ class Client implements Serializable
     #[ORM\Column(type: 'date', nullable: true)]
     private ?DateTimeInterface $dateAfter;
 
-    #[ORM\OneToMany(mappedBy: 'client', targetEntity: MeasurementClient::class, cascade: ['persist'])]
+    #[ORM\OneToMany(mappedBy: 'client', targetEntity: MeasurementClient::class, cascade: ['remove'])]
     private Collection $measurementClients;
 
-    #[ORM\OneToMany(mappedBy: 'client', targetEntity: Session::class)]
+    #[ORM\OneToMany(mappedBy: 'client', targetEntity: Session::class, cascade: ['remove'])]
     #[ORM\OrderBy(['number' => 'ASC'])]
     private ?Collection $sessions;
 
@@ -87,7 +88,7 @@ class Client implements Serializable
     #[ORM\Column(type: 'integer', nullable: true)]
     private int $water;
 
-    #[ORM\OneToMany(mappedBy: 'client', targetEntity: NutritionMeal::class)]
+    #[ORM\OneToMany(mappedBy: 'client', targetEntity: NutritionMeal::class, cascade: ['remove'])]
     private Collection $nutritionMeals;
 
     public function __construct()
