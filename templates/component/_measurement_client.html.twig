@@ -1,19 +1,19 @@
-<table class="table table-hover mb-5">
+<table class="table table-hover mb-3">
 	<thead>
-		<tr class="fs-4">
+		<tr class="font-th">
 			<th>Nom</th>
 			<th>Avant</th>
 			<th>Après</th>
+			<th>Unité</th>
 		</tr>
 	</thead>
 	<tbody>
 		{% for measurementClient in client.measurementClients %}
-			<tr class="fs-5">
+			<tr class="font-td">
 				<td class="column">{{ measurementClient.measurement.name }}</td>
-				<td class="column">{{ measurementClient.valueBefore }}
-					{{measurementClient.measurement.unity}}</td>
-				<td class="column">{{ measurementClient.valueAfter }}
-					{{measurementClient.measurement.unity}}</td>
+				<td class="column">{{ measurementClient.valueBefore }}</td>
+				<td class="column">{{ measurementClient.valueAfter }}</td>
+				<td class="column">{{ measurementClient.measurement.unity }}</td>
 			</tr>
 		{% endfor %}
 	</tbody>

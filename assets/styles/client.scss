@@ -41,3 +41,11 @@
 .title{
     border-bottom: 5px solid $primary;
 }
+
+.font-th{
+    font-size:clamp(1.25rem, 5vw, 1.5rem);
+}
+
+.font-td{
+    font-size:clamp(1rem, 4vw, 1.25rem);
+}
