@@ -3,7 +3,7 @@
 ## Presentation
 
 This project is a showcase site for the enterprise paléolife.
-This site show the activity of the coach Sébastien Mirland. He have another functionnality, a profil page for each user which are registered. The admin of this site can control his service, his clients and the program and diet of his clients.
+This site shows the activity of the coach Sébastien Mirland. It has another functionnality, a profil page for each user which are registered. The admin of this site can control his service, his clients and client's program and diet.
 The client, on the other hand, can upload his picture and add his measurement.
 
 It's symfony website-skeleton project with some additional library (webpack, fixtures) and tools to validate code standards.
