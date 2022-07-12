@@ -22,7 +22,7 @@
 					<label class="w-100 fs-5 mb-2" for="password">Mot de passe</label>
 					<input class=" p-2 fs-5 form-control border-dark" type="password" id="password" name="_password" required placeholder="Mot de passe"/>
 				</div>
-				<div class="col-lg-10 me-lg-3 col-12 my-1">
+				<div class="col-lg-10 me-lg-3 my-1">
 					<a class="text-dark mt-1 p-2" href="{{ path('app_forgot_password_request') }}">Mot de passe oublié</a>
 				</div>
 				<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
