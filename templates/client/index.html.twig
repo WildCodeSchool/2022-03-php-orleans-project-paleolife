@@ -102,18 +102,18 @@
 										{{session.name}}</h3>
 									<table class="table table-striped container fs-5 my-4 ">
 										<thead class="border-bottom">
-											<tr class="rounded-3 font-th">
-												<th>Exercices</th>
-												<th>Répetitions</th>
-												<th>Repos</th>
+											<tr class="rounded-3">
+												<th class="font-th">Exercices</th>
+												<th class="font-th">Répetitions</th>
+												<th class="font-th">Repos</th>
 											</tr>
 										</thead>
 										<tbody class="border-top-0">
 											{% for exercise in session.exercises %}
-												<tr class="font-td">
-													<td class="border-top-0">{{exercise.name}}</td>
-													<td class="border-top-0">{{exercise.repetition}}</td>
-													<td class="border-top-0">{{exercise.duration}}min</td>
+												<tr>
+													<td class="border-top-0 font-td">{{exercise.name}}</td>
+													<td class="border-top-0 font-td">{{exercise.repetition}}</td>
+													<td class="border-top-0 font-td">{{exercise.duration}}min</td>
 												</tr>
 											{% endfor %}
 											<tr>
@@ -145,22 +145,22 @@
 						<div class="shadow rounded col-md-8">
 							<table class="table table-hover">
 								<thead>
-									<tr class="font-td">
-										<th>Repas</th>
-										<th>Protéines</th>
-										<th>Lipides</th>
-										<th>Glucides</th>
+									<tr>
+										<th class="font-td">Repas</th>
+										<th class="font-td">Protéines</th>
+										<th class="font-td">Lipides</th>
+										<th class="font-td">Glucides</th>
 									</tr>
 								</thead>
 								<tbody>
 									{% for nutritionMeal in client.nutritionMeals %}
-										<tr class="font-td">
-											<td class="column">{{nutritionMeal.mealName}}</td>
-											<td class="column">{{nutritionMeal.proteins}}
+										<tr>
+											<td class="column font-td">{{nutritionMeal.mealName}}</td>
+											<td class="column font-td">{{nutritionMeal.proteins}}
 												g</td>
-											<td class="column">{{nutritionMeal.lipids}}
+											<td class="column font-td">{{nutritionMeal.lipids}}
 												g</td>
-											<td class="column">{{nutritionMeal.carbohydrate}}
+											<td class="column font-td">{{nutritionMeal.carbohydrate}}
 												g</td>
 										</tr>
 									{% endfor %}

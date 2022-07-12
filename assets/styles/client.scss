@@ -43,19 +43,9 @@
 }
 
 .font-th{
-    font-size:$font-size-large;
+    font-size:clamp(1.25rem, 5vw, 1.5rem);
 }
 
 .font-td{
-    font-size: $font-size-middle;
-}
-
-@media screen and (max-width: 600px){
-    .font-th{
-        font-size: $font-size-middle;
-    }
-
-    .font-td{
-        font-size: $font-size-small;
-    }
+    font-size:clamp(1rem, 4vw, 1.25rem);
 }
