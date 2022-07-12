@@ -28,7 +28,7 @@ class ClientType extends AbstractType
                 'help' => 'Saisir une valeur en kcal'
             ])
             ->add('water', IntegerType::class, [
-                'label' => 'hydratation journalière',
+                'label' => 'Hydratation journalière',
                 'help' => 'Saisir une valeur en litre'
             ])
         ;
