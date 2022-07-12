@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="icon" type="image/png" href="{{ asset('build/images/favicon.png') }}"/>
+		<title>
+			{% block title %}PaleoLife || Erreur 403
+			{% endblock %}
+		</title>
+		{{ encore_entry_link_tags('app') }}
+		{% block stylesheets %}{% endblock %}
+		{{ encore_entry_script_tags('app') }}
+		{% block javascripts %}{% endblock %}
+	</head>
+
+	<body class="d-flex flex-column bg-light">
+		<header>
+			{% block navbar %} {% include "component/_navbar_client.html.twig" %} {% endblock %}
+			{% block flashes %}
+				{% include 'component/_flashes.html.twig'%}
+			{% endblock %}
+		</header>
+		<div class="main-container d-flex justify-content-center mt-5"> Vous ne pouvez accèder à votre profil. Veuillez contacter le coach sportif :
+        <a href="{{ path('app_contact') }}"> ici</a>
+			</div>
+			{% block footer %}
+				{% include 'component/_footer.html.twig'%}
+			{% endblock %}
+		</body>
+	</html>

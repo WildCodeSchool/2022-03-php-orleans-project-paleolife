@@ -16,7 +16,7 @@
 				{% if app.user %}
 					<a class="nav-item nav-link px-md-4 fs-4" href="{{ path('app_logout') }}">
 						Déconnexion</a>
-						<a href="{% if is_granted('ROLE_ADMIN')%}{{ path('app_user_index') }}{% else %}{{ path('app_client_index') }}{% endif %}" class="nav-item text-light fs-4 px-md-4 nav-link">{% if is_granted('ROLE_ADMIN')%}Administrateur{% else %}{{ app.user.name }} Profil{% endif %}</a>
+						<a href="{% if is_granted('ROLE_ADMIN')%}{{ path('app_user_index') }}{% elseif is_granted('ROLE_CLIENT') %}{{ path('app_client_index') }}{% else %}{{ path('app_error_403') }}{% endif %}" class="nav-item text-light fs-4 px-md-4 nav-link">{% if is_granted('ROLE_ADMIN')%}Administrateur{% else %}{{ app.user.name }} Profil{% endif %}</a>
 				{% else %}
 					<a class="nav-item nav-link px-md-4 fs-4" href="{{ path('login') }}">
 						Connexion</a>
