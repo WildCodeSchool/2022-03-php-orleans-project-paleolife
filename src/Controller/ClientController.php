@@ -86,7 +86,7 @@ class ClientController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $clientRepository->add($client, true);
-            $this->addFlash('success', 'Vos obbjectifs ont bien été modifiés');
+            $this->addFlash('success', 'Vos objectifs ont bien été modifiés');
 
             return $this->redirectToRoute('app_client_edit', ['id' => $client->getId()], Response::HTTP_SEE_OTHER);
         }
