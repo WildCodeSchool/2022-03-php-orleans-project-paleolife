@@ -77,16 +77,16 @@ class Client implements Serializable
 
     #[Assert\Length(max: 255)]
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private string $objectiveNutrition;
+    private ?string $objectiveNutrition;
 
     #[Assert\Positive]
     #[Assert\Type(type: 'integer')]
     #[ORM\Column(type: 'integer', nullable: true)]
-    private int $energyExpenditure;
+    private ?int $energyExpenditure;
 
     #[Assert\Positive]
     #[ORM\Column(type: 'integer', nullable: true)]
-    private int $water;
+    private ?int $water;
 
     #[ORM\OneToMany(mappedBy: 'client', targetEntity: NutritionMeal::class, cascade: ['remove'])]
     private Collection $nutritionMeals;
@@ -179,7 +179,7 @@ class Client implements Serializable
 
     public function setAfterFile(?File $afterFile = null): void
     {
-        $this->beforeFile = $afterFile;
+        $this->afterFile = $afterFile;
 
         if (null !== $afterFile) {
             // It is required that at least one field changes if you are using doctrine
