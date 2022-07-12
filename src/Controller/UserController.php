@@ -26,7 +26,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_user_new', methods: ['GET', 'POST'])]
+    #[Route('/ajouter-utilisateur', name: 'app_user_new', methods: ['GET', 'POST'])]
     public function new(Request $request, UserRepository $userRepository): Response
     {
         $user = new User();
@@ -53,7 +53,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/modifier-utilisateur', name: 'app_user_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, User $user, UserRepository $userRepository): Response
     {
         $form = $this->createForm(UserType::class, $user);
@@ -72,7 +72,7 @@ class UserController extends AbstractController
     }
 
 
-    #[Route('/{id}/change', name: 'app_user_change', methods: ['POST'])]
+    #[Route('/{id}/change-utilisateur', name: 'app_user_change', methods: ['POST'])]
     public function change(Request $request, User $user, UserRepository $userRepository): Response
     {
         if ($this->isCsrfTokenValid('change' . $user->getId(), $request->request->get('_token'))) {

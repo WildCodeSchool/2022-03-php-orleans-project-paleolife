@@ -66,7 +66,7 @@ class ClientController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $clientRepository->add($client, true);
-            $this->addFlash('success', 'Votre profil à bien été modifié !');
+            $this->addFlash('success', 'Votre profil a bien été modifié !');
 
             return $this->redirectToRoute('client_edit_profil', [], Response::HTTP_SEE_OTHER);
         }
@@ -77,7 +77,7 @@ class ClientController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/{id}/modifier', name: 'app_client_edit', methods: ['GET', 'POST'])]
+    #[Route('admin/{id}/modifier-profil', name: 'app_client_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Client $client, ClientRepository $clientRepository): Response
     {
         $sessions = $client->getSessions();
@@ -108,7 +108,7 @@ class ClientController extends AbstractController
         return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
     }
 
-    #[Route('/comment/add/{session}', name: 'app_comment_add', methods: ['GET', 'POST'])]
+    #[Route('/comment/ajouter/{session}', name: 'app_comment_add', methods: ['GET', 'POST'])]
     public function addComment(SessionRepository $sessionRepository, Session $session, Request $request): Response
     {
         if ($this->isCsrfTokenValid('add' . $session->getId(), $request->request->get('_token'))) {

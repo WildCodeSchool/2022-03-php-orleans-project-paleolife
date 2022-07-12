@@ -22,7 +22,7 @@ class NutritionMealController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/ajouter', name: 'app_nutrition_meal_new', methods: ['GET', 'POST'])]
+    #[Route('/{id}/ajouter-nutrition', name: 'app_nutrition_meal_new', methods: ['GET', 'POST'])]
     public function new(Request $request, NutritionMealRepository $nMealRepository, Client $client): Response
     {
         $nutritionMeal = new NutritionMeal();
@@ -53,7 +53,7 @@ class NutritionMealController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_nutrition_meal_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/modifier-nutrition', name: 'app_nutrition_meal_edit', methods: ['GET', 'POST'])]
     public function edit(
         Request $request,
         NutritionMeal $nutritionMeal,
