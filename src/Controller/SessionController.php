@@ -34,8 +34,11 @@ class SessionController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $sessionRepository->add($session, true);
+            $this->addFlash('success', 'La séance à bien été ajoutée !');
 
-            return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_client_edit', [
+                'id' => $session->getClient()->getId()
+            ], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('session/new.html.twig', [
