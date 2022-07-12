@@ -10,10 +10,14 @@
 			<nav id="sidebar" class="d-flex flex-column sticky-md-top ps-4">
 				<h1 class="d-flex justify-content-start my-md-3 text-primary ms-2">{{ client.user.name }}</h1>
 				<div class="d-none d-md-block">
-					<a href="#goal" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2"><i class="bi bi-speedometer2 me-3"></i>Objectifs</a>
-					<a href="#nutrition" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2"><i class="bi bi-cup-straw me-3"></i>Nutrition</a>
-					<a href="#session" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2"><i class="bi bi-check-all me-3"></i>Séances</a>
-					<a href="#measurement" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2"><i class="bi bi-rulers me-3"></i>Mensurations</a>
+					<a href="#goal" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2">
+						<i class="bi bi-speedometer2 me-3"></i>Objectifs</a>
+					<a href="#nutrition" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2">
+						<i class="bi bi-cup-straw me-3"></i>Nutrition</a>
+					<a href="#session" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2">
+						<i class="bi bi-check-all me-3"></i>Séances</a>
+					<a href="#measurement" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2">
+						<i class="bi bi-rulers me-3"></i>Mensurations</a>
 				</div>
 			</nav>
 		</div>
@@ -93,15 +97,17 @@
 						</h2>
 					</div>
 					{% for session in sessions %}
-						<h4 class="mt-3 d-flex align-items-center">
+						<h4 class="mt-3 d-flex align-items-center justify-content-between">
 							Séance
 							{{session.number}}:
 							{{ session.name }}
-							<a href="{{ path('app_session_edit', { 'id' : session.id }) }}" class="btn btn-sm btn-outline-secondary mx-2">
-								<i class="bi bi-pen-fill me-2"></i>
-								Modifier
-							</a>
-							{{ include('session/_delete_form.html.twig') }}
+							<div class="d-flex">
+								<a href="{{ path('app_session_edit', { 'id' : session.id }) }}" class="btn btn-sm btn-outline-secondary mx-2">
+									<i class="bi bi-pen-fill me-2"></i>
+									Modifier
+								</a>
+								{{ include('session/_delete_form.html.twig') }}
+							</div>
 						</h4>
 						<div class="shadow-sm rounded">
 							<table class="table table-hover">
