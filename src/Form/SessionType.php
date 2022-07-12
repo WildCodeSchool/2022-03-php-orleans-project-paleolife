@@ -18,6 +18,7 @@ class SessionType extends AbstractType
             ->add('name', TextType::class, ['label' => 'Nom'])
             ->add('number', IntegerType::class, ['label' => 'Nombre'])
             ->add('exercises', CollectionType::class, [
+                'label' => 'Exercices',
                 'entry_type' => ExerciseType::class,
                 'entry_options' => ['label' => false],
                 'allow_add' => true,
