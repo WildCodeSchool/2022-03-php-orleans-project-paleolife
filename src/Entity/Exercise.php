@@ -19,9 +19,9 @@ class Exercise
     #[Assert\Length(max: 255)]
     private string $name;
 
-    #[ORM\Column(type: 'float')]
+    #[ORM\Column(type: 'string')]
     #[Assert\NotBlank]
-    private float $duration;
+    private string $duration;
 
     #[ORM\Column(type: 'string')]
     #[Assert\NotBlank]
@@ -48,12 +48,12 @@ class Exercise
         return $this;
     }
 
-    public function getDuration(): ?float
+    public function getDuration(): ?string
     {
         return $this->duration;
     }
 
-    public function setDuration(float $duration): self
+    public function setDuration(string $duration): self
     {
         $this->duration = $duration;
 

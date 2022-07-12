@@ -19,7 +19,7 @@ class ExerciseFixtures extends Fixture
         for ($i = 0; $i <= self::EXERCISE_NUMBER; $i++) {
             $exercise = new Exercise();
             $exercise->setName($faker->word());
-            $exercise->setDuration($faker->randomFloat(2, 1, 5));
+            $exercise->setDuration($faker->word());
             $exercise->setRepetition($faker->randomDigitNotNull() . 'x' . $faker->randomDigitNotNull());
             $this->addReference('exercise_' . $i, $exercise);
             $manager->persist($exercise);
