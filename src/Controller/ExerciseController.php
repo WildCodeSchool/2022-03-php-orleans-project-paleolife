@@ -21,7 +21,7 @@ class ExerciseController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_exercise_new', methods: ['GET', 'POST'])]
+    #[Route('/ajouter-exercice', name: 'app_exercise_new', methods: ['GET', 'POST'])]
     public function new(Request $request, ExerciseRepository $exerciseRepository): Response
     {
         $exercise = new Exercise();
@@ -48,7 +48,7 @@ class ExerciseController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_exercise_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/modifier-exercice', name: 'app_exercise_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Exercise $exercise, ExerciseRepository $exerciseRepository): Response
     {
         $form = $this->createForm(ExerciseType::class, $exercise);

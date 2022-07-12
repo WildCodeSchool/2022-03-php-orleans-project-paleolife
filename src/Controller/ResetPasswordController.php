@@ -82,7 +82,7 @@ class ResetPasswordController extends AbstractController
     /**
      * Validates and process the reset URL that the user clicked in their email.
      */
-    #[Route('/réinitialiser/{token}', name: 'app_reset_password')]
+    #[Route('/renitialiser/{token}', name: 'app_reset_password')]
     public function reset(
         Request $request,
         UserPasswordHasherInterface $userPasswordHasher,
