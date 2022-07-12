@@ -98,7 +98,7 @@ class ClientController extends AbstractController
         ]);
     }
 
-    #[Route('admin/{id}', name: 'app_client_delete', methods: ['POST'])]
+    #[Route('/admin/{id}', name: 'app_client_delete', methods: ['POST'])]
     public function delete(Request $request, Client $client, ClientRepository $clientRepository): Response
     {
         if ($this->isCsrfTokenValid('delete' . $client->getId(), $request->request->get('_token'))) {

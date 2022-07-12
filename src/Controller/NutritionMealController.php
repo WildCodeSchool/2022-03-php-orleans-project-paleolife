@@ -33,8 +33,10 @@ class NutritionMealController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $nMealRepository->add($nutritionMeal, true);
 
-            $this->addFlash('success', 'Vous-avez bien ajouté un repas');
-            return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+            $this->addFlash('success', 'Vous avez bien ajouté un repas');
+            return $this->redirectToRoute('app_client_edit', [
+                'id' => $nutritionMeal->getClient()->getId()
+            ], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('nutrition_meal/new.html.twig', [
@@ -62,7 +64,7 @@ class NutritionMealController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $nMealRepository->add($nutritionMeal, true);
-            $this->addFlash('success', 'Vous-avez bien modifié le programme nutritionnel du client');
+            $this->addFlash('success', 'Vous avez bien modifié le programme nutritionnel du client');
 
             return $this->redirectToRoute(
                 'app_client_edit',
