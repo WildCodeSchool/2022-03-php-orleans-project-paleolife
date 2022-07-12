@@ -17,9 +17,11 @@ class MeasurementClient
     private int $id;
 
     #[Assert\Positive]
+    #[Assert\LessThan(10000)]
     #[ORM\Column(type: 'decimal', precision: 4, scale: 1, nullable: true)]
     private ?float $valueBefore;
 
+    #[Assert\LessThan(10000)]
     #[Assert\Positive]
     #[ORM\Column(type: 'decimal', precision: 4, scale: 1, nullable: true)]
     private ?float $valueAfter;

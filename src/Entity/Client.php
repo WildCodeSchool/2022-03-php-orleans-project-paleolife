@@ -68,6 +68,7 @@ class Client implements Serializable
     #[ORM\Column(type: 'date', nullable: true)]
     private ?DateTimeInterface $dateAfter;
 
+    #[Assert\Valid]
     #[ORM\OneToMany(mappedBy: 'client', targetEntity: MeasurementClient::class, cascade: ['remove', 'persist'])]
     private Collection $measurementClients;
 
