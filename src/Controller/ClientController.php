@@ -77,7 +77,7 @@ class ClientController extends AbstractController
         ]);
     }
 
-    #[Route('admin/{id}/edit', name: 'app_client_edit', methods: ['GET', 'POST'])]
+    #[Route('/admin/{id}/edit', name: 'app_client_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Client $client, ClientRepository $clientRepository): Response
     {
         $sessions = $client->getSessions();
@@ -98,7 +98,7 @@ class ClientController extends AbstractController
         ]);
     }
 
-    #[Route('admin/{id}', name: 'app_client_delete', methods: ['POST'])]
+    #[Route('/admin/{id}', name: 'app_client_delete', methods: ['POST'])]
     public function delete(Request $request, Client $client, ClientRepository $clientRepository): Response
     {
         if ($this->isCsrfTokenValid('delete' . $client->getId(), $request->request->get('_token'))) {
