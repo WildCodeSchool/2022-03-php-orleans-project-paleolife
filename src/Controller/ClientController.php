@@ -114,6 +114,7 @@ class ClientController extends AbstractController
         if ($this->isCsrfTokenValid('add' . $session->getId(), $request->request->get('_token'))) {
             $session->setComment($request->request->get('comment'));
             $sessionRepository->add($session, true);
+            $this->addFlash('sucess', 'Le commentaire à bien été modifié');
         }
 
         return $this->redirectToRoute('app_client_index', [], Response::HTTP_SEE_OTHER);
