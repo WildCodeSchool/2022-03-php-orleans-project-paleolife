@@ -66,7 +66,7 @@ class ClientController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $clientRepository->add($client, true);
-            $this->addFlash('success', 'Votre profil à bien été modifié !');
+            $this->addFlash('success', 'Votre profil a bien été modifié !');
 
             return $this->redirectToRoute('client_edit_profil', [], Response::HTTP_SEE_OTHER);
         }
@@ -77,7 +77,7 @@ class ClientController extends AbstractController
         ]);
     }
 
-    #[Route('admin/{id}/edit', name: 'app_client_edit', methods: ['GET', 'POST'])]
+    #[Route('admin/{id}/modifier-profil', name: 'app_client_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Client $client, ClientRepository $clientRepository): Response
     {
         $sessions = $client->getSessions();
@@ -86,7 +86,7 @@ class ClientController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $clientRepository->add($client, true);
-            $this->addFlash('success', 'Vos obbjectifs ont bien été modifiés');
+            $this->addFlash('success', 'Vos objectifs ont bien été modifiés');
 
             return $this->redirectToRoute('app_client_edit', ['id' => $client->getId()], Response::HTTP_SEE_OTHER);
         }
@@ -98,7 +98,7 @@ class ClientController extends AbstractController
         ]);
     }
 
-    #[Route('admin/{id}', name: 'app_client_delete', methods: ['POST'])]
+    #[Route('/admin/{id}', name: 'app_client_delete', methods: ['POST'])]
     public function delete(Request $request, Client $client, ClientRepository $clientRepository): Response
     {
         if ($this->isCsrfTokenValid('delete' . $client->getId(), $request->request->get('_token'))) {
@@ -108,12 +108,13 @@ class ClientController extends AbstractController
         return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
     }
 
-    #[Route('/comment/add/{session}', name: 'app_comment_add', methods: ['GET', 'POST'])]
+    #[Route('/comment/ajouter/{session}', name: 'app_comment_add', methods: ['GET', 'POST'])]
     public function addComment(SessionRepository $sessionRepository, Session $session, Request $request): Response
     {
         if ($this->isCsrfTokenValid('add' . $session->getId(), $request->request->get('_token'))) {
             $session->setComment($request->request->get('comment'));
             $sessionRepository->add($session, true);
+            $this->addFlash('sucess', 'Le commentaire à bien été modifié');
         }
 
         return $this->redirectToRoute('app_client_index', [], Response::HTTP_SEE_OTHER);

@@ -24,7 +24,7 @@ class SessionController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/ajouter', name: 'app_session_new', methods: ['GET', 'POST'])]
+    #[Route('/{id}/ajouter-seance', name: 'app_session_new', methods: ['GET', 'POST'])]
     public function new(Request $request, SessionRepository $sessionRepository, Client $client): Response
     {
         $session = new Session();
@@ -34,8 +34,11 @@ class SessionController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $sessionRepository->add($session, true);
+            $this->addFlash('success', 'La séance à bien été ajoutée !');
 
-            return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_client_edit', [
+                'id' => $session->getClient()->getId()
+            ], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('session/new.html.twig', [
@@ -45,7 +48,7 @@ class SessionController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/modifier', name: 'app_session_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/modifier-seance', name: 'app_session_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Session $session, SessionRepository $sessionRepository,): Response
     {
         $form = $this->createForm(SessionType::class, $session);
@@ -68,8 +71,11 @@ class SessionController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete' . $session->getId(), $request->request->get('_token'))) {
             $sessionRepository->remove($session, true);
+            $this->addFlash('danger', 'La séance à bien été supprimée');
         }
 
-        return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_client_edit', [
+            'id' => $session->getClient()->getId()
+        ], Response::HTTP_SEE_OTHER);
     }
 }

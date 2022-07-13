@@ -21,7 +21,7 @@ class MeasurementController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_measurement_new', methods: ['GET', 'POST'])]
+    #[Route('/ajouter-mensuration', name: 'app_measurement_new', methods: ['GET', 'POST'])]
     public function new(Request $request, MeasurementRepository $measureRepository): Response
     {
         $measurement = new Measurement();
@@ -49,7 +49,7 @@ class MeasurementController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_measurement_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/modifier-mensuration', name: 'app_measurement_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Measurement $measurement, MeasurementRepository $measureRepository): Response
     {
         $form = $this->createForm(MeasurementType::class, $measurement);

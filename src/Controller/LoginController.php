@@ -10,7 +10,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class LoginController extends AbstractController
 {
-    #[Route('/login', name: 'login')]
+    #[Route('/connexion', name: 'login')]
     public function index(AuthenticationUtils $authenticationUtils): Response
     {
         $error = $authenticationUtils->getLastAuthenticationError();
@@ -21,7 +21,7 @@ class LoginController extends AbstractController
         ]);
     }
 
-    #[Route('/redirect-login', name: 'redirect_login')]
+    #[Route('/redirection-connexion', name: 'redirect_login')]
     #[IsGranted('ROLE_USER')]
     public function redirectLogin(): Response
     {

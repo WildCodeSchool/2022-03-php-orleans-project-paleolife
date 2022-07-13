@@ -3,15 +3,16 @@
 {% block stylesheets %}
 	{{ encore_entry_link_tags('client') }}
 {% endblock %}
-{% block title %}Modifier mon profil
+{% block title %}
+{{ parent() }}|| Modifier mon profil
 {% endblock %}
 
 {% block body %}
-	<main>
+	<main class="container-fluid">
 		<div class="row">
 			<div class="col-md-2 bg-light">
 				<nav id="sidebar" class="d-flex flex-column sticky-md-top">
-					<h1 class="d-flex justify-content-md-start justify-content-center mt-4 mb-3 my-md-3 text-primary ms-2">{{ client.user.name }}</h1>
+					<h1 class="d-flex justify-content-md-start justify-content-center mt-4 mb-3 my-md-3 text-primary ms-2 fw-bold">{{ client.user.name }}</h1>
 					<a href="#profil" class="fs-4 d-md-flex justify-content-start text-dark mt-3 ms-2 text-decoration-none d-none">Profil</a>
 					<a href="#measure" class="fs-4 d-md-flex justify-content-start text-dark mt-3 ms-2 text-decoration-none d-none">Mensurations</a>
 					<a href="{{ path('app_client_index') }}" class="fs-4 d-md-flex justify-content-start text-dark mt-3 ms-2 text-decoration-none d-none">Retour<i class="bi bi-box-arrow-left ms-2"></i></a>
