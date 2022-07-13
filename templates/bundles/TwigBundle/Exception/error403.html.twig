@@ -1,0 +1,12 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+	<main class="my-5">
+		<h1 class="text-center mb-5">403 Accès interdit</h1>
+
+		<p class="text-center">
+			Vous n'avez pas les droits pour aller sur cette page. 
+			<a class="btn btn-outline-primary rounded-3" href="{{ path('app_home') }}">revenez à la page d'accueil</a>
+		</p>
+	</main>
+{% endblock %}
