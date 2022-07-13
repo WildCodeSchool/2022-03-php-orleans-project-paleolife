@@ -1,5 +1,9 @@
 {% extends 'email.html.twig' %}
 
+{% block title %}
+	{{ parent() }}
+	|| Mot de passe
+{% endblock %}
 {% block body %}
 <h1>Bonjour !</h1>
 <p>Pour réinitialiser votre mot de passe, veuillez cliquer sur le lien suivant</p>
