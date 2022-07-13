@@ -64,7 +64,7 @@ class ResetPasswordController extends AbstractController
     /**
      * Confirmation page after a user has requested a password reset.
      */
-    #[Route('/vérification-d-email', name: 'app_check_email')]
+    #[Route('/verification-d-email', name: 'app_check_email')]
     public function checkEmail(): Response
     {
         // Generate a fake token if the user does not exist or someone hit this page directly.
@@ -107,7 +107,7 @@ class ResetPasswordController extends AbstractController
         try {
             $user = $this->resetPasswordHelper->validateTokenAndFetchUser($token);
         } catch (ResetPasswordExceptionInterface $e) {
-            $this->addFlash('reset_password_error', sprintf(
+            $this->addFlash('danger', sprintf(
                 '%s - %s',
                 $translator->trans(
                     ResetPasswordExceptionInterface::MESSAGE_PROBLEM_VALIDATE,
@@ -179,13 +179,14 @@ class ResetPasswordController extends AbstractController
         }
 
         $email = (new TemplatedEmail())
-            ->from(new Address($this->getParameter('mailer_admin')))
+            ->from(new Address($this->getParameter('mailer_from')))
             ->to($user->getEmail())
             ->subject('Votre demande de réinitialisation de mot de passe')
             ->htmlTemplate('reset_password/email.html.twig')
             ->context([
                 'resetToken' => $resetToken,
-            ]);
+            ])
+        ;
 
         $mailer->send($email);
 
