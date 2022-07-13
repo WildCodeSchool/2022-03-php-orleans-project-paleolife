@@ -14,14 +14,14 @@
 		{% block javascripts %}{% endblock %}
 	</head>
 
-	<body class="bg-light">
+	<body class="d-flex flex-column bg-light">
 		<header>
 			{% block navbar %}{% endblock %}
 			{% block flashes %}
 				{% include 'component/_flashes.html.twig'%}
 			{% endblock %}
 		</header>
-		<div class="container-fluid"> {% block body %}{% endblock %}
+		<div class="container-fluid main-container"> {% block body %}{% endblock %}
 			</div>
 			{% block footer %}
 				{% include 'component/_footer.html.twig'%}
