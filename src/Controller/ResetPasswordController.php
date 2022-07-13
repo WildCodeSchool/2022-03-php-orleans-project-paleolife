@@ -13,7 +13,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Address;
-use Symfony\Component\Mime\Email;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -179,11 +178,15 @@ class ResetPasswordController extends AbstractController
             return $this->redirectToRoute('app_check_email');
         }
 
-        $email = (new Email())
-            ->from($this->getParameter('mailer_admin'))
+        $email = (new TemplatedEmail())
+            ->from(new Address($this->getParameter('mailer_from')))
             ->to($user->getEmail())
             ->subject('Votre demande de réinitialisation de mot de passe')
-            ->html($this->renderView('reset_password/email.html.twig'));
+            ->htmlTemplate('reset_password/email.html.twig')
+            ->context([
+                'resetToken' => $resetToken,
+            ])
+        ;
 
         $mailer->send($email);
 
