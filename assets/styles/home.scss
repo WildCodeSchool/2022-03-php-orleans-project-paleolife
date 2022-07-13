@@ -10,6 +10,14 @@
     z-index: -1;
 }
 
+.anim-image:hover {
+    scale: 1.05;
+}
+
+.anim-image {
+    transition: 0.5s ease-in-out;
+}
+
 .homePhoto2 {
     transform: scale(2);
     translate: 1rem $header-size/1.5;
@@ -36,4 +44,3 @@
     width: 8rem;
     height: 8rem;
 }
-
