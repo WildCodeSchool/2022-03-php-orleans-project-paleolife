@@ -23,7 +23,7 @@
 	<section>
 		<div class="d-flex justify-content-center align-items-center my-5">
 			<h1 class="">
-				<span class="text-primary fw-bold">Seb</span>, votre coach sportif à<span class="text-primary fw-bold">Montpellier</span>
+				<span class="text-primary fw-bold">Seb</span>, votre coach sportif à<span class="text-primary fw-bold"> Montpellier</span>
 				et dans toute la France</h1>
 		</div>
 		<div class="container-fluid bg-dark d-flex justify-content-center align-items-center presentation">
@@ -70,7 +70,7 @@
 									<p class="card-text fs-5 mb-3 {% if loop.index is even %} text-lg-start {% else %} text-lg-start{% endif %}">{{ service.description|nl2br }}
 									</p>
 								</div>
-								<a href="/contact" class="btn btn-outline-primary fs-5 fw-bold border-2 col-12 col-lg-4">
+								<a href={{ path('app_contact') }} class="btn btn-outline-primary text-dark fs-5 fw-bold border-2 col-lg-4">
 									<i class="bi bi-send-fill me-3"></i>Me contacter</a>
 							</div>
 						</div>
@@ -93,7 +93,7 @@
 						entreprise. Format événementiel unique ou récurrent, sous forme de team building, je
 						répond aux différentes demandes.</p>
 						<div class="d-flex justify-content-between w-100">
-							<button type="button" class="btn btn-outline-primary fw-bold d-flex justify-content-start fs-5 p-2 ms-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
+							<button type="button" class="btn btn-outline-primary text-dark fw-bold d-flex border-2 justify-content-start fs-5 p-2 ms-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
 								<i class="bi bi-briefcase-fill me-3"></i>Détails
 							</button>
 							<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -113,7 +113,7 @@
 									</div>
 								</div>
 							</div>
-							<a href="/contact" class="btn btn-outline-primary fw-bold justify-content-end fs-5 p-2 me-4">
+							<a href={{ path('app_contact') }} class="btn btn-outline-primary text-dark fw-bold border-2 justify-content-end fs-5 p-2 me-4">
 								<i class="bi bi-send-fill me-3"></i>Me contacter</a>
 						</div>
 					</div>
