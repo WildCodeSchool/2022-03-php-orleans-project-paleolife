@@ -20,14 +20,15 @@ class ServiceType extends AbstractType
             ])
             ->add('question', TextareaType::class, ['label' => 'Question'])
             ->add('description', TextareaType::class, ['label' => 'Description'])
-            ->add('photoFile', Filetype::class, ['label' => 'Photo', 'required' => false])
+            ->add('photoFile', FileType::class, ['label' => 'Photo', 'required' => false])
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults([
+        $resolver->setDefaults([ 
             'data_class' => Service::class,
+            'validation_groups' => ['add'],
         ]);
     }
 }
