@@ -19,8 +19,7 @@
 }
 
 .homePhoto2 {
-    transform: scale(2);
-    translate: 1rem $header-size/1.5;
+    transform: translate(1rem, 13rem) scale(2);
 }
 
 .photoPresentation {
@@ -30,8 +29,7 @@
 }
 
 .presentationImg {
-    transform: scale(0.5);
-    translate: 2rem 8rem;
+    transform: translate(2rem, 8rem) scale(0.5) ;
 }
 
 .greenLogo {
