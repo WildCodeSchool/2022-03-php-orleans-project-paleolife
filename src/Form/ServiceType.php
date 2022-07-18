@@ -26,7 +26,7 @@ class ServiceType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults([ 
+        $resolver->setDefaults([
             'data_class' => Service::class,
             'validation_groups' => ['add'],
         ]);
