@@ -40,7 +40,7 @@ class Service
     private ?string $photo;
 
     #[Assert\Length(max: 255)]
-    #[ORM\Column(type: 'text', nullable: true)]
+    #[ORM\Column(type: 'string', nullable: true)]
     private ?string $question;
 
     #[ORM\Column(type: 'datetime')]
