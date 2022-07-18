@@ -39,6 +39,7 @@ class Service
     #[Assert\Length(max: 255)]
     private ?string $photo;
 
+    #[Assert\Length(max: 255)]
     #[ORM\Column(type: 'text', nullable: true)]
     private ?string $question;
 
