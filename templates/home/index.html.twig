@@ -10,15 +10,15 @@
 {% block body %}
 	<header>
 		<div class="row mt-3 justify-content-center position-absolute w-100">
-			<div class="d-lg-flex col-6 justify-content-center align-items-center d-none">
+			<div class="d-md-flex col-6 justify-content-center align-items-center d-none">
 				<div class="zoom-img overflow-hidden"><img class="anim-image" src="{{ asset('build/images/home.png') }}" alt="Photo du coach entrain de courir">
 				</div>
 				<div class="zoom-img overflow-hidden"><img src="{{ asset('build/images/home.png') }}" class="anim-image homePhoto2" alt="Photo du coach entrain de courir zoomée">
 				</div>
 			</div>
 		</div>
-		<div class="row bg-black div-dark d-none d-lg-block position-relative"></div>
-		<div class="row bg-light div-light d-none d-lg-block position-relative"></div>
+		<div class="row bg-black div-dark d-none d-md-block position-relative"></div>
+		<div class="row bg-light div-light d-none d-md-block position-relative"></div>
 	</header>
 	<section>
 		<div class="d-flex justify-content-center align-items-center my-5">
@@ -27,11 +27,11 @@
 					Montpellier</span>
 				et dans toute la France</h1>
 		</div>
-		<div class="row bg-dark justify-content-center align-items-center presentation px-5">
-			<div class="col-lg-5 col-11 d-flex justify-content-center align-items-center overflow-hidden text-center photoPresentation me-lg-5 my-4">
+		<div class="row bg-dark justify-content-center align-items-center presentation px-3">
+			<div class="col-md-5 col-11 d-flex justify-content-center align-items-center overflow-hidden text-center photoPresentation me-md-5 my-4">
 				<img src="{{ asset('build/images/photopres.jpeg') }}" class="anim-image presentationImg" alt="Photo du coach"/>
 			</div>
-			<div class="col-lg-7 align-items-center my-lg-4 p-lg-4 ms-lg-5">
+			<div class="col-md-7 align-items-center my-md-4 p-md-4 ms-md-5">
 				<p class="text-light fs-5">Être coach est une véritable vocation pour moi. J’ai grandi et je vis sport depuis mon plus
 										jeune âge, de la compétition à en faire mes études et maintenant mon avenir.
 										Je suis quelqu’un de vivant, d’ambitieux, toujours en quête de partage, d’apprentissage,
@@ -48,28 +48,27 @@
 			</div>
 		</div>
 	</section>
-
 	<section class="row">
 		<h1 class="text-center mb-4 mt-5 mb-5 pt-3">Mes services personnels</h1>
 		{% for service in services %}
 			<div class="card mb-5 border border-light bg-light  ">
 				<div class="d-md-flex justify-content-md-evenly align-items-stretch p-0">
-					<div class="col-md-5{% if loop.index is even %} order-lg-1 {% endif %}">
+					<div class="col-md-5{% if loop.index is even %} order-md-1 {% endif %}">
 						{% if service.photo is empty %}
-							<img src="{{ asset('build/images/placeholderservice.jpg') }}" class="img-fluid rounded m-2" alt="jogging">
+							<img src="{{ asset('build/images/placeholderservice.jpg') }}" class="img-fluid rounded" alt="jogging">
 						{% else %}
-							<img src="{{vich_uploader_asset(service, 'photoFile')}}" class="img-fluid rounded m-2" alt="jogging">
+							<img src="{{vich_uploader_asset(service, 'photoFile')}}" class="img-fluid rounded" alt="jogging">
 						{% endif %}
 					</div>
 					<div class="col-md-5 d-flex align-items-stretch">
-						<div class="card-body d-flex flex-column justify-content-between {% if loop.index is even %} order-lg-2 ps-lg-0 {% else %} pe-lg-0 {% endif %}">
+						<div class="card-body d-flex flex-column justify-content-between {% if loop.index is even %} order-md-2 ps-md-0 {% else %} pe-md-0 {% endif %}">
 							<div>
 								<h2 class="card-title mb-3">{{ service.title }}</h2>
 								<h3 class="fs-4 text-primary fw-bold fst-italic mb-5">{{ service.question|nl2br }}</h3>
-								<p class="card-text fs-5 mb-3 {% if loop.index is even %} text-lg-start {% else %} text-lg-start{% endif %}">{{ service.description|nl2br }}
+								<p class="card-text fs-5 mb-3 {% if loop.index is even %} text-md-start {% else %} text-md-start{% endif %}">{{ service.description|nl2br }}
 								</p>
 							</div>
-							<a href={{ path('app_contact') }} class="btn btn-outline-primary text-dark fs-5 fw-bold border-2 col-lg-4">
+							<a href={{ path('app_contact') }} class="btn btn-outline-primary text-dark fs-5 fw-bold border-2 col-md-4">
 								<i class="bi bi-send-fill me-3"></i> Me contacter</a>
 						</div>
 					</div>
@@ -92,8 +91,8 @@
 												Je propose un large choix de cours collectif, préalablement réfléchis et adaptés en
 												entreprise. Format événementiel unique ou récurrent, sous forme de team building, je
 												répond aux différentes demandes.</p>
-					<div class="d-flex justify-content-between w-100">
-						<button type="button" class="btn btn-outline-primary text-dark fw-bold d-flex border-2 justify-content-start fs-5 p-2 ms-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
+					<div class="d-flex flex-column align-items-center flex-md-row justify-content-md-between w-100">
+						<button type="button" class="btn btn-outline-primary text-dark fw-bold d-flex border-2 justify-content-start fs-5 p-2 ms-md-4 mb-3 mb-md-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
 							<i class="bi bi-briefcase-fill me-3"></i>Détails
 						</button>
 						<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -113,7 +112,7 @@
 								</div>
 							</div>
 						</div>
-						<a href={{ path('app_contact') }} class="btn btn-outline-primary text-dark fw-bold border-2 justify-content-end fs-5 p-2 me-4">
+						<a href={{ path('app_contact') }} class="btn btn-outline-primary text-dark fw-bold border-2 justify-content-end fs-5 p-2 me-md-4">
 							<i class="bi bi-send-fill me-3"></i>Me contacter</a>
 					</div>
 				</div>
