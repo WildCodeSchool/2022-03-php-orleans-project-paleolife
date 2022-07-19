@@ -20,12 +20,12 @@ class Service
     private int $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Assert\NotBlank]
-    #[Assert\Length(max: 255)]
+    #[Assert\NotBlank(groups:['add', 'default'])]
+    #[Assert\Length(max: 255, groups:['add', 'default'])]
     private string $title;
 
     #[ORM\Column(type: 'text')]
-    #[Assert\NotBlank]
+    #[Assert\NotBlank(groups:['add', 'default'])]
     private string $description;
 
     #[Vich\UploadableField(mapping: 'service_image', fileNameProperty: 'photo')]
@@ -33,13 +33,15 @@ class Service
         maxSize: '500K',
         mimeTypes: ['image/jpeg', 'image/png', 'image/webp'],
     )]
+    #[Assert\NotBlank(groups:['add', 'default'])]
     private ?File $photoFile = null;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Assert\Length(max: 255)]
-    private ?string $photo;
+    #[Assert\Length(max: 255, groups:['add', 'default'])]
+    private string $photo;
 
-    #[ORM\Column(type: 'text', nullable: true)]
+    #[Assert\Length(max: 255)]
+    #[ORM\Column(type: 'string', nullable: true)]
     private ?string $question;
 
     #[ORM\Column(type: 'datetime')]
@@ -84,10 +86,9 @@ class Service
         return $this->photo;
     }
 
-    public function setPhoto(?string $photo): self
+    public function setPhoto(?string $photo): ?self
     {
         $this->photo = $photo;
-
         return $this;
     }
 

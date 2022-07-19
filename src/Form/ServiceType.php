@@ -18,9 +18,9 @@ class ServiceType extends AbstractType
             ->add('title', TextType::class, [
                 'label' => 'Titre'
             ])
-            ->add('question', TextareaType::class, ['label' => 'Question'])
+            ->add('question', TextType::class, ['label' => 'Question'])
             ->add('description', TextareaType::class, ['label' => 'Description'])
-            ->add('photoFile', Filetype::class, ['label' => 'Photo', 'required' => false])
+            ->add('photoFile', FileType::class, ['label' => 'Photo', 'required' => false])
         ;
     }
 
@@ -28,6 +28,7 @@ class ServiceType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Service::class,
+            'validation_groups' => ['add'],
         ]);
     }
 }

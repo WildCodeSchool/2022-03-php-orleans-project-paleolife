@@ -156,7 +156,6 @@ class ResetPasswordController extends AbstractController
         $user = $this->entityManager->getRepository(User::class)->findOneBy([
             'email' => $emailFormData,
         ]);
-
         // Do not reveal whether a user account was found or not.
         if (!$user) {
             return $this->redirectToRoute('app_check_email');
@@ -174,12 +173,10 @@ class ResetPasswordController extends AbstractController
             //   $translator->trans(ResetPasswordExceptionInterface::MESSAGE_PROBLEM_HANDLE, [], 'ResetPasswordBundle'),
             //     $translator->trans($e->getReason(), [], 'ResetPasswordBundle')
             // ));
-
             return $this->redirectToRoute('app_check_email');
         }
-
         $email = (new TemplatedEmail())
-            ->from(new Address($this->getParameter('mailer_from')))
+            ->from(new Address($this->getParameter('mailer_admin')))
             ->to($user->getEmail())
             ->subject('Votre demande de réinitialisation de mot de passe')
             ->htmlTemplate('reset_password/email.html.twig')

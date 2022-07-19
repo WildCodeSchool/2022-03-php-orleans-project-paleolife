@@ -29,7 +29,7 @@ class ServiceController extends AbstractController
     public function new(Request $request, ServiceRepository $serviceRepository): Response
     {
         $service = new Service();
-        $form = $this->createForm(ServiceType::class, $service);
+        $form = $this->createForm(ServiceType::class, $service, ['validation_groups' => ['add']]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -55,7 +55,7 @@ class ServiceController extends AbstractController
     #[Route('/{id}/modifier-service', name: 'app_service_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Service $service, ServiceRepository $serviceRepository): Response
     {
-        $form = $this->createForm(ServiceType::class, $service);
+        $form = $this->createForm(ServiceType::class, $service, ['validation_groups' => ['default']]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
