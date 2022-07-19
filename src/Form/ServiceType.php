@@ -18,7 +18,7 @@ class ServiceType extends AbstractType
             ->add('title', TextType::class, [
                 'label' => 'Titre'
             ])
-            ->add('question', TextareaType::class, ['label' => 'Question'])
+            ->add('question', TextType::class, ['label' => 'Question'])
             ->add('description', TextareaType::class, ['label' => 'Description'])
             ->add('photoFile', FileType::class, ['label' => 'Photo', 'required' => false])
         ;
