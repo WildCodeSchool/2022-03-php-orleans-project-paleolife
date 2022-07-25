@@ -22,11 +22,11 @@ class ServiceFixtures extends Fixture
         [
             'title' => 'Suivis à distance',
             'question' => 'Et si votre entraînement était sur mesure ?',
-            'description' => 'A la maison ou à la salle de sport, cette offre s’adresse précisément à vous qui souhaitez
+            'description' => 'À la maison ou à la salle de sport, cette offre s’adresse précisément à vous qui souhaitez
             mettre toutes les chances de votre côté. Idéal pour une première transformation
             physique. Je vous propose de structurer votre temps d’entraînement, avec un programme
-            et plan diététique évolutif et spécialisé. Cela vous évitera de perdre un temps
-            considérable et qui, à la longue pèseront sur votre motivation',
+            et plan diététique évolutif et spécialisé. Cela vous évitera de perdre un temps considérable qui,
+             à la longue, pèsera sur votre motivation',
         ]
     ];
 
