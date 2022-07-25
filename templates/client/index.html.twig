@@ -34,17 +34,17 @@
 			</div>
 			<div class="row bg-black div-dark d-none d-md-block position-relative"></div>
 		</section>
-		<div class="row mt-md-5 mt-3">
-			<div class="col-md-2">
-				<nav id="sidebar" class="d-flex flex-column sticky-md-top">
-					<h1 class="d-flex justify-content-md-start justify-content-center my-md-3 text-primary ms-2 fw-bold">{{ client.user.name }}</h1>
-					<a href="{{ path('client_edit_profil') }}" class="d-flex justify-content-md-start justify-content-center text-dark fs-4 text-decoration-none ms-2">Modifier mon profil<i class="bi bi-pencil-square ms-2"></i>
+		<div class="row">
+			<div class="col-md-2 sidebar">
+				<nav id="sidebar" class="d-flex flex-column sticky-md-top p-3">
+					<h1 class="d-flex justify-content-md-start justify-content-center my-md-3 mt-3 text-dark ms-2 fw-bold">{{ client.user.name }}</h1>
+					<a href="{{ path('client_edit_profil') }}" class="d-flex justify-content-md-start justify-content-center text-dark fs-4 text-decoration-none ms-2 mb-3 mb-md-0">Modifier mon profil<i class="bi bi-pencil-square ms-2"></i>
 					</a>
 					<div class="d-none d-md-block">
-						<a href="#goal" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2">Objectifs</a>
-						<a href="#measurement" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2">Mensurations</a>
-						<a href="#session" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2">Séances</a>
-						<a href="#nutrition" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2">Nutrition</a>
+						<a href="#goal" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2"><i class="bi bi-speedometer2 me-3"></i>Objectifs</a>
+						<a href="#measurement" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2"><i class="bi bi-rulers me-3"></i>Mensurations</a>
+						<a href="#session" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2"><i class="bi bi-check-all me-3"></i>Séances</a>
+						<a href="#nutrition" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2"><i class="bi bi-cup-straw me-3"></i>Nutrition</a>
 					</div>
 				</nav>
 			</div>
@@ -52,7 +52,7 @@
 				<div class="bg-light div-light d-none d-lg-block position-relative row"></div>
 				<section class="d-flex flex-column align-items-center mb-5 mt-md-0 mt-5">
 					<h1 class="d-flex justify-content-center mb-4 title p-2" id="goal">
-						<i class="bi bi-speedometer me-2"></i>Objectifs
+						<i class="bi bi-speedometer2 me-2"></i>Objectifs
 					</h1>
 					<div class="p-3 col-md-4">
 						<div class="d-flex">
