@@ -16,7 +16,7 @@ class SessionType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, ['label' => 'Nom'])
-            ->add('number', IntegerType::class, ['label' => 'Numéro'])
+            ->add('number', IntegerType::class, ['label' => 'Nombre'])
             ->add('exercises', CollectionType::class, [
                 'label' => 'Exercices',
                 'entry_type' => ExerciseType::class,
