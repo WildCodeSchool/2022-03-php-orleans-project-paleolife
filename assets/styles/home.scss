@@ -1,5 +1,9 @@
 @import 'variable.scss';
 
+h3 {
+    font-family: $text_font;
+}
+
 .div-dark {
     height: $header-size;
     z-index: -1;
