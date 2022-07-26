@@ -10,22 +10,22 @@
 {% block body %}
 	<header>
 		<div class="row mt-3 justify-content-center position-absolute w-100">
-			<div class="d-md-flex col-6 justify-content-center align-items-center d-none">
+			<div class="d-lg-flex col-xl-7 col-lg-8 justify-content-center align-items-center d-none">
 				<div class="zoom-img overflow-hidden"><img class="anim-image" src="{{ asset('build/images/home.png') }}" alt="Photo du coach entrain de courir">
 				</div>
 				<div class="zoom-img overflow-hidden"><img src="{{ asset('build/images/home.png') }}" class="anim-image homePhoto2" alt="Photo du coach entrain de courir zoomée">
 				</div>
 			</div>
 		</div>
-		<div class="row bg-black div-dark d-none d-md-block position-relative"></div>
-		<div class="row bg-light div-light d-none d-md-block position-relative"></div>
+		<div class="row bg-black div-dark d-none d-lg-block position-relative"></div>
+		<div class="row bg-light div-light d-none d-lg-block position-relative"></div>
 	</header>
 	<section>
 		<div class="row bg-dark justify-content-center align-items-center presentation px-3">
 			<div class="col-md-5 col-11 d-flex justify-content-center align-items-center overflow-hidden text-center photoPresentation me-md-5 my-4">
 				<img src="{{ asset('build/images/photopres.jpeg') }}" class="anim-image presentationImg" alt="Photo du coach"/>
 			</div>
-			<div class="col-md-7 align-items-center my-md-4 p-md-4 ms-md-5">
+			<div class="col-xl-7 col-md-10 col-lg-11 align-items-center my-md-4 p-md-4 ms-md-5">
 				<h2 class="text-light mb-4">Seb votre coach personnel</h2>
 				<p class="text-light fs-5">Être coach est une véritable vocation pour moi. L’énergie positive et mes valeurs sont
 				mes deux traits de caractères, qui me permettent de m’épanouir dans ce métier passion.
@@ -44,16 +44,16 @@
 		<h1 class="text-center mb-4 mt-5 mb-5 pt-3">Coaching individuel</h1>
 		{% for service in services %}
 			<div class="card mb-5 border border-light bg-light  ">
-				<div class="d-md-flex justify-content-md-evenly align-items-stretch p-0">
-					<div class="col-md-5{% if loop.index is even %} order-md-1 {% endif %}">
+				<div class="d-md-flex flex-md-column flex-xxl-row justify-content-xxl-evenly align-items-md-center align-items-xxl-stretch p-0">
+					<div class="col-xxl-5 col-xl-8 col-md-10{% if loop.index is even %} order-xxl-1 {% endif %}">
 						{% if service.photo is empty %}
 							<img src="{{ asset('build/images/placeholderservice.jpg') }}" class="img-fluid rounded" alt="jogging">
 						{% else %}
 							<img src="{{vich_uploader_asset(service, 'photoFile')}}" class="img-fluid rounded" alt="jogging">
 						{% endif %}
 					</div>
-					<div class="col-md-5 d-flex align-items-stretch">
-						<div class="card-body d-flex flex-column justify-content-between {% if loop.index is even %} order-md-2 ps-md-0 {% else %} pe-md-0 {% endif %}">
+					<div class="col-xxl-5 col-xl-8 col-md-10 d-flex align-items-stretch">
+						<div class="card-body d-flex flex-column justify-content-between {% if loop.index is even %} order-xxl-2 ps-md-0 {% else %} pe-md-0 {% endif %}">
 							<div>
 								<h2 class="card-title mb-3">{{ service.title|u.truncate(40, '...') }}</h2>
 								<h3 class="fs-4 text-secondary fw-bold fst-italic mb-5">{{ service.question|nl2br }}</h3>
@@ -69,10 +69,11 @@
 			</div>
 		{% endfor %}
 	</section>
-	<section class="container">
+	<section class=>
 		<div class="row">
 			<h1 class="justify-content-center mb-4 mt-5 text-center">Coaching en entreprises</h1>
-			<div class="card  p-0 text-left mb-5">
+			<div class="d-md-flex justify-content-md-center">
+			<div class="card col-md-10 col-xl-8 p-0 text-left mb-5">
 				<img src="{{ asset('build/images/photoentreprisepanoramic.jpg') }}" class="rounded card-img-top p-2" alt="jogging">
 				<div class="card-body">
 					<h2 class="card-title mb-2 mt-3">Coaching sportif en entreprise</h2>
@@ -92,7 +93,7 @@
 							<i class="bi bi-send-fill me-3"></i>Me contacter</a>
 					</div>
 				</div>
-			</div>
+			</div></div>
 		</div>
 	</section>
 {% endblock %}
