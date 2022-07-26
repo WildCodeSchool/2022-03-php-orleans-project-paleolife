@@ -86,8 +86,8 @@ class Client implements Serializable
     private ?int $energyExpenditure;
 
     #[Assert\Positive]
-    #[ORM\Column(type: 'integer', nullable: true)]
-    private ?int $water;
+    #[ORM\Column(type: 'decimal', precision: 4, scale: 2, nullable: true)]
+    private ?float $water;
 
     #[ORM\OneToMany(mappedBy: 'client', targetEntity: NutritionMeal::class, cascade: ['remove'])]
     private Collection $nutritionMeals;
@@ -320,12 +320,12 @@ class Client implements Serializable
         return $this;
     }
 
-    public function getWater(): ?int
+    public function getWater(): ?float
     {
         return $this->water;
     }
 
-    public function setWater(?int $water): self
+    public function setWater(?float $water): self
     {
         $this->water = $water;
 
