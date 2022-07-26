@@ -1,5 +1,9 @@
 @import 'variable.scss';
 
+h3 {
+    font-family: $text_font;
+}
+
 .div-dark {
     height: $header-size;
     z-index: -1;
@@ -25,11 +29,11 @@
 .photoPresentation {
     width: 19rem;
     height: 19rem;
-    border-radius: 50%;
+    border-radius: 3px;
 }
 
 .presentationImg {
-    transform: translate(2rem, 8rem) scale(0.5) ;
+    transform: translate(0rem, 2rem) scale(0.3) ;
 }
 
 .greenLogo {

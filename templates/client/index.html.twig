@@ -11,7 +11,7 @@
 	<main>
 		<section>
 			<div class="row mt-3 justify-content-center position-absolute w-100">
-				<div class="d-md-flex justify-content-center align-items-center d-none">
+				<div class="d-lg-flex  col-xl-6 col-lg-8 ms-xl-5 justify-content-center align-items-center d-none">
 					<div class="photoClient">
 						{% if client.photoBefore is empty %}
 							<img src="{{ asset('build/images/placeholderClient.jpg') }}" alt="Photo d'avant" class="photo w-100">
@@ -32,27 +32,31 @@
 					</div>
 				</div>
 			</div>
-			<div class="row bg-black div-dark d-none d-md-block position-relative"></div>
+			<div class="row bg-black div-dark d-none d-xl-block position-relative"></div>
 		</section>
-		<div class="row mt-md-5 mt-3">
-			<div class="col-md-2">
-				<nav id="sidebar" class="d-flex flex-column sticky-md-top">
-					<h1 class="d-flex justify-content-md-start justify-content-center my-md-3 text-primary ms-2 fw-bold">{{ client.user.name }}</h1>
-					<a href="{{ path('client_edit_profil') }}" class="d-flex justify-content-md-start justify-content-center text-dark fs-4 text-decoration-none ms-2">Modifier mon profil<i class="bi bi-pencil-square ms-2"></i>
+		<div class="row">
+			<div class="col-xl-3 col-xxl-2 sidebar">
+				<nav id="sidebar" class="d-flex flex-column sticky-xl-top p-3">
+					<h1 class="d-flex justify-content-xl-start justify-content-center my-md-3 mt-3 text-dark ms-2 fw-bold">{{ client.user.name }}</h1>
+					<a href="{{ path('client_edit_profil') }}" class="d-flex justify-content-xl-start justify-content-center text-dark fs-4 text-decoration-none ms-xxl-2 mb-3 mb-md-0">Modifier mon profil<i class="bi bi-pencil-square ms-2"></i>
 					</a>
-					<div class="d-none d-md-block">
-						<a href="#goal" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2">Objectifs</a>
-						<a href="#measurement" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2">Mensurations</a>
-						<a href="#session" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2">Séances</a>
-						<a href="#nutrition" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2">Nutrition</a>
+					<div class="d-none d-xl-block">
+						<a href="#goal" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2">
+							<i class="bi bi-speedometer2 me-3"></i>Objectifs</a>
+						<a href="#measurement" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2">
+							<i class="bi bi-rulers me-3"></i>Mensurations</a>
+						<a href="#session" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2">
+							<i class="bi bi-check-all me-3"></i>Séances</a>
+						<a href="#nutrition" class="fs-4 d-flex justify-content-start text-dark mt-3 text-decoration-none ms-2">
+							<i class="bi bi-cup-straw me-3"></i>Nutrition</a>
 					</div>
 				</nav>
 			</div>
-			<div data-bs-spy="scroll" data-bs-target="#sidebar" data-bs-offset="0" data-bs-smooth-scroll="true" class="col-md-8" tabindex="0">
-				<div class="bg-light div-light d-none d-lg-block position-relative row"></div>
-				<section class="d-flex flex-column align-items-center mb-5 mt-md-0 mt-5">
+			<div data-bs-spy="scroll" data-bs-target="#sidebar" data-bs-offset="0" data-bs-smooth-scroll="true" class="col-xl-9 col-xxl-10" tabindex="0">
+				<div class="bg-light div-light d-none d-xl-block position-relative row"></div>
+				<section class="d-flex flex-column align-items-center mb-5 mt-xl-0 mt-5">
 					<h1 class="d-flex justify-content-center mb-4 title p-2" id="goal">
-						<i class="bi bi-speedometer me-2"></i>Objectifs
+						<i class="bi bi-speedometer2 me-2"></i>Objectifs
 					</h1>
 					<div class="p-3 col-md-4">
 						<div class="d-flex">
@@ -75,15 +79,15 @@
 							<i class="bi bi-rulers me-2"></i>Mensurations</h1>
 					</div>
 					<div class="row justify-content-center">
-						<div class="shadow rounded col-md-8">
+						<div class="shadow rounded col-xl-8 col-md-11">
 							{% include "component/_measurement_client.html.twig" %}
 						</div>
 					</div>
 				</section>
 				<section class="mb-5">
 					<div class="row justify-content-center">
-						<div class="tab-content mt-5 col-md-8" id="pills-tabContent">
-							<div class="d-flex justify-content-center">
+						<div class="tab-content mt-5 col-xl-8 col-md-11 " id="pills-tabContent">
+							<div class="d-flex justify-content-center w-100">
 								<h1 class="mb-4 title p-3 d-flex justify-content-center" id="session">
 									<i class="bi bi-check-all"></i>Séances</h1>
 							</div>
@@ -132,17 +136,17 @@
 							<i class="bi bi-cup-straw"></i>Nutrition</h1>
 					</div>
 					<div class="row justify-content-center mb-5">
-						<div class="col-md-8">
+						<div class="col-xl-8 col-md-11">
 							<div class="d-flex">
 								<p class="fs-5 me-2 objectif">Dépense énergétique:</p>
-								<p class="fs-5">{{ client.energyExpenditure}}</p>
+								<p class="fs-5">{{ client.energyExpenditure}} Kcal</p>
 							</div>
 							<div class="d-flex">
 								<p class="fs-5 me-2 objectif">Hydratation journalière:</p>
-								<p class="fs-5">{{ client.water}}</p>
+								<p class="fs-5">{{ client.water}} L</p>
 							</div>
 						</div>
-						<div class="shadow rounded col-md-8">
+						<div class="shadow rounded col-xl-8 col-md-11">
 							<table class="table table-hover">
 								<thead>
 									<tr>

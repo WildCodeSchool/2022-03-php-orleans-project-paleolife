@@ -24,5 +24,21 @@ body {
 
 fieldset > div > fieldset > div{
     display: flex;
-    justify-content: space-between;
+    gap: 8px;
+}
+
+fieldset > div > fieldset {
+    display: flex;
+    gap: 8px;
+}
+
+fieldset > div > fieldset > button {
+    align-self: center;
+    margin-block-start: 12px;
+}
+
+form > fieldset {
+    border-left: solid $secondary;
+    padding-inline-start: 8px;
+    padding-block-end: 8px;
 }
