@@ -17,7 +17,7 @@ class ExerciseType extends AbstractType
                 'label' => 'Nom de l\'exercice'
             ])
             ->add('duration', TextType::class, [
-                'label' => 'Durée'
+                'label' => 'Repos'
             ])
             ->add('repetition', TextType::class, [
                 'label' => 'Répétition'
