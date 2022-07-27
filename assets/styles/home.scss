@@ -15,12 +15,16 @@ h3 {
 }
 
 .anim-image:hover {
-    scale: 1.05;
+    transform: scale(1.05);
 }
 
 .anim-image {
     transition: 0.5s ease-in-out;
 }
+
+.homePhoto2.anim-image:hover {
+    transform: translate(1rem, 13rem) scale(2.1);
+} 
 
 .homePhoto2 {
     transform: translate(1rem, 13rem) scale(2);
