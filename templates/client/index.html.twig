@@ -23,7 +23,7 @@
 							<span class="fs-6 text-light">{{ client.dateBefore|date("d/m/Y") }}</span>
 						</div>
 					</div>
-					<div class="photoClient">
+					<div class="photoClient position-relative">
 						{% if client.photoAfter is empty %}
 							<img src="{{ asset('build/images/placeholderClient.jpg') }}" alt="Photo d'après" class="photo w-100">
 						{% else %}
