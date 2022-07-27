@@ -89,6 +89,8 @@ class NutritionMealController extends AbstractController
             $nMealRepository->remove($nutritionMeal, true);
         }
 
-        return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_client_edit', [
+            'id' => $nutritionMeal->getClient()->getId()
+        ], Response::HTTP_SEE_OTHER);
     }
 }

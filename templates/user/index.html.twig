@@ -11,27 +11,29 @@
 			<thead class="fs-4">
 				<tr>
 					<th>Nom</th>
-					<th>Email</th>
-					<th class="d-flex justify-content-center">Gestion du compte</th>
+					<th class="d-none d-xxl-block">Email</th>
+					<th class="">Gestion du compte</th>
 				</tr>
 			</thead>
 			<tbody class="fs-5">
 				{% for user in users %}
 					<tr>
-						<td class="col-lg-3">{{ user.name }}</td>
-						<td class="col-lg-3">{{ user.email }}</td>
-						<td class="d-flex justify-content-end">
-							<a class="btn btn-warning me-3" href="{{ path('app_client_edit', {'id': user.client.id}) }}">
-								<i class="bi bi-pen-fill me-2"></i>
-								Éditer
-							</a>
-							<form method="post" action="{{ path('app_user_change', {'id': user.id}) }}" onsubmit="return confirm('Êtes-vous certain de mettre cet utilisateur en attente?');">
-								<input type="hidden" name="_token" value="{{ csrf_token('change' ~ user.id) }}">
-								<button class="btn bg-black text-light me-3">
-									<i class="bi bi-person-dash-fill me-2"></i>
-									Désactivation</button>
-							</form>
-							{% include 'user/_delete_form.html.twig' %}
+						<td>{{ user.name }}</td>
+						<td class="d-none d-xxl-block">{{ user.email }}</td>
+						<td>
+							<div class="d-md-flex ">
+								<a class="btn btn-warning me-3" href="{{ path('app_client_edit', {'id': user.client.id}) }}">
+									<i class="bi bi-pen-fill me-2"></i>
+									Éditer
+								</a>
+								<form method="post" action="{{ path('app_user_change', {'id': user.id}) }}" onsubmit="return confirm('Êtes-vous certain de mettre cet utilisateur en attente?');">
+									<input type="hidden" name="_token" value="{{ csrf_token('change' ~ user.id) }}">
+									<button class="btn bg-black text-light me-3">
+										<i class="bi bi-person-dash-fill me-2"></i>
+										Désactivation</button>
+								</form>
+								{% include 'user/_delete_form.html.twig' %}
+							</div>
 						</td>
 					</tr>
 				{% else %}
@@ -41,34 +43,27 @@
 				{% endfor %}
 			</tbody>
 		</table>
-
 		<h2 class="my-5">Clients en attente de validation</h2>
 		<table class="table">
 			<thead class="fs-4">
 				<tr>
 					<th>Nom</th>
-					<th>Email</th>
+					<th class="d-none d-xxl-block">Email</th>
 					<th>Activation du compte</th>
 					<th>Suppression de l'utilisateur</th>
 				</tr>
 			</thead>
 			<tbody class="fs-5">
-
 				{% for unvalid in unvalids %}
 					<tr>
 						<td>{{ unvalid.name }}</td>
-						<td>{{ unvalid.email }}</td>
+						<td class="d-none d-xxl-block">{{ unvalid.email }}</td>
 						<td>
-							<form method="post" action="{{ path('app_user_change', {'id': unvalid.id}) }}" onsubmit="return confirm('Êtes-vous certain d'accepter cet utilisateur?');">
-								<input type="hidden" name="_token" value="{{ csrf_token('change' ~ unvalid.id) }}">
-								<button class="btn btn-success me-3">
-									<i class="bi bi-person-plus-fill me-2"></i>
-									Activation</button>
+							<form method="post" action="{{ path('app_user_change', {'id': unvalid.id}) }}" onsubmit="return confirm('Êtes-vous certain d'accepter cet utilisateur?');"><input type="hidden" name="_token" value="{{ csrf_token('change' ~ unvalid.id) }}"><button class="btn btn-success me-3">
+									<i class="bi bi-person-plus-fill me-2"></i>Activation</button>
 							</form>
 						</td>
-						<td class="d-flex">
-							{% include 'user/_delete_form.html.twig' with {'user': unvalid} %}
-						</td>
+						<td class="d-flex">{% include 'user/_delete_form.html.twig' with {'user': unvalid} %}</td>
 					</tr>
 				{% else %}
 					<tr>

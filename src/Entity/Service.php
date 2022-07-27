@@ -36,9 +36,9 @@ class Service
     #[Assert\NotBlank(groups:['add', 'default'])]
     private ?File $photoFile = null;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     #[Assert\Length(max: 255, groups:['add', 'default'])]
-    private string $photo;
+    private ?string $photo;
 
     #[Assert\Length(max: 255)]
     #[ORM\Column(type: 'string', nullable: true)]
