@@ -46,17 +46,18 @@
 							</a>
 						</div>
 					</div>
-					<section class="fs-5 mb-5">
-						{{ include('adminClient/_form.html.twig', {'button_label': 'Valider'}) }}
-					</section>
-					<section class="mb-5">
-						<div class="mt-5 pt-4">
-							<h2 id="nutrition" class="mb-3 mt-md-5 mt-3 pb-2 d-flex border-bottom border-primary border-1">
-								<i class="bi bi-cup-straw me-3"></i>
-								Nutrition
-								<a href="{{ path('app_nutrition_meal_new', {'id': client.id}) }}" class="btn btn-outline-primary text-dark mb-2 ms-5">
-									<i class="bi bi-plus-circle me-2"></i>
-									Ajouter une nutrition</a>
+				</div>
+				<section class="fs-5 mb-5">
+					{{ include('adminClient/_form.html.twig', {'button_label': 'Valider'}) }}
+				</section>
+				<section class="mb-5">
+					<div class="mt-5 pt-4">
+						<h2 id="nutrition" class="mb-3 mt-3 pb-2 d-flex border-bottom border-primary border-1">
+							<i class="bi bi-cup-straw me-3"></i>
+							Nutrition
+							<a href="{{ path('app_nutrition_meal_new', {'id': client.id}) }}" class="btn btn-outline-primary border-2 text-dark mb-2 ms-5">
+								<i class="bi bi-plus-circle me-2"></i>
+								Ajouter une nutrition</a>
 							</h2>
 						</div>
 						<div class="shadow-sm rounded">
